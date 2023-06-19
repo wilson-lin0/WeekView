@@ -1,40 +1,31 @@
 package cs3500.pa05.controller;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
-/**
- * FileEditor class to edit/write the final output file
- */
 public class FileWriter {
-  private File file;
-  private Path path;
-
-  FileWriter(File file) {
-    this.file = file;
-    this.path = file.toPath();
-  }
-
   /**
-   * Writes the file.
+   * Writes the given String to the given filepath.
    *
-   * @param listFiles the list of files to write and merge
-   * @return File the file to output the contents
-   * @throws IOException throws when file is not found
+   * @param file     where to write the contents
+   * @param contents contents to write to the file
    */
-  public File writeFile(ArrayList<File> listFiles) throws IOException {
-    for (File file : listFiles) {
-      List<String> lines = Files.readAllLines(file.toPath());
-      for (String text : lines) {
-        byte[] data = text.concat("\n").getBytes();
-        Files.write(this.path, data, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
-      }
+  public void writeToFile(File file, String contents) {
+    // Add fileType extension to the end of the file path
+    Path path = Path.of(file.getPath() + ".bujo");
+
+    // Convert String to data for writing ("raw" byte data)
+    byte[] data = contents.getBytes();
+
+    // The path may not exist, or we may not have permissions to write to it,
+    // in which case we need to handle that error (hence try-catch)
+    try {
+      // Built-in convenience method for writing data to a file
+      Files.write(path, data);
+    } catch (IOException e) {
+      throw new RuntimeException("An error occurred while writing to the file: " + e.getMessage());
     }
-    return this.file;
   }
 }
