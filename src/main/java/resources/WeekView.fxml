@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Scene?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -16,7 +17,7 @@
                   <children>
                      <HBox alignment="TOP_CENTER" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1050.0">
                         <children>
-                           <Label alignment="TOP_CENTER" text="Title">
+                           <Label fx:id="titleLabel" alignment="TOP_CENTER" text="Title">
                               <font>
                                  <Font size="30.0" />
                               </font>
@@ -84,6 +85,13 @@
                                  <Font size="20.0" />
                               </font>
                            </Label>
+                        </children>
+                     </HBox>
+                     <HBox layoutX="10.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1050.0" spacing="10.0">
+                        <children>
+                           <ChoiceBox fx:id="fileBox" prefHeight="25.0" prefWidth="100.0" />
+                           <ChoiceBox fx:id="creationBox" prefHeight="25.0" prefWidth="100.0" />
+                           <ChoiceBox fx:id="editBox" prefHeight="25.0" prefWidth="100.0" />
                         </children>
                      </HBox>
                   </children>
