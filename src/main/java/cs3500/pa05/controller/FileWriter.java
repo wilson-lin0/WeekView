@@ -21,7 +21,7 @@ public class FileWriter {
   }
 
   /**
-   * Writes the file with only text enclosed in "[[" and "]]" and headers.
+   * Writes the file.
    *
    * @param listFiles the list of files to write and merge
    * @return File the file to output the contents
