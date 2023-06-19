@@ -9,16 +9,11 @@ public class Event {
   int startTime;
   int duration;
 
-  public Event(String name, Days dayOfWeek, int startTime, int duration) {
+  public Event(String name, String description, Days dayOfWeek, int startTime, int duration) {
     this.name = name;
+    this.description = description;
     this.dayOfWeek = dayOfWeek;
     this.startTime = startTime;
     this.duration = duration;
-    this.description = "";
-  }
-
-  public Event createEvent(String name, Days dayOfWeek, int startTime, int duration,
-                           String description) {
-    return null;
   }
 }

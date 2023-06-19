@@ -9,16 +9,11 @@ public class Task {
   int startTime;
   int duration;
 
-  public Task(String name, Days dayOfWeek, int startTime, int duration) {
+  public Task(String name, String description, Days dayOfWeek, int startTime, int duration) {
     this.name = name;
+    this.description = description;
     this.dayOfWeek = dayOfWeek;
     this.startTime = startTime;
     this.duration = duration;
-    this.description = "";
-  }
-
-  public Task createTask(String name, Days dayOfWeek, int startTime, int duration,
-                           String description) {
-    return null;
   }
 }
