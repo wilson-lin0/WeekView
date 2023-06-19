@@ -7,96 +7,103 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.stage.Stage?>
 
-<Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <AnchorPane prefHeight="750.0" prefWidth="1000.0">
-      <children>
-         <VBox prefHeight="750.0" prefWidth="1050.0">
+
+<Stage xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <scene>
+      <Scene>
+          <AnchorPane prefHeight="750.0" prefWidth="1000.0">
             <children>
-               <AnchorPane prefHeight="750.0" prefWidth="1000.0">
+               <VBox prefHeight="750.0" prefWidth="1050.0">
                   <children>
-                     <HBox alignment="TOP_CENTER" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1050.0">
+                     <AnchorPane prefHeight="750.0" prefWidth="1000.0">
                         <children>
-                           <Label fx:id="titleLabel" alignment="TOP_CENTER" text="Title">
-                              <font>
-                                 <Font size="30.0" />
-                              </font>
-                           </Label>
+                           <HBox alignment="TOP_CENTER" layoutY="5.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1050.0">
+                              <children>
+                                 <Label fx:id="titleLabel" alignment="TOP_CENTER" text="Title">
+                                    <font>
+                                       <Font size="30.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox alignment="TOP_CENTER" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
+                              <children>
+                                 <Label alignment="TOP_CENTER" text="Sunday">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox alignment="TOP_CENTER" layoutX="150.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
+                              <children>
+                                 <Label alignment="TOP_CENTER" text="Monday">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox alignment="TOP_CENTER" layoutX="300.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
+                              <children>
+                                 <Label alignment="TOP_CENTER" text="Tuesday">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox alignment="TOP_CENTER" layoutX="450.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
+                              <children>
+                                 <Label alignment="TOP_CENTER" text="Wednesday">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox alignment="TOP_CENTER" layoutX="600.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
+                              <children>
+                                 <Label alignment="TOP_CENTER" text="Thursday">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox alignment="TOP_CENTER" layoutX="750.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
+                              <children>
+                                 <Label alignment="TOP_CENTER" text="Friday">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox alignment="TOP_CENTER" layoutX="900.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
+                              <children>
+                                 <Label alignment="TOP_CENTER" text="Saturday">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <HBox layoutX="10.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1050.0" spacing="10.0">
+                              <children>
+                                 <ChoiceBox fx:id="fileBox" prefHeight="25.0" prefWidth="100.0" />
+                                 <ChoiceBox fx:id="creationBox" prefHeight="25.0" prefWidth="100.0" />
+                                 <ChoiceBox fx:id="editBox" prefHeight="25.0" prefWidth="100.0" />
+                              </children>
+                           </HBox>
                         </children>
-                     </HBox>
-                     <HBox alignment="TOP_CENTER" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
-                        <children>
-                           <Label alignment="TOP_CENTER" text="Sunday">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </HBox>
-                     <HBox alignment="TOP_CENTER" layoutX="150.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
-                        <children>
-                           <Label alignment="TOP_CENTER" text="Monday">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </HBox>
-                     <HBox alignment="TOP_CENTER" layoutX="300.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
-                        <children>
-                           <Label alignment="TOP_CENTER" text="Tuesday">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </HBox>
-                     <HBox alignment="TOP_CENTER" layoutX="450.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
-                        <children>
-                           <Label alignment="TOP_CENTER" text="Wednesday">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </HBox>
-                     <HBox alignment="TOP_CENTER" layoutX="600.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
-                        <children>
-                           <Label alignment="TOP_CENTER" text="Thursday">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </HBox>
-                     <HBox alignment="TOP_CENTER" layoutX="750.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
-                        <children>
-                           <Label alignment="TOP_CENTER" text="Friday">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </HBox>
-                     <HBox alignment="TOP_CENTER" layoutX="900.0" layoutY="50.0" prefHeight="700.0" prefWidth="150.0" style="-fx-border-color: black;">
-                        <children>
-                           <Label alignment="TOP_CENTER" text="Saturday">
-                              <font>
-                                 <Font size="20.0" />
-                              </font>
-                           </Label>
-                        </children>
-                     </HBox>
-                     <HBox layoutX="10.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="1050.0" spacing="10.0">
-                        <children>
-                           <ChoiceBox fx:id="fileBox" prefHeight="25.0" prefWidth="100.0" />
-                           <ChoiceBox fx:id="creationBox" prefHeight="25.0" prefWidth="100.0" />
-                           <ChoiceBox fx:id="editBox" prefHeight="25.0" prefWidth="100.0" />
-                        </children>
-                     </HBox>
+                     </AnchorPane>
                   </children>
-               </AnchorPane>
+               </VBox>
             </children>
-         </VBox>
-      </children></AnchorPane>
-</Scene>
+         </AnchorPane>
+      </Scene>
+   </scene>
+</Stage>
