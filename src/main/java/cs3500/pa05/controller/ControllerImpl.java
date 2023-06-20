@@ -33,6 +33,8 @@ public class ControllerImpl implements Controller {
         weekView.setMaxEvent(parseInt(this.eventTextBox.getText())));
     this.taskTextBox.setOnAction(event ->
         weekView.setMaxTask(parseInt(this.taskTextBox.getText())));
+    // on click button to create event -> show AddEvent.fxml and create event from TextBox
+    // on click button to create task -> show AddTask.fxml and create task from TextBox
   }
 
   public void createEvent(String name, String description, Days dayOfWeek, int startTime,
