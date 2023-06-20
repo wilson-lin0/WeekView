@@ -32,8 +32,8 @@ class MainControllerTest {
     // Perform button click
     mainController.clickAddEventButton();
 
-    // Verify that AddEventController.run() was called
-    verify(mainController).addEvent();
+    // Verify that expected behavior occurs
+    assert mainController.isAddEventControllerRunCalled();
   }
 
   @Test
@@ -47,8 +47,8 @@ class MainControllerTest {
     // Perform button click
     mainController.clickAddTaskButton();
 
-    // Verify that AddTaskController.run() was called
-    verify(mainController).addTask();
+    // Verify that expected behavior occurs
+    assert mainController.isAddTaskControllerRunCalled();
   }
 
   @Test
@@ -62,8 +62,8 @@ class MainControllerTest {
     // Perform button click
     mainController.clickEventTaskLimitButton();
 
-    // Verify that MaximumEventTaskController.run() was called
-    verify(mainController).setLimit();
+    // Verify that expected behavior occurs
+    assert mainController.isMaximumEventTaskControllerRunCalled();
   }
 
   // Mock class that extends MainController
@@ -74,6 +74,10 @@ class MainControllerTest {
     private Button saveToFileButton;
     private Button openFileButton;
     private Button eventTaskLimitButton;
+
+    private boolean addEventControllerRunCalled;
+    private boolean addTaskControllerRunCalled;
+    private boolean maximumEventTaskControllerRunCalled;
 
     public MainControllerMock(WeekView weekView, Stage stage) {
       super(weekView, stage);
@@ -118,5 +122,30 @@ class MainControllerTest {
     public void clickEventTaskLimitButton() {
       eventTaskLimitButton.fire();
     }
+
+    public boolean isAddEventControllerRunCalled() {
+      return addEventControllerRunCalled;
+    }
+
+    public boolean isAddTaskControllerRunCalled() {
+      return addTaskControllerRunCalled;
+    }
+
+    public boolean isMaximumEventTaskControllerRunCalled() {
+      return maximumEventTaskControllerRunCalled;
+    }
+
+    protected void addEvent() {
+      addEventControllerRunCalled = true;
+    }
+
+    protected void addTask() {
+      addTaskControllerRunCalled = true;
+    }
+
+    protected void setLimit() {
+      maximumEventTaskControllerRunCalled = true;
+    }
   }
 }
+
