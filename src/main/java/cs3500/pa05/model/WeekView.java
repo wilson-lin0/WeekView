@@ -12,6 +12,8 @@ import java.util.List;
  * To represent a WeekView.
  */
 public class WeekView {
+  private boolean maxTasks;
+  private boolean maxEvents;
   private int maxTask;
   private int maxEvent;
   private List<Event> eventList;
@@ -23,6 +25,8 @@ public class WeekView {
   public WeekView() {
     this.eventList = new ArrayList<>();
     this.taskList = new ArrayList<>();
+    this.maxEvents = false;
+    this.maxTasks = false;
   }
 
   /**
@@ -142,5 +146,23 @@ public class WeekView {
    */
   public int returnMaxEvent() {
     return this.maxEvent;
+  }
+
+  /**
+   * Returns the maximum number of events.
+   *
+   * @return the maximum number of events
+   */
+  public boolean maxEvents() {
+    return this.maxEvents;
+  }
+
+  /**
+   * Returns if there is a maximum number of tasks.
+   *
+   * @return whether there is a maximum number of tasks
+   */
+  public boolean maxTasks() {
+    return this.maxTasks;
   }
 }

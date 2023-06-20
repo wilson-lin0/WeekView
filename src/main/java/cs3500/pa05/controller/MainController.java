@@ -1,8 +1,14 @@
 package cs3500.pa05.controller;
 
 import cs3500.pa05.model.WeekView;
+import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 
 /**
  * Controls the program.
@@ -23,9 +29,10 @@ public class MainController extends AbstractController {
    * Creates a MainController.
    *
    * @param weekView the WeekView
+   * @param stage the stage
    */
-  public MainController(WeekView weekView) {
-    super(weekView);
+  public MainController(WeekView weekView, Stage stage) {
+    super(weekView, stage);
   }
 
   /**
@@ -33,34 +40,40 @@ public class MainController extends AbstractController {
    */
   @Override
   public void run() {
-    Boolean maxTask;
-    Boolean maxEvent;
-    if (this.weekView.returnEventList().size() < this.weekView.returnMaxEvent()) {
-      maxEvent = true;
-    } else {
-      maxEvent = false;
-      // TextField updates to state exceed max task
-    }
-
-    if (this.weekView.returnTaskList().size() < this.weekView.returnMaxTask()) {
-      maxTask = true;
-    } else {
-      maxTask = false;
-      // TextField updates to state exceed max events
-    }
-
-    while (maxEvent = true) {
-      this.addEventButton.setOnAction(event -> new AddEventController(weekView).run());
-    }
-
-    while (maxTask = true) {
-      this.addTaskButton.setOnAction(event -> new AddTaskController(weekView).run());
-    }
+    this.addEventButton.setOnAction(event -> {
+      checkMaxEvent();
+    });
+    this.addTaskButton.setOnAction((event -> {
+      checkMaxTask();
+    }));
+    this.eventTaskLimitButton.setOnAction(event -> {
+      setLimit();
+    });
 
     // change saveToFileButton -> on event, call this.weekView.saveFile(Path.of(TextField.get()).toFile()
     // this.saveToFileButton.setOnAction(event -> )
     // same as saveToFileButton
     // this.openFileButton.setOnAction(event -> )
-    this.eventTaskLimitButton.setOnAction(event -> new MaximumEventTaskController(weekView).run());
+  }
+
+  private void checkMaxEvent() {
+    if (this.weekView.maxEvents()) {
+      if (this.weekView.returnEventList().size() < this.weekView.returnMaxEvent()) {
+        new AddEventController(this.weekView, this.stage).run();
+      }
+    }
+  }
+
+  private void checkMaxTask() {
+    if (this.weekView.maxTasks()) {
+      if (this.weekView.returnTaskList().size() < this.weekView.returnMaxTask()) {
+        new AddTaskController(this.weekView, this.stage).run();
+      }
+    }
+  }
+
+
+  private void setLimit() {
+    new MaximumEventTaskController(this.weekView, this.stage).run();
   }
 }
