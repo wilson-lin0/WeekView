@@ -24,6 +24,14 @@ public class WeekView {
     this.taskList = new ArrayList<>();
   }
 
+  public void setMaxTask(int max) {
+    this.maxTask = max;
+  }
+
+  public void setMaxEvent(int max) {
+    this.maxEvent = max;
+  }
+
   public void saveFile(File fileName) {
     // Convert WeekView properties to Week record
     Week weekRecord = new Week(this.maxTask, this.maxEvent, this.eventList, this.taskList);

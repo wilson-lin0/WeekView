@@ -1,14 +1,25 @@
 package cs3500.pa05.controller;
 
+import static java.lang.Integer.parseInt;
+
 import cs3500.pa05.enumerations.Days;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.WeekView;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class ControllerImpl implements Controller {
   Readable input;
   Appendable output;
   WeekView weekView;
+
+  @FXML
+  private TextField eventTextBox;
+
+  @FXML
+  private TextField taskTextBox;
 
   public ControllerImpl(Readable input, Appendable output, WeekView weekView) {
     this.input = input;
@@ -18,7 +29,10 @@ public class ControllerImpl implements Controller {
 
   @Override
   public void run() {
-
+    this.eventTextBox.setOnAction(event ->
+        weekView.setMaxEvent(parseInt(this.eventTextBox.getText())));
+    this.taskTextBox.setOnAction(event ->
+        weekView.setMaxTask(parseInt(this.taskTextBox.getText())));
   }
 
   public void createEvent(String name, String description, Days dayOfWeek, int startTime,
