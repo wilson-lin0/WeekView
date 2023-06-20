@@ -1,8 +1,8 @@
 package cs3500.pa05.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import cs3500.pa05.json.JsonUtil;
-import cs3500.pa05.json.Week;
+import cs3500.pa05.model.json.JsonUtil;
+import cs3500.pa05.model.json.Week;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

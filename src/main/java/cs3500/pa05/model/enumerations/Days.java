@@ -1,4 +1,4 @@
-package cs3500.pa05.enumerations;
+package cs3500.pa05.model.enumerations;
 
 /**
  * To represent a day of the week.

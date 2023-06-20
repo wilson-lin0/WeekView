@@ -1,6 +1,6 @@
 package cs3500.pa05.controller;
 
-import static cs3500.pa05.enumerations.Days.getDay;
+import static cs3500.pa05.model.enumerations.Days.getDay;
 
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.WeekView;

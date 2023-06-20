@@ -1,6 +1,6 @@
 package cs3500.pa05.model;
 
-import cs3500.pa05.enumerations.Days;
+import cs3500.pa05.model.enumerations.Days;
 
 /**
  * To represent a task.
