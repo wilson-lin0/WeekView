@@ -2,6 +2,7 @@ package cs3500.pa05;
 
 import cs3500.pa05.controller.MainController;
 import cs3500.pa05.model.WeekView;
+import cs3500.pa05.view.ThemeOneView;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -18,9 +19,13 @@ public class Driver extends Application {
   @Override
   public void start(Stage stage) {
     try {
+      ThemeOneView view = new ThemeOneView();
+      stage.setScene(view.load());
+
       WeekView weekView = new WeekView();
       MainController controller = new MainController(weekView);
       controller.run();
+
       stage.show();
     } catch (IllegalStateException exc) {
       System.err.println("Unable to load GUI.");
