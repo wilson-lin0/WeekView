@@ -1,15 +1,19 @@
 package cs3500.pa05.controller;
 
-import static cs3500.pa05.model.enumerations.Days.getDay;
-import static java.lang.Integer.parseInt;
+import static cs3500.pa05.model.enumerations.Days.verifyDay;
 
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.WeekView;
+import cs3500.pa05.model.enumerations.Days;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -30,6 +34,8 @@ public class AddEventController extends AbstractController {
   private TextField createEventStartTime;
   @FXML
   private TextField createEventDuration;
+  @FXML
+  private Label warningLabel;
   @FXML
   private Button submitButton;
   @FXML
@@ -63,15 +69,82 @@ public class AddEventController extends AbstractController {
 
     this.eventCreationPopup.show(this.stage);
 
-    this.submitButton.setOnAction(event -> {
-      weekView.updateEvent(new Event(this.createEventName.getText(),
-          this.createEventDescription.getText(), getDay(this.createEventDay.getText().charAt(0)),
-          parseInt(this.createEventStartTime.getText()),
-          parseInt(this.createEventDuration.getText())));
-    });
+    this.submitButton.setOnAction(event -> addEvent());
 
-    this.exitButton.setOnAction(event -> {
-      this.eventCreationPopup.hide();
-    });
+    this.exitButton.setOnAction(event -> this.eventCreationPopup.hide());
+  }
+
+  private void addEvent() {
+    String eventName = null;
+    String description = null;
+    Days day = null;
+    String startTime = null;
+    String duration = null;
+
+    boolean canContinue = canContinue();
+
+    try {
+      eventName = createEventName.getText();
+      day = verifyDay(this.createEventDay.getText());
+      if (correctTimeFormat(createEventStartTime.getText())) {
+        startTime = createEventStartTime.getText();
+      } else {
+        warningLabel.setText("The format for the starting time is incorrect");
+        canContinue = false;
+      }
+      if (isInteger(createEventDuration.getText())) {
+        duration = createEventDuration.getText();
+      } else {
+        warningLabel.setText("The duration is not an integer");
+        canContinue = false;
+      }
+    } catch (IllegalArgumentException i) {
+      warningLabel.setText(i.getMessage());
+    } catch (NullPointerException n) {
+      warningLabel.setText("You left a required field empty!");
+      canContinue = false;
+    }
+
+    try {
+      description = createEventDescription.getText();
+    } catch (NullPointerException n) {
+      // it is okay to not have a description
+    }
+
+    if (canContinue) {
+      weekView.updateEvent(new Event(eventName, description, day, startTime, duration));
+    } else {
+      warningLabel.setText("You have reached the maximum amount of events: " +
+          this.weekView.returnMaxEvent());
+    }
+  }
+
+  private boolean canContinue() {
+    if (this.weekView.hasMaximumEvents()) {
+      return this.weekView.returnEventList().size() < this.weekView.returnMaxEvent();
+    } else {
+      return true;
+    }
+  }
+
+  private boolean correctTimeFormat(String timeString) {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("k:mm");
+    dateFormat.setLenient(false);
+
+    try {
+      Date time = dateFormat.parse(timeString);
+      return timeString.equals(dateFormat.format(time));
+    } catch (ParseException e) {
+      return false;
+    }
+  }
+
+  private boolean isInteger(String string) {
+    try {
+      Integer.parseInt(string);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
+    }
   }
 }

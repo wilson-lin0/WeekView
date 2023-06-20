@@ -153,7 +153,7 @@ public class WeekView {
    *
    * @return the maximum number of events
    */
-  public boolean maxEvents() {
+  public boolean hasMaximumEvents() {
     return this.maxEvents;
   }
 
@@ -162,7 +162,7 @@ public class WeekView {
    *
    * @return whether there is a maximum number of tasks
    */
-  public boolean maxTasks() {
+  public boolean hasMaximumTasks() {
     return this.maxTasks;
   }
 }

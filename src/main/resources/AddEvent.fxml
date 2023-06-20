@@ -48,7 +48,7 @@
                            <Font size="25.0" />
                         </font>
                      </Label>
-                     <TextField>
+                     <TextField fx:id="createEventName">
                         <font>
                            <Font size="15.0" />
                         </font>
@@ -62,7 +62,7 @@
                            <Font size="25.0" />
                         </font>
                      </Label>
-                     <TextField>
+                     <TextField fx:id="createEventDescription">
                         <font>
                            <Font size="15.0" />
                         </font>
@@ -76,7 +76,7 @@
                            <Font size="25.0" />
                         </font>
                      </Label>
-                     <TextField>
+                     <TextField fx:id="createEventDay">
                         <font>
                            <Font size="15.0" />
                         </font>
@@ -90,7 +90,7 @@
                            <Font size="25.0" />
                         </font>
                      </Label>
-                     <TextField>
+                     <TextField fx:id="createEventStartTime">
                         <font>
                            <Font size="15.0" />
                         </font>
@@ -104,7 +104,7 @@
                            <Font size="25.0" />
                         </font>
                      </Label>
-                     <TextField>
+                     <TextField fx:id="createEventDuration">
                         <font>
                            <Font size="15.0" />
                         </font>

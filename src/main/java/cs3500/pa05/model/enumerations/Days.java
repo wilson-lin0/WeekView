@@ -7,55 +7,55 @@ public enum Days {
   /**
    * Monday.
    */
-  MONDAY('M'),
+  MONDAY("MONDAY"),
   /**
    * Tuesday.
    */
-  TUESDAY('T'),
+  TUESDAY("Tuesday"),
   /**
    * Wednesday.
    */
-  WEDNESDAY('W'),
+  WEDNESDAY("Wednesday"),
   /**
    * Thursday.
    */
-  THURSDAY('H'),
+  THURSDAY("Thursday"),
   /**
    * Friday.
    */
-  FRIDAY('F'),
+  FRIDAY("Friday"),
   /**
    * Saturday.
    */
-  SATURDAY('S'),
+  SATURDAY("Saturday"),
   /**
    * Sunday.
    */
-  SUNDAY('D');
+  SUNDAY("Sunday");
 
-  private char letter;
+  private String day;
 
-  Days(char letter) {
-    this.letter = letter;
+  Days(String day) {
+    this.day = day;
   }
 
   /**
    * Returns the day of the week given the character.
    *
-   * @param letter the character
+   * @param day the day of the week
    * @return the corresponding day of the week
    * @throws IllegalArgumentException when an invalid character is provided
    */
-  public static Days getDay(char letter) {
-    switch (letter) {
-      case 'M': return Days.MONDAY;
-      case 'T': return Days.TUESDAY;
-      case 'W': return Days.WEDNESDAY;
-      case 'H': return Days.THURSDAY;
-      case 'F': return Days.FRIDAY;
-      case 'S': return Days.SATURDAY;
-      case 'D': return Days.SUNDAY;
-      default: throw new IllegalArgumentException("Not a valid day.");
-    }
+  public static Days verifyDay(String day) {
+    return switch (day.toUpperCase()) {
+      case "MONDAY" -> MONDAY;
+      case "TUESDAY" -> TUESDAY;
+      case "WEDNESDAY" -> WEDNESDAY;
+      case "THURSDAY" -> THURSDAY;
+      case "FRIDAY" -> FRIDAY;
+      case "SATURDAY" -> SATURDAY;
+      case "SUNDAY" -> SUNDAY;
+      default -> throw new IllegalArgumentException("Not a valid day.");
+    };
   }
 }

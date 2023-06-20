@@ -1,15 +1,17 @@
 package cs3500.pa05.controller;
 
-import static cs3500.pa05.model.enumerations.Days.getDay;
+import static cs3500.pa05.model.enumerations.Days.verifyDay;
 
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.WeekView;
+import cs3500.pa05.model.enumerations.Days;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -27,6 +29,8 @@ public class AddTaskController extends AbstractController {
   private TextField createTaskDay;
   @FXML
   private CheckBox taskCompletedCheck;
+  @FXML
+  private Label warningLabel;
   @FXML
   private Button submitButton;
   @FXML
@@ -60,15 +64,51 @@ public class AddTaskController extends AbstractController {
     }
 
     this.submitButton.setOnAction(event -> {
-      weekView.updateTask(new Task(
-          this.createTaskName.getText(),
-          this.createTaskDescription.getText(),
-          getDay(this.createTaskDay.getText().charAt(0))
-      ));
+      addTask();
     });
 
     this.exitButton.setOnAction(event -> {
       this.taskCreationPopup.hide();
     });
+  }
+
+
+  private void addTask() {
+    String taskName = null;
+    String description = null;
+    Days day = null;
+    boolean completed = false;
+
+    boolean canContinue = canContinue();
+
+    try {
+      taskName = createTaskName.getText();
+      day = verifyDay(this.createTaskDay.getText());
+      completed = taskCompletedCheck.isSelected();
+    } catch (NullPointerException n) {
+      warningLabel.setText("You left a required field empty!");
+      canContinue = false;
+    }
+
+    try {
+      description = createTaskDescription.getText();
+    } catch (NullPointerException n) {
+      // it is okay to not have a description
+    }
+
+    if (canContinue) {
+      weekView.updateTask(new Task(taskName, description, day, completed));
+    } else {
+      warningLabel.setText("You have reached the maximum amount of task: " +
+          this.weekView.returnMaxTask());
+    }
+  }
+
+  private boolean canContinue() {
+    if (this.weekView.hasMaximumTasks()) {
+      return this.weekView.returnTaskList().size() < this.weekView.returnMaxTask();
+    } else {
+      return true;
+    }
   }
 }

@@ -9,8 +9,8 @@ public class Event {
   private String name;
   private String description;
   private Days dayOfWeek;
-  private int startTime;
-  private int duration;
+  private String startTime;
+  private String duration;
 
   /**
    * Creates an Event.
@@ -21,7 +21,8 @@ public class Event {
    * @param startTime the start time of the event
    * @param duration how long the event is
    */
-  public Event(String name, String description, Days dayOfWeek, int startTime, int duration) {
+  public Event(String name, String description, Days dayOfWeek,
+               String startTime, String duration) {
     this.name = name;
     this.description = description;
     this.dayOfWeek = dayOfWeek;
