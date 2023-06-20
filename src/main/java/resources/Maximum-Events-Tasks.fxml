@@ -46,7 +46,7 @@
                                  <Font size="30.0" />
                               </font>
                            </TextField>
-                           <Button mnemonicParsing="false" text="Enter">
+                           <Button fx:id="eventTextBoxEnter" mnemonicParsing="false" text="Enter">
                               <font>
                                  <Font size="30.0" />
                               </font>
@@ -65,7 +65,7 @@
                                  <Font size="30.0" />
                               </font>
                            </TextField>
-                           <Button mnemonicParsing="false" text="Enter">
+                           <Button fx:id="taskTextBoxEnter" mnemonicParsing="false" text="Enter">
                               <font>
                                  <Font size="30.0" />
                               </font>
