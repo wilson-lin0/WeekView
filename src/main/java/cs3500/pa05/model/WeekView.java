@@ -69,9 +69,7 @@ public class WeekView {
     }
   }
 
-  public void displayWarning() {
-
-  }
+  public void displayWarning() {}
 
   public void updateTask(Task task) {
     taskList.add(task);
@@ -89,7 +87,5 @@ public class WeekView {
     return this.eventList;
   }
 
-  public void taskQueue() {
-
-  }
+  public void taskQueue() {}
 }
