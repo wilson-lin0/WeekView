@@ -31,6 +31,15 @@
                      </Label>
                   </children>
                </HBox>
+               <HBox alignment="CENTER" prefHeight="25.0" prefWidth="500.0" spacing="25.0">
+                  <children>
+                     <Label fx:id="warningLabel">
+                        <font>
+                           <Font size="15.0" />
+                        </font>
+                     </Label>
+                  </children>
+               </HBox>
                <HBox alignment="CENTER" prefHeight="60.0" prefWidth="500.0" spacing="50.0">
                   <children>
                      <Label text="Event Name:">
