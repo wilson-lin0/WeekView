@@ -1,9 +1,6 @@
 package cs3500.pa05.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import cs3500.pa05.controller.FileReader;
-import cs3500.pa05.controller.FileWriter;
 import cs3500.pa05.json.JsonUtil;
 import cs3500.pa05.json.Week;
 import java.io.File;
@@ -11,27 +8,46 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * To represent a WeekView.
+ */
 public class WeekView {
-  int maxTask;
-  int maxEvent;
-  List<Event> eventList;
-  List<Task> taskList;
+  private int maxTask;
+  private int maxEvent;
+  private List<Event> eventList;
+  private List<Task> taskList;
 
-  public WeekView(int maxTask, int maxEvent) {
-    this.maxEvent = maxEvent;
-    this.maxTask = maxTask;
+  /**
+   * Creates a WeekView.
+   */
+  public WeekView() {
     this.eventList = new ArrayList<>();
     this.taskList = new ArrayList<>();
   }
 
+  /**
+   * Sets the maximum number of tasks.
+   *
+   * @param max the maximum number of tasks.
+   */
   public void setMaxTask(int max) {
     this.maxTask = max;
   }
 
+  /**
+   * Sets the maximum number of events.
+   *
+   * @param max the maximum number of events.
+   */
   public void setMaxEvent(int max) {
     this.maxEvent = max;
   }
 
+  /**
+   * Saves the WeekView to a file.
+   *
+   * @param fileName the name of the file the WeekView is to be saved
+   */
   public void saveFile(File fileName) {
     // Convert WeekView properties to Week record
     Week weekRecord = new Week(this.maxTask, this.maxEvent, this.eventList, this.taskList);
@@ -45,6 +61,11 @@ public class WeekView {
     fileWriter.writeToFile(fileName, jsonString);
   }
 
+  /**
+   * Opens a file and converts it back to a WeekView.
+   *
+   * @param fileName the name of the file to open
+   */
   public void openFile(File fileName) {
     try {
       // Read JSON string from file
@@ -65,37 +86,61 @@ public class WeekView {
       this.taskList.clear();
       this.taskList.addAll(weekRecord.taskList());
     } catch (IOException e) {
-      System.out.println("An error occurred while deserializing the WeekView object: " + e.getMessage());
+      System.err.println("An error occurred while deserializing the WeekView object: " + e.getMessage());
     }
   }
 
-  public void displayWarning(String reason) {
-    // if exceed max task or events, show warning scene
-  }
-
+  /**
+   * Adds a task to the list of tasks.
+   *
+   * @param task the task to add
+   */
   public void updateTask(Task task) {
-    if (this.taskList.size() == this.maxTask || this.taskList.size() > this.maxTask) {
-      displayWarning("Amount of tasks exceeds the max task size allowed.");
-    } else {
-      taskList.add(task);
-    }
+    taskList.add(task);
   }
 
+  /**
+   * Adds an event ot the list of events.
+   *
+   * @param event the event to add
+   */
   public void updateEvent(Event event) {
-    if (this.eventList.size() == this.maxEvent || this.eventList.size() > this.maxEvent) {
-      displayWarning("Amount of events exceeds the max event size allowed.");
-    } else {
-      eventList.add(event);
-    }
+    eventList.add(event);
   }
 
+  /**
+   * Returns the task list.
+   *
+   * @return the task list
+   */
   public List<Task> returnTaskList() {
     return this.taskList;
   }
 
+  /**
+   * Returns the event list.
+   *
+   * @return the event list
+   */
   public List<Event> returnEventList() {
     return this.eventList;
   }
 
-  public void taskQueue() {}
+  /**
+   * Returns the maximum number of tasks.
+   *
+   * @return the maximum number of tasks
+   */
+  public int returnMaxTask() {
+    return this.maxTask;
+  }
+
+  /**
+   * Returns the maximum number of events.
+   *
+   * @return the maximum number of events
+   */
+  public int returnMaxEvent() {
+    return this.maxEvent;
+  }
 }

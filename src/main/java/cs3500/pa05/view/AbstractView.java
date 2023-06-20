@@ -4,14 +4,24 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
-public class ViewImpl implements View {
-  FXMLLoader weekViewLoader;
+/**
+ * To represent a view.
+ */
+public abstract class AbstractView implements View {
+  protected FXMLLoader weekViewLoader;
 
-  public ViewImpl () {
+  /**
+   * Creates a view.
+   */
+  public AbstractView() {
     this.weekViewLoader = new FXMLLoader();
-    this.weekViewLoader.setLocation(getClass().getClassLoader().getResource("WeekView.fxml"));
   }
 
+  /**
+   * Loads the scene.
+   *
+   * @return the scene
+   */
   @Override
   public Scene load() {
     try {
@@ -19,9 +29,5 @@ public class ViewImpl implements View {
     } catch (IOException exc) {
       throw new IllegalStateException("Unable to load layout.");
     }
-  }
-
-  public Scene chooseScene() {
-    return null;
   }
 }

@@ -1,9 +1,12 @@
-package cs3500.pa05.controller;
+package cs3500.pa05.model;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+/**
+ * Reads the file.
+ */
 public class FileReader {
   /**
    * Reads the contents of the given file and returns it as a string.

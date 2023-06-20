@@ -1,10 +1,13 @@
-package cs3500.pa05.controller;
+package cs3500.pa05.model;
 
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.io.IOException;
 
+/**
+ * Write the file.
+ */
 public class FileWriter {
   /**
    * Writes the given String to the given filepath.

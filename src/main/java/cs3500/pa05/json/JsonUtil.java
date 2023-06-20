@@ -9,13 +9,13 @@ import java.io.IOException;
  * Simple utils class used to hold static methods that help with serializing and deserializing JSON.
  */
 public class JsonUtil {
-
   /**
    * Deserializes the given JSON string to a JsonNode.
    *
    * @param jsonString the JSON string to deserialize
    * @return the deserialized JsonNode object
    * @throws IOException if an error occurs during deserialization
+   * @throws JsonProcessingException if an error occurs during deserialization
    */
   public static JsonNode deserializeJson(String jsonString)
       throws IOException, JsonProcessingException {
@@ -54,7 +54,8 @@ public class JsonUtil {
       ObjectMapper mapper = new ObjectMapper();
       return mapper.treeToValue(jsonNode, recordClass);
     } catch (JsonProcessingException e) {
-      throw new IllegalArgumentException("Given JsonNode cannot be deserialized to the record object");
+      throw new IllegalArgumentException("Given JsonNode cannot be deserialized to the record " +
+          "object");
     }
   }
 }
