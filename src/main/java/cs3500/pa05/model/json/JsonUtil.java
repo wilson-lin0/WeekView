@@ -44,11 +44,11 @@ public class JsonUtil {
    *
    * @param jsonNode the JsonNode to deserialize
    * @param recordClass the class of the record object
-   * @param <T> the type of the record object
+   * @param <Record> the record object
    * @return the deserialized record object
    * @throws IllegalArgumentException if the JsonNode could not be deserialized correctly
    */
-  public static <T extends Record> T deserializeRecord(JsonNode jsonNode, Class<T> recordClass)
+  public static <Record> Record deserializeRecord(JsonNode jsonNode, Class<Record> recordClass)
       throws IllegalArgumentException {
     try {
       ObjectMapper mapper = new ObjectMapper();
