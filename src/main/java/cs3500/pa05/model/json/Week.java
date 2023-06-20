@@ -11,4 +11,20 @@ public record Week(
     @JsonProperty("maxEvent") int maxEvent,
     @JsonProperty("eventList") List<Event> eventList,
     @JsonProperty("taskList") List<Task> taskList) {
+
+  public int getMaxTask() {
+    return maxTask;
+  }
+
+  public int getMaxEvent() {
+    return maxEvent;
+  }
+
+  public List<Event> getEventList() {
+    return eventList;
+  }
+
+  public List<Task> getTaskList() {
+    return taskList;
+  }
 }

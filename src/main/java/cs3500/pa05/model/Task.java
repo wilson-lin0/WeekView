@@ -24,4 +24,9 @@ public class Task {
     this.dayOfWeek = dayOfWeek;
     this.completed = false;
   }
+
+  public String getName() { return this.name; }
+  public String getDescription() { return this.description; }
+  public Days getDayOfWeek() { return this.dayOfWeek; }
+  public Boolean isCompleted() { return this.completed; }
 }
