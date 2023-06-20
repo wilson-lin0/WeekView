@@ -69,14 +69,24 @@ public class WeekView {
     }
   }
 
-  public void displayWarning() {}
+  public void displayWarning(String reason) {
+    // if exceed max task or events, show warning scene
+  }
 
   public void updateTask(Task task) {
-    taskList.add(task);
+    if (this.taskList.size() == this.maxTask || this.taskList.size() > this.maxTask) {
+      displayWarning("Amount of tasks exceeds the max task size allowed.");
+    } else {
+      taskList.add(task);
+    }
   }
 
   public void updateEvent(Event event) {
-    eventList.add(event);
+    if (this.eventList.size() == this.maxEvent || this.eventList.size() > this.maxEvent) {
+      displayWarning("Amount of events exceeds the max event size allowed.");
+    } else {
+      eventList.add(event);
+    }
   }
 
   public List<Task> returnTaskList() {
