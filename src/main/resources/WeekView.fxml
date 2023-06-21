@@ -25,6 +25,17 @@
                                  <Font size="30.0" />
                               </font>
                            </Label>
+                           <Button fx:id="openFileButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Open File">
+                              <font>
+                                 <Font size="15.0" />
+                              </font>
+                           </Button>
+                           <Button fx:id="saveToFileButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Save to File" textAlignment="CENTER" wrapText="true">
+                              <font>
+                                 <Font size="15.0" />
+                              </font>
+                           </Button>
+                           <Button fx:id="eventTaskLimitButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Set Event and Task Limit" textAlignment="CENTER" wrapText="true" />
                            <Button fx:id="addEventButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Add Event">
                               <font>
                                  <Font size="15.0" />
@@ -35,17 +46,6 @@
                                  <Font size="15.0" />
                               </font>
                            </Button>
-                           <Button fx:id="saveToFileButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Save to File" textAlignment="CENTER" wrapText="true">
-                              <font>
-                                 <Font size="15.0" />
-                              </font>
-                           </Button>
-                           <Button fx:id="openFileButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Open File">
-                              <font>
-                                 <Font size="15.0" />
-                              </font>
-                           </Button>
-                           <Button fx:id="eventTaskLimitButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Set Event and Task Limit" textAlignment="CENTER" wrapText="true" />
                         </children>
                      </HBox>
                      <GridPane layoutX="10.0" layoutY="100.0" prefHeight="700.0" prefWidth="1180.0" style="-fx-border-color: black;">
@@ -126,13 +126,13 @@
                                  </Label>
                               </children>
                            </VBox>
-                           <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" />
-                           <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                           <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                           <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                           <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                           <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                           <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                           <VBox fx:id="sundayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" />
+                           <VBox fx:id="mondayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           <VBox fx:id="tuesdayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           <VBox fx:id="wednesdayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           <VBox fx:id="thursdayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           <VBox fx:id="fridayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           <VBox fx:id="saturdayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         </children>
                      </GridPane>
                   </children>

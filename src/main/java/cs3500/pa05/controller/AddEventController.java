@@ -113,6 +113,7 @@ public class AddEventController extends AbstractController {
 
     if (canContinue) {
       weekView.updateEvent(new Event(eventName, description, day, startTime, duration));
+      showEvent();
     } else {
       warningLabel.setText("You have reached the maximum amount of events: " +
           this.weekView.returnMaxEvent());

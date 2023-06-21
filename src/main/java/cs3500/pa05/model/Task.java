@@ -1,6 +1,7 @@
 package cs3500.pa05.model;
 
 import cs3500.pa05.model.enumerations.Days;
+import java.util.Objects;
 
 /**
  * To represent a task.
@@ -26,7 +27,15 @@ public class Task {
   }
 
   public String getName() { return this.name; }
-  public String getDescription() { return this.description; }
+
+  /**
+   * returns the String description, if there is one, else return the String "N/A"
+   *
+   * @return the description, if there is one
+   */
+  public String getDescription() {
+    return Objects.requireNonNullElse(this.description, "N/A");
+  }
   public Days getDayOfWeek() { return this.dayOfWeek; }
   public Boolean isCompleted() { return this.completed; }
 }
