@@ -182,4 +182,14 @@ public class WeekView {
     this.eventList.clear();
     this.taskList.clear();
   }
+
+  public List<Task> returnCompletedTasks() {
+    List<Task> returnList = new ArrayList<>();
+    for (Task task : taskList) {
+      if (task.isCompleted()) {
+        returnList.add(task);
+      }
+    }
+    return returnList;
+  }
 }

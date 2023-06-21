@@ -39,6 +39,12 @@ public class MainController extends AbstractController {
   private Button openFileButton0;
   @FXML
   private Button newFileButton;
+  @FXML
+  private Label totalEventsLabel;
+  @FXML
+  private Label totalTasksLabel;
+  @FXML
+  private Label tasksCompletedLabel;
   private final Popup startMenu;
   String file;
 
@@ -79,9 +85,21 @@ public class MainController extends AbstractController {
     // if horizontal change to vertical, if vertical change to horizontal);
 
     // this.quoteButton.setOnAction(event -> this.quoteLabel.setText);) pop up to choose quote text
-    // progress bar: total event, total task, total tasks completed out of total tasks -> update
     // on click task/event, show popup
     // links
+  }
+
+  public void updateTotalEventsLabel() {
+    this.totalEventsLabel.setText("Total Events: " + weekView.returnEventList().size());
+  }
+
+  public void updateTotalTasksLabel() {
+    this.totalTasksLabel.setText("Total Tasks: " + weekView.returnTaskList().size());
+  }
+
+  public void updateTasksCompleted() {
+    this.tasksCompletedLabel.setText("Tasks Completed: " + weekView.returnCompletedTasks()
+        + "/" + weekView.returnTaskList().size());
   }
 
   /**

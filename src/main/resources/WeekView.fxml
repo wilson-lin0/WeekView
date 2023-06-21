@@ -20,9 +20,28 @@
                   <children>
                      <HBox alignment="CENTER_RIGHT" layoutX="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1180.0" spacing="10.0">
                         <children>
+                           <VBox prefHeight="100.0" prefWidth="194.0">
+                              <children>
+                                 <Label fx:id="totalEventsLabel" text="Total Events:">
+                                    <font>
+                                       <Font size="18.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="totalTasksLabel" text="Total Tasks:">
+                                    <font>
+                                       <Font size="18.0" />
+                                    </font>
+                                 </Label>
+                                 <Label fx:id="tasksCompletedLabel" text="Tasks Completed: ">
+                                    <font>
+                                       <Font size="18.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </VBox>
                            <Button fx:id="quoteButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0">
                               <graphic>
-                                 <Label fx:id="quoteLabel" text="Label" />
+                                 <Label fx:id="quoteLabel" text="Write your &#10;quote here!" />
                               </graphic>
                            </Button>
                            <Label fx:id="titleLabel" alignment="TOP_CENTER" text="Title">
