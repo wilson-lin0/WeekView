@@ -5,16 +5,13 @@ import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 
-/**
- * Represents a view with the theme.
- */
-public class ViewImpl extends AbstractView {
-  FXMLLoader loader;
+public abstract class VerticalView extends AbstractView {
+  protected FXMLLoader loader;
 
   /**
    * Creates a ThemeOneView.
    */
-  public ViewImpl(Controller controller) {
+  public VerticalView(Controller controller) {
     // look up and store the layout
     this.loader = new FXMLLoader();
     this.loader.setLocation(getClass().getClassLoader().getResource("WeekView.fxml"));
