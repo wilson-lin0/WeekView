@@ -84,7 +84,14 @@ public class MainController extends AbstractController {
     });
     // this.verticalHorizontalButton.setOnAction(event -> ViewInmpl. change to vertical/horizontal
     // if horizontal change to vertical, if vertical change to horizontal);
-    this.quoteButton.setOnAction(event -> quoteText());
+    // this.quoteButton.setOnAction(event -> quoteText());
+    // have a quote TextArea, have button above it
+    // on click, popup to set quote
+    // Enter quote label
+    // TextField
+    // Submit button that exits
+    // on submit get text from textfield and save in weekview
+    // change text in textarea to quote from weekview
     // this.quoteButton.setOnAction(event -> this.quoteLabel.setText);) pop up to choose quote text
     // on click task/event, show popup
     // links
