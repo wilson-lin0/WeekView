@@ -251,5 +251,4 @@ public class AddEventController extends AbstractController {
     label.setFont(new Font(10));
     labellists.addEventToList(label, event.getDayOfWeek());
   }
-
 }
