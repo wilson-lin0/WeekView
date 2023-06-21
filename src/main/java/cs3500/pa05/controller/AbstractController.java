@@ -3,10 +3,7 @@ package cs3500.pa05.controller;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.LabelLists;
 import cs3500.pa05.model.WeekView;
-import cs3500.pa05.model.enumerations.Days;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -40,7 +37,7 @@ public abstract class AbstractController implements Controller {
    * Creates a Controller.
    *
    * @param weekView the WeekView
-   * @throws IOException if popups fail to load
+   * @param stage the stage
    */
   public AbstractController(WeekView weekView, Stage stage) {
     this.weekView = weekView;

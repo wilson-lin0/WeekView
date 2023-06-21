@@ -6,7 +6,6 @@ import cs3500.pa05.model.json.Week;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,8 +63,8 @@ public class WeekView {
     String jsonString = jsonNode.toString();
 
     // Write JSON string to file
-    FileWriter fileWriter = new FileWriter();
-    fileWriter.writeToFile(fileName, jsonString);
+    FileWriter fileWriter = new FileWriter(fileName);
+    fileWriter.writeToFile(jsonString);
   }
 
   /**

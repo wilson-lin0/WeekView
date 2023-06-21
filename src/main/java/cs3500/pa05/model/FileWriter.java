@@ -9,13 +9,17 @@ import java.io.IOException;
  * Write the file.
  */
 public class FileWriter {
+  File file;
+
+  public FileWriter(File file) {
+    this.file = file;
+  }
   /**
    * Writes the given String to the given filepath.
    *
-   * @param file     where to write the contents
    * @param contents contents to write to the file
    */
-  public void writeToFile(File file, String contents) {
+  public void writeToFile(String contents) {
     // Add fileType extension to the end of the file path
     Path path = Path.of(file.getPath() + ".bujo");
 

@@ -100,6 +100,7 @@ public class AddEventController extends AbstractController {
       }
     } catch (IllegalArgumentException i) {
       warningLabel.setText(i.getMessage());
+      canContinue = false;
     } catch (NullPointerException n) {
       warningLabel.setText("You left a required field empty!");
       canContinue = false;
@@ -114,15 +115,18 @@ public class AddEventController extends AbstractController {
     if (canContinue) {
       weekView.updateEvent(new Event(eventName, description, day, startTime, duration));
       showEvent();
-    } else {
-      warningLabel.setText("You have reached the maximum amount of events: " +
-          this.weekView.returnMaxEvent());
     }
   }
 
   private boolean canContinue() {
     if (this.weekView.hasMaximumEvents()) {
-      return this.weekView.returnEventList().size() < this.weekView.returnMaxEvent();
+      if (this.weekView.returnEventList().size() < this.weekView.returnMaxEvent()) {
+        return true;
+      } else {
+        warningLabel.setText("You have reached the maximum amount of events: " +
+            this.weekView.returnMaxEvent());
+        return false;
+      }
     } else {
       return true;
     }
