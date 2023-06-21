@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -25,6 +27,12 @@ public class MainController extends AbstractController {
   private Button openFileButton;
   @FXML
   private Button eventTaskLimitButton;
+  @FXML
+  private Button verticalHorizontalButton;
+  @FXML
+  private Button quoteButton;
+  @FXML
+  private Label quoteLabel;
   @FXML
   private TextField fileNameTextField;
   @FXML
@@ -67,6 +75,13 @@ public class MainController extends AbstractController {
     this.eventTaskLimitButton.setOnAction(event -> {
       setLimit();
     });
+    // this.verticalHorizontalButton.setOnAction(event -> ViewInmpl. change to vertical/horizontal
+    // if horizontal change to vertical, if vertical change to horizontal);
+
+    // this.quoteButton.setOnAction(event -> this.quoteLabel.setText);) pop up to choose quote text
+    // progress bar: total event, total task, total tasks completed out of total tasks -> update
+    // on click task/event, show popup
+    // links
   }
 
   /**

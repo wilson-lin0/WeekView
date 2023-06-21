@@ -20,6 +20,11 @@
                   <children>
                      <HBox alignment="CENTER_RIGHT" layoutX="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="1180.0" spacing="10.0">
                         <children>
+                           <Button fx:id="quoteButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0">
+                              <graphic>
+                                 <Label fx:id="quoteLabel" text="Label" />
+                              </graphic>
+                           </Button>
                            <Label fx:id="titleLabel" alignment="TOP_CENTER" text="Title">
                               <font>
                                  <Font size="30.0" />
@@ -42,6 +47,11 @@
                               </font>
                            </Button>
                            <Button fx:id="addTaskButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Add Task">
+                              <font>
+                                 <Font size="15.0" />
+                              </font>
+                           </Button>
+                           <Button fx:id="verticalHorizontalButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Vertical&#10;/Horizontal">
                               <font>
                                  <Font size="15.0" />
                               </font>
