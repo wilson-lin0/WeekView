@@ -67,7 +67,7 @@ public abstract class AbstractController implements Controller {
   @Override
   public abstract void run();
 
-  public void initEventAndTasks() {
+  public void initEvents() {
     sundayEventList = new ArrayList<>();
     mondayEventList = new ArrayList<>();
     tuesdayEventList = new ArrayList<>();
@@ -75,7 +75,10 @@ public abstract class AbstractController implements Controller {
     thursdayEventList = new ArrayList<>();
     fridayEventList = new ArrayList<>();
     saturdayEventList = new ArrayList<>();
+  }
 
+
+  public void initTasks() {
     sundayTaskList = new ArrayList<>();
     mondayTaskList = new ArrayList<>();
     tuesdayTaskList = new ArrayList<>();
@@ -84,12 +87,12 @@ public abstract class AbstractController implements Controller {
     fridayTaskList = new ArrayList<>();
     saturdayTaskList = new ArrayList<>();
   }
-
   /**
    * Shows the events in the WeekView.
    */
   public void showEvent() {
-    updateLabelList();
+    initEvents();
+    updateEventLabelList();
     sundayBox.getChildren().addAll(sundayEventList);
     sundayBox.setAlignment(Pos.CENTER_LEFT);
     mondayBox.getChildren().addAll(mondayEventList);
@@ -106,7 +109,7 @@ public abstract class AbstractController implements Controller {
     saturdayBox.setAlignment(Pos.CENTER_LEFT);
   }
 
-  private void updateLabelList() {
+  private void updateEventLabelList() {
     for (Event event : weekView.returnEventList()) {
       Label label = new Label("Event: " + event.getName() + '\n' +
           "Description: " + event.getDescription() + '\n' +

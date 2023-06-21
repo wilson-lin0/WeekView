@@ -51,7 +51,6 @@ public class MainController extends AbstractController {
   @Override
   public void run() {
     startMenu();
-    initEventAndTasks();
 
     this.openFileButton.setOnAction(event -> {
       startMenu();
