@@ -78,24 +78,22 @@ public class WeekView {
    */
   public void openFile(String fileString) {
     try {
-      // Read JSON string from file
       String jsonString = new String(Files.readAllBytes(Paths.get(fileString)));
 
-      // Parse JSON string to JsonNode
       JsonNode jsonNode = JsonUtil.deserializeJson(jsonString);
 
-      // Deserialize JsonNode to Week record
       Week weekRecord = JsonUtil.deserializeRecord(jsonNode, Week.class);
 
       this.maxTask = weekRecord.getMaxTask();
       this.maxEvent = weekRecord.getMaxEvent();
       this.eventList.addAll(weekRecord.getEventList());
       this.taskList.addAll(weekRecord.getTaskList());
+      this.notes.addAll(weekRecord.getNotes());
     } catch (IOException e) {
-      System.err.println("An error occurred while deserializing the WeekView object: " +
-          e.getMessage());
+      System.err.println("An error occurred while deserializing the WeekView object: " + e.getMessage());
     }
   }
+
 
   /**
    * Creates an empty file
