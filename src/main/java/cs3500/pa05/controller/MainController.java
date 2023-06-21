@@ -88,14 +88,18 @@ public class MainController extends AbstractController {
    * Adds an event.
    */
   private void addEvent() {
-    new AddEventController(this.weekView, this.stage).run();
+    new AddEventController(this.weekView, this.stage, this.sundayBox, this.mondayBox,
+        this.tuesdayBox, this.wednesdayBox, this.thursdayBox, this.fridayBox,
+        this.saturdayBox).run();
   }
 
   /**
    * Adds a task.
    */
   private void addTask() {
-    new AddTaskController(this.weekView, this.stage).run();
+    new AddTaskController(this.weekView, this.stage, this.sundayBox, this.mondayBox,
+        this.tuesdayBox, this.wednesdayBox, this.thursdayBox, this.fridayBox,
+        this.saturdayBox).run();
   }
 
   /**

@@ -136,13 +136,13 @@
                                  </Label>
                               </children>
                            </VBox>
-                           <VBox fx:id="sundayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" />
-                           <VBox fx:id="mondayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                           <VBox fx:id="tuesdayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                           <VBox fx:id="wednesdayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                           <VBox fx:id="thursdayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                           <VBox fx:id="fridayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                           <VBox fx:id="saturdayBox" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                           <HBox fx:id="sundayBox" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1" />
+                           <HBox fx:id="mondayBox" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                           <HBox fx:id="tuesdayBox" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                           <HBox fx:id="wednesdayBox" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                           <HBox fx:id="thursdayBox" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                           <HBox fx:id="fridayBox" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                           <HBox fx:id="saturdayBox" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         </children>
                      </GridPane>
                   </children>
