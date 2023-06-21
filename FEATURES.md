@@ -11,12 +11,11 @@
 
 ## Section 3: Power Ups
 - Quote & Notes
-- Mini viewer
 - Sort by Name & Duration
 - Weekly Overview
 
 ## Section 4: Quality of Life
-- Links
+- Week Tabs
 - Vertical Layout
 
 ## Section 5: Extra Credit
