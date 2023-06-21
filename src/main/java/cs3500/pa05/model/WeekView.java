@@ -5,6 +5,9 @@ import cs3500.pa05.model.json.JsonUtil;
 import cs3500.pa05.model.json.Week;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,13 +71,12 @@ public class WeekView {
   /**
    * Opens a file and converts it back to a WeekView.
    *
-   * @param fileName the name of the file to open
+   * @param fileString the name of the file to open
    */
-  public void openFile(File fileName) {
+  public void openFile(String fileString) {
     try {
       // Read JSON string from file
-      FileReader fileReader = new FileReader();
-      String jsonString = fileReader.readFile(fileName);
+      String jsonString = new String(Files.readAllBytes(Paths.get(fileString)));
 
       // Parse JSON string to JsonNode
       JsonNode jsonNode = JsonUtil.deserializeJson(jsonString);
@@ -83,15 +85,24 @@ public class WeekView {
       Week weekRecord = JsonUtil.deserializeRecord(jsonNode, Week.class);
 
       // Update WeekView object with Week record properties
-      this.maxTask = weekRecord.maxTask();
-      this.maxEvent = weekRecord.maxEvent();
-      this.eventList.clear();
-      this.eventList.addAll(weekRecord.eventList());
-      this.taskList.clear();
-      this.taskList.addAll(weekRecord.taskList());
+      this.maxTask = weekRecord.getMaxTask();
+      this.maxEvent = weekRecord.getMaxEvent();
+      this.eventList.addAll(weekRecord.getEventList());
+      this.taskList.addAll(weekRecord.getTaskList());
     } catch (IOException e) {
-      System.err.println("An error occurred while deserializing the WeekView object: " + e.getMessage());
+      System.err.println("An error occurred while deserializing the WeekView object: " +
+          e.getMessage());
     }
+  }
+
+  /**
+   * Creates an empty file
+   *
+   * @param fileString the name of the file to be created
+   */
+  public void createFile(String fileString) {
+    File bujoFile = new File(fileString);
+    saveFile(bujoFile);
   }
 
   /**
@@ -164,5 +175,13 @@ public class WeekView {
    */
   public boolean hasMaximumTasks() {
     return this.maxTasks;
+  }
+
+  /**
+   *  Clears event and tasks lists
+   */
+  public void clearAll() {
+    this.eventList.clear();
+    this.taskList.clear();
   }
 }

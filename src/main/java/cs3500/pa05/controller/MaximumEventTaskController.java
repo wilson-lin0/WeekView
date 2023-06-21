@@ -44,8 +44,9 @@ public class MaximumEventTaskController extends AbstractController {
    */
   @Override
   public void run() {
+    this.maximumPopup = new Popup();
+
     try {
-      this.maximumPopup = new Popup();
       FXMLLoader taskLoader = new FXMLLoader(getClass().getClassLoader().getResource(
           "Maximum-Events-Tasks.fxml"));
       taskLoader.setController(this);

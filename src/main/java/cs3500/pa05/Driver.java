@@ -24,8 +24,8 @@ public class Driver extends Application {
 
     try {
       stage.setScene(view.load());
-      controller.run();
       stage.show();
+      controller.run();
     } catch (IllegalStateException exc) {
       System.err.println("Unable to load GUI.");
     }

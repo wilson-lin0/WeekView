@@ -51,8 +51,8 @@ public class AddTaskController extends AbstractController {
    */
   @Override
   public void run() {
+    this.taskCreationPopup = new Popup();
     try {
-      this.taskCreationPopup = new Popup();
       FXMLLoader taskLoader = new FXMLLoader(getClass().getClassLoader().getResource(
           "AddTask.fxml"));
       taskLoader.setController(this);
