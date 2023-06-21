@@ -26,6 +26,21 @@ public class Task {
     this.completed = false;
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
+    Task other = (Task) obj;
+    return completed == other.completed &&
+        Objects.equals(name, other.name) &&
+        Objects.equals(description, other.description) &&
+        dayOfWeek == other.dayOfWeek;
+  }
+
   /**
    * Gets the name of the task.
    *
@@ -55,4 +70,11 @@ public class Task {
    * @return whether the task is completed
    */
   public Boolean isCompleted() { return this.completed; }
+
+  @Override
+  public String toString() {
+    return "Task: " + name + "\nDescription: " + getDescription() +
+        "\nDay of Week: " + dayOfWeek +
+        "\nCompleted: " + completed;
+  }
 }
