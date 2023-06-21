@@ -68,6 +68,7 @@ public class AddTaskController extends AbstractController {
     });
 
     this.exitButton.setOnAction(event -> {
+      showTask();
       this.taskCreationPopup.hide();
     });
   }
@@ -100,8 +101,7 @@ public class AddTaskController extends AbstractController {
     }
 
     if (canContinue) {
-      weekView.updateTask(new Task(taskName, description, day));
-      showTask();
+      weekView.updateTask(new Task(taskName, description, day, completed));
     } else {
       warningLabel.setText("You have reached the maximum amount of task: " +
           this.weekView.returnMaxTask());
@@ -115,7 +115,13 @@ public class AddTaskController extends AbstractController {
    */
   private boolean canContinue() {
     if (this.weekView.hasMaximumTasks()) {
-      return this.weekView.returnTaskList().size() < this.weekView.returnMaxTask();
+      if (this.weekView.returnTaskList().size() < this.weekView.returnMaxTask()) {
+        return true;
+      } else {
+        warningLabel.setText("You have reached the maximum amount of tasks: " +
+            this.weekView.returnMaxTask());
+        return false;
+      }
     } else {
       return true;
     }

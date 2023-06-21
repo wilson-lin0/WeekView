@@ -19,11 +19,11 @@ public class Task {
    * @param description the description of the task
    * @param dayOfWeek the day of the week the task occurs
    */
-  public Task(String name, String description, Days dayOfWeek) {
+  public Task(String name, String description, Days dayOfWeek, boolean completed) {
     this.name = name;
     this.description = description;
     this.dayOfWeek = dayOfWeek;
-    this.completed = false;
+    this.completed = completed;
   }
 
   @Override

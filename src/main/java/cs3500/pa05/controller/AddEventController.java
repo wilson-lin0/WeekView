@@ -71,7 +71,10 @@ public class AddEventController extends AbstractController {
 
     this.submitButton.setOnAction(event -> addEvent());
 
-    this.exitButton.setOnAction(event -> this.eventCreationPopup.hide());
+    this.exitButton.setOnAction(event -> {
+      showEvent();
+      this.eventCreationPopup.hide();
+    });
   }
 
   /**
@@ -101,9 +104,6 @@ public class AddEventController extends AbstractController {
         warningLabel.setText("The duration is not an integer");
         canContinue = false;
       }
-    } catch (IllegalArgumentException i) {
-      warningLabel.setText(i.getMessage());
-      canContinue = false;
     } catch (NullPointerException n) {
       warningLabel.setText("You left a required field empty!");
       canContinue = false;
@@ -117,7 +117,6 @@ public class AddEventController extends AbstractController {
 
     if (canContinue) {
       weekView.updateEvent(new Event(eventName, description, day, startTime, duration));
-      showEvent();
     }
   }
 
