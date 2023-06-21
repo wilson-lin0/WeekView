@@ -1,5 +1,4 @@
 package cs3500.pa05.modelTests;
-
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.enumerations.Days;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,12 +14,11 @@ public class TaskTest {
     String description = "Description 1";
     Days dayOfWeek = Days.MONDAY;
 
-    task = new Task(name, description, dayOfWeek);
+    task = new Task(name, description, dayOfWeek, false);
   }
 
   @Test
   public void testTaskInitialization() {
-    // Verify the task properties
     assertEquals("Task 1", task.getName());
     assertEquals("Description 1", task.getDescription());
     assertEquals(Days.MONDAY, task.getDayOfWeek());

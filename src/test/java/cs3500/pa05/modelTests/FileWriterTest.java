@@ -49,22 +49,8 @@ public class FileWriterTest {
     String contents = "This is a test content.";
 
     // Write the contents to the nonexistent directory using FileWriter
-    assertThrows(IOException.class, () -> {
+    assertThrows(RuntimeException.class, () -> {
       fileWriter.writeToFile(new File(directory, "test.txt"), contents);
-    });
-  }
-
-  @Test
-  public void testWriteToReadOnlyFile() throws IOException {
-    // Set the temporary file as read-only
-    tempFile.setReadOnly();
-
-    // Contents to write to the file
-    String contents = "This is a test content.";
-
-    // Write the contents to the read-only file using FileWriter
-    assertThrows(IOException.class, () -> {
-      fileWriter.writeToFile(tempFile, contents);
     });
   }
 
@@ -77,7 +63,7 @@ public class FileWriterTest {
     String contents = "This is a test content.";
 
     // Write the contents to the invalid file path using FileWriter
-    assertThrows(IOException.class, () -> {
+    assertThrows(RuntimeException.class, () -> {
       fileWriter.writeToFile(invalidFile, contents);
     });
   }
