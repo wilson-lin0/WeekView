@@ -17,9 +17,12 @@ public class WeekTest {
 
   @BeforeEach
   public void setUp() {
-    List<Event> events = Arrays.asList(new Event("Event 1", "Description 1", null, 0, 1),
-        new Event("Event 2", "Description 2", null, 1, 2));
-    List<Task> tasks = Arrays.asList(new Task("Task 1", "Description 1", null),
+    List<Event> events = Arrays.asList(new Event("Event 1", "Description 1",
+            null, "0", "1"),
+        new Event("Event 2", "Description 2", null,
+            "1", "2"));
+    List<Task> tasks = Arrays.asList(new Task("Task 1", "Description 1",
+            null),
         new Task("Task 2", "Description 2", null));
     week = new Week(5, 10, events, tasks);
   }
@@ -36,15 +39,18 @@ public class WeekTest {
 
   @Test
   public void testGetEventList() {
-    List<Event> expectedEvents = Arrays.asList(new Event("Event 1", "Description 1", null, 0, 1),
-        new Event("Event 2", "Description 2", null, 1, 2));
+    List<Event> expectedEvents = Arrays.asList(new Event("Event 1", "Description 1",
+            null, "0", "1"),
+        new Event("Event 2", "Description 2", null,
+            "1", "2"));
     assertNotNull(week.getEventList());
     assertEquals(expectedEvents, week.getEventList());
   }
 
   @Test
   public void testGetTaskList() {
-    List<Task> expectedTasks = Arrays.asList(new Task("Task 1", "Description 1", null),
+    List<Task> expectedTasks = Arrays.asList(new Task("Task 1", "Description 1",
+            null),
         new Task("Task 2", "Description 2", null));
     assertNotNull(week.getTaskList());
     assertEquals(expectedTasks, week.getTaskList());

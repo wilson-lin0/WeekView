@@ -38,7 +38,8 @@ public class WeekViewTest {
   public void testSaveFile() {
     // Add some tasks and events
     Task task1 = new Task("Task 1", "Description 1", Days.MONDAY);
-    Event event1 = new Event("Event 1", "Description 1", Days.TUESDAY, 9, 2);
+    Event event1 = new Event("Event 1", "Description 1", Days.TUESDAY,
+        "9", "2");
     weekView.updateTask(task1);
     weekView.updateEvent(event1);
 
@@ -59,7 +60,7 @@ public class WeekViewTest {
     Files.write(testFile.toPath(), jsonString.getBytes());
 
     // Open the file and update the WeekView
-    weekView.openFile(testFile);
+    weekView.openFile(testFile.toString());
 
     // Verify the WeekView properties
     assertEquals(5, weekView.returnMaxTask());
@@ -79,7 +80,8 @@ public class WeekViewTest {
 
   @Test
   public void testUpdateEvent() {
-    Event event = new Event("Event 1", "Description 1", Days.TUESDAY, 9, 2);
+    Event event = new Event("Event 1", "Description 1", Days.TUESDAY,
+        "9", "2");
     weekView.updateEvent(event);
     List<Event> eventList = weekView.returnEventList();
     assertEquals(1, eventList.size());

@@ -73,6 +73,9 @@ public class AddTaskController extends AbstractController {
   }
 
 
+  /**
+   * Adds a task.
+   */
   private void addTask() {
     String taskName = null;
     String description = null;
@@ -97,7 +100,7 @@ public class AddTaskController extends AbstractController {
     }
 
     if (canContinue) {
-      weekView.updateTask(new Task(taskName, description, day, completed));
+      weekView.updateTask(new Task(taskName, description, day));
       showTask();
     } else {
       warningLabel.setText("You have reached the maximum amount of task: " +
@@ -105,6 +108,11 @@ public class AddTaskController extends AbstractController {
     }
   }
 
+  /**
+   * Returns true if you can add a task.
+   *
+   * @return true if you can add a task
+   */
   private boolean canContinue() {
     if (this.weekView.hasMaximumTasks()) {
       return this.weekView.returnTaskList().size() < this.weekView.returnMaxTask();

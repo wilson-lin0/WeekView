@@ -69,18 +69,30 @@ public class MainController extends AbstractController {
     });
   }
 
+  /**
+   * Adds an event.
+   */
   private void addEvent() {
     new AddEventController(this.weekView, this.stage).run();
   }
 
+  /**
+   * Adds a task.
+   */
   private void addTask() {
     new AddTaskController(this.weekView, this.stage).run();
   }
 
+  /**
+   * Sets a limit.
+   */
   private void setLimit() {
     new MaximumEventTaskController(this.weekView, this.stage).run();
   }
 
+  /**
+   * Shows the start menu.
+   */
   private void startMenu() {
     try {
       FXMLLoader loader = new FXMLLoader(
@@ -101,6 +113,9 @@ public class MainController extends AbstractController {
     }
   }
 
+  /**
+   * Opens the file.
+   */
   private void openFile() {
     this.weekView.clearAll();
     file = fileNameTextField.getText() + ".bujo";
@@ -108,6 +123,9 @@ public class MainController extends AbstractController {
     startMenu.hide();
   }
 
+  /**
+   * Creates a new file.
+   */
   private void newFile() {
     this.weekView.clearAll();
     file = fileNameTextField.getText() + ".bujo";
@@ -115,7 +133,9 @@ public class MainController extends AbstractController {
     startMenu.hide();
   }
 
-
+  /**
+   * Saves the file.
+   */
   private void saveFile() {
     this.weekView.saveFile(new File(file));
   }

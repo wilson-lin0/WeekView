@@ -3,7 +3,6 @@ package cs3500.pa05.controller;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.LabelLists;
 import cs3500.pa05.model.WeekView;
-import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
@@ -72,6 +71,9 @@ public abstract class AbstractController implements Controller {
     saturdayBox.setAlignment(Pos.CENTER_LEFT);
   }
 
+  /**
+   * Updates the event label list.
+   */
   private void updateEventLabelList() {
     for (Event event : weekView.returnEventList()) {
       Label label = new Label("Event: " + event.getName() + '\n' +
@@ -105,6 +107,9 @@ public abstract class AbstractController implements Controller {
     saturdayBox.setAlignment(Pos.CENTER_LEFT);
   }
 
+  /**
+   * Updates the task label list.
+   */
   private void updateTaskLabelList() {
     for (Event event : weekView.returnEventList()) {
       Label label = new Label("Event: " + event.getName() + '\n' +

@@ -6,17 +6,16 @@
 
 ## Section 2: Headlining Features
 - Task Queue
-- Themes
+- Categories
 
 ## Section 3: Power Ups
 - Quote & Notes
-- Takesie-backsies
-- Sort by Name & Duration
+- Mini viewer
+- Weekly Overview
 
 ## Section 4: Quality of Life
-- Week Start
 - Links
-- Mind Changes
+- Vertical Layout
 
 ## Section 5: Extra Credit
 - Visual Flourish

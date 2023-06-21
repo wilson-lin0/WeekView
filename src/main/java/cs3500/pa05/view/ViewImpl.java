@@ -8,18 +8,18 @@ import javafx.scene.Scene;
 /**
  * Represents a view with the theme.
  */
-public class ThemeOneView extends AbstractView {
+public class ViewImpl extends AbstractView {
   FXMLLoader loader;
+
   /**
    * Creates a ThemeOneView.
    */
-  public ThemeOneView(Controller controller) {
+  public ViewImpl(Controller controller) {
     // look up and store the layout
     this.loader = new FXMLLoader();
     this.loader.setLocation(getClass().getClassLoader().getResource("WeekView.fxml"));
     this.loader.setController(controller);
   }
-
 
   /**
    * Loads the WeekView GUI layout.

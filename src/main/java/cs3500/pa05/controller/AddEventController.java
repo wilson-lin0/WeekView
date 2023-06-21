@@ -74,6 +74,9 @@ public class AddEventController extends AbstractController {
     this.exitButton.setOnAction(event -> this.eventCreationPopup.hide());
   }
 
+  /**
+   * Adds an event.
+   */
   private void addEvent() {
     String eventName = null;
     String description = null;
@@ -118,6 +121,11 @@ public class AddEventController extends AbstractController {
     }
   }
 
+  /**
+   * Returns true if you can add an event.
+   *
+   * @return true if you can add an event
+   */
   private boolean canContinue() {
     if (this.weekView.hasMaximumEvents()) {
       if (this.weekView.returnEventList().size() < this.weekView.returnMaxEvent()) {
@@ -132,6 +140,12 @@ public class AddEventController extends AbstractController {
     }
   }
 
+  /**
+   * Returns true if the format is correct.
+   *
+   * @param timeString the string
+   * @return true if the format is correct
+   */
   private boolean correctTimeFormat(String timeString) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("k:mm");
     dateFormat.setLenient(false);
@@ -144,6 +158,12 @@ public class AddEventController extends AbstractController {
     }
   }
 
+  /**
+   * Returns true if the string is an integer.
+   *
+   * @param string the string
+   * @return true if the string is an integer.
+   */
   private boolean isInteger(String string) {
     try {
       Integer.parseInt(string);

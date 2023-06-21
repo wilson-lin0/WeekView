@@ -19,13 +19,18 @@ public class Task {
    * @param description the description of the task
    * @param dayOfWeek the day of the week the task occurs
    */
-  public Task(String name, String description, Days dayOfWeek, boolean completed) {
+  public Task(String name, String description, Days dayOfWeek) {
     this.name = name;
     this.description = description;
     this.dayOfWeek = dayOfWeek;
     this.completed = false;
   }
 
+  /**
+   * Gets the name of the task.
+   *
+   * @return the name
+   */
   public String getName() { return this.name; }
 
   /**
@@ -36,6 +41,18 @@ public class Task {
   public String getDescription() {
     return Objects.requireNonNullElse(this.description, "N/A");
   }
+
+  /**
+   * Gets the Day.
+   *
+   * @return the day of the week
+   */
   public Days getDayOfWeek() { return this.dayOfWeek; }
+
+  /**
+   * Returns whether the task is completed.
+   *
+   * @return whether the task is completed
+   */
   public Boolean isCompleted() { return this.completed; }
 }
