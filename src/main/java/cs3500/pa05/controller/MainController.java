@@ -97,6 +97,10 @@ public class MainController extends AbstractController {
     // links
 
     // for theme changes, in each controller, add a theme method -> maybe just in abstractcontroller
+    // add change layout (theme/ horizontal/vertical) choose from 6 option depending on the option,
+    // display different scenes
+
+    // only need two copies of controllers -> for horizontal and vertical
   }
 
   public void quoteText() {
