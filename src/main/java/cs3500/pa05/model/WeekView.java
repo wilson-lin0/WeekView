@@ -20,6 +20,8 @@ public class WeekView {
   private int maxEvent;
   private List<Event> eventList;
   private List<Task> taskList;
+  private List<String> notes;
+  private String quote;
 
   /**
    * Creates a WeekView.
@@ -27,6 +29,7 @@ public class WeekView {
   public WeekView() {
     this.eventList = new ArrayList<>();
     this.taskList = new ArrayList<>();
+    this.notes = new ArrayList<>();
     this.maxEvents = false;
     this.maxTasks = false;
     this.quote = "Enter your quote.";
@@ -57,7 +60,7 @@ public class WeekView {
    */
   public void saveFile(File fileName) {
     // Convert WeekView properties to Week record
-    Week weekRecord = new Week(this.maxTask, this.maxEvent, this.eventList, this.taskList);
+    Week weekRecord = new Week(this.maxTask, this.maxEvent, this.eventList, this.taskList, this.notes);
 
     // Convert Week record to JSON
     JsonNode jsonNode = JsonUtil.serializeRecord(weekRecord);
@@ -121,6 +124,13 @@ public class WeekView {
   public void updateEvent(Event event) {
     eventList.add(event);
   }
+
+  /**
+   * Adds a note tp the list of notes.
+   *
+   * @param note the note to add
+   */
+  public void addNote(String note) { notes.add(note); }
 
   /**
    * Returns the task list.

@@ -10,7 +10,8 @@ public record Week(
     @JsonProperty("maxTask") int maxTask,
     @JsonProperty("maxEvent") int maxEvent,
     @JsonProperty("eventList") List<Event> eventList,
-    @JsonProperty("taskList") List<Task> taskList) {
+    @JsonProperty("taskList") List<Task> taskList,
+    @JsonProperty("notes") List<String> notes) {
 
   /**
    * @return the max amount of tasks

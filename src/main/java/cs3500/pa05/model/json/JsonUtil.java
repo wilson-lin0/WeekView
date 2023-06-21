@@ -4,6 +4,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.util.Iterator;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 
 /**
  * Simple utils class used to hold static methods that help with serializing and deserializing JSON.
@@ -51,11 +54,24 @@ public class JsonUtil {
       throws IllegalArgumentException {
     try {
       ObjectMapper mapper = new ObjectMapper();
-      return mapper.treeToValue(jsonNode, recordClass);
+      Record record = mapper.treeToValue(jsonNode, recordClass);
+      return constructRecordObject(record, jsonNode, mapper);
     } catch (JsonProcessingException e) {
       throw new IllegalArgumentException("Given JsonNode cannot be deserialized to the record " +
           "object");
     }
+  }
+
+  private static <Record> Record constructRecordObject(Record record, JsonNode jsonNode, ObjectMapper mapper)
+      throws JsonProcessingException {
+    JsonNode fieldsNode = mapper.valueToTree(record);
+    Iterator<String> fieldNames = fieldsNode.fieldNames();
+    while (fieldNames.hasNext()) {
+      String fieldName = fieldNames.next();
+      JsonNode fieldValue = jsonNode.get(fieldName);
+      ((ObjectNode) fieldsNode).replace(fieldName, fieldValue);
+    }
+    return mapper.treeToValue(fieldsNode, (Class<Record>) record.getClass());
   }
 }
 
