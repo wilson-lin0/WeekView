@@ -17,8 +17,7 @@ public class JsonUtil {
    * @throws IOException if an error occurs during deserialization
    * @throws JsonProcessingException if an error occurs during deserialization
    */
-  public static JsonNode deserializeJson(String jsonString)
-      throws IOException, JsonProcessingException {
+  public static JsonNode deserializeJson(String jsonString) throws JsonProcessingException {
     ObjectMapper mapper = new ObjectMapper();
     return mapper.readTree(jsonString);
   }

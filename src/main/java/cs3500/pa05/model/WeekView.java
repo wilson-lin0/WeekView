@@ -83,7 +83,6 @@ public class WeekView {
       // Deserialize JsonNode to Week record
       Week weekRecord = JsonUtil.deserializeRecord(jsonNode, Week.class);
 
-      // Update WeekView object with Week record properties
       this.maxTask = weekRecord.getMaxTask();
       this.maxEvent = weekRecord.getMaxEvent();
       this.eventList.addAll(weekRecord.getEventList());
