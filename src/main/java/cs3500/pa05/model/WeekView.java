@@ -29,6 +29,7 @@ public class WeekView {
     this.taskList = new ArrayList<>();
     this.maxEvents = false;
     this.maxTasks = false;
+    this.quote = "Enter your quote.";
   }
 
   /**
@@ -191,5 +192,13 @@ public class WeekView {
       }
     }
     return returnList;
+  }
+
+  public void changeQuote(String quote) {
+    this.quote = quote;
+  }
+
+  public String getQuote() {
+    return this.quote;
   }
 }

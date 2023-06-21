@@ -66,6 +66,8 @@ public class MainController extends AbstractController {
   public void run() {
     startMenu();
 
+    this.quoteButton.setText(weekView.getQuote());
+
     this.openFileButton.setOnAction(event -> {
       startMenu();
     });
@@ -83,10 +85,15 @@ public class MainController extends AbstractController {
     });
     // this.verticalHorizontalButton.setOnAction(event -> ViewInmpl. change to vertical/horizontal
     // if horizontal change to vertical, if vertical change to horizontal);
-
+    this.quoteButton.setOnAction(event -> quoteText());
     // this.quoteButton.setOnAction(event -> this.quoteLabel.setText);) pop up to choose quote text
     // on click task/event, show popup
     // links
+  }
+
+  public void quoteText() {
+    new QuoteController(this.weekView, this.stage).run();
+    this.quoteButton.setText(this.weekView.getQuote());
   }
 
   public void updateTotalEventsLabel() {
