@@ -31,7 +31,8 @@ public enum Days {
   /**
    * Sunday.
    */
-  SUNDAY("Sunday");
+  SUNDAY("Sunday"),
+  INVALID("Invalid Day");
 
   private String day;
 
@@ -55,7 +56,7 @@ public enum Days {
       case "FRIDAY" -> FRIDAY;
       case "SATURDAY" -> SATURDAY;
       case "SUNDAY" -> SUNDAY;
-      default -> throw new IllegalArgumentException("Not a valid day.");
+      default -> INVALID;
     };
   }
 }

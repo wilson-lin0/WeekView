@@ -31,6 +31,22 @@ public class Event {
     this.duration = duration;
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
+    Event other = (Event) obj;
+    return Objects.equals(name, other.name) &&
+        Objects.equals(description, other.description) &&
+        dayOfWeek == other.dayOfWeek &&
+        Objects.equals(startTime, other.startTime) &&
+        Objects.equals(duration, other.duration);
+  }
+
   /**
    * returns the String name
    *

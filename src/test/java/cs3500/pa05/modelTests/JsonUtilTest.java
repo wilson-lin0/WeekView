@@ -68,10 +68,8 @@ public class JsonUtilTest {
     // Deserialize the JSON string to a JsonNode
     JsonNode jsonNode = jsonUtil.deserializeJson(jsonString);
 
-    // Deserialize the JsonNode to a record object using JsonUtil
     Record record = jsonUtil.deserializeRecord(jsonNode, Record.class);
 
-    // Verify the deserialized record object
     assertNotNull(record);
     assertEquals("John", record.getName());
     assertEquals(30, record.getAge());
@@ -79,10 +77,7 @@ public class JsonUtilTest {
 
   @Test
   public void testDeserializeRecord_InvalidJson() {
-    // Invalid JSON string
     String jsonString = "{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}";
-
-    // Deserialize the invalid JSON string to a record object using JsonUtil and expect an exception
 
   }
 

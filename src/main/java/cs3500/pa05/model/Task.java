@@ -18,7 +18,6 @@ public class Task {
    * @param name the name of the task
    * @param description the description of the task
    * @param dayOfWeek the day of the week the task occurs
-   * @param completed whether the task is completed or not
    */
   public Task(String name, String description, Days dayOfWeek, boolean completed) {
     this.name = name;
@@ -27,10 +26,30 @@ public class Task {
     this.completed = completed;
   }
 
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
+    Task other = (Task) obj;
+    return completed == other.completed &&
+        Objects.equals(name, other.name) &&
+        Objects.equals(description, other.description) &&
+        dayOfWeek == other.dayOfWeek;
+  }
+
+  /**
+   * Gets the name of the task.
+   *
+   * @return the name
+   */
   public String getName() { return this.name; }
 
   /**
-   * Returns the String description, if there is one, else returns the String "N/A".
+   * returns the String description, if there is one, else return the String "N/A"
    *
    * @return the description, if there is one
    */
@@ -39,16 +58,16 @@ public class Task {
   }
 
   /**
-   * Returns the day of the week.
+   * Gets the Day.
    *
    * @return the day of the week
    */
   public Days getDayOfWeek() { return this.dayOfWeek; }
 
   /**
-   * Returns whether the task is completed or not.
+   * Returns whether the task is completed.
    *
-   * @return true if the task is completed, false otherwise
+   * @return whether the task is completed
    */
   public Boolean isCompleted() { return this.completed; }
 

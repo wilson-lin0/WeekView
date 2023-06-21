@@ -20,6 +20,8 @@ public class WeekView {
   private int maxEvent;
   private List<Event> eventList;
   private List<Task> taskList;
+  private List<String> notes;
+  private String quote;
 
   /**
    * Creates a WeekView.
@@ -27,8 +29,10 @@ public class WeekView {
   public WeekView() {
     this.eventList = new ArrayList<>();
     this.taskList = new ArrayList<>();
+    this.notes = new ArrayList<>();
     this.maxEvents = false;
     this.maxTasks = false;
+    this.quote = "Enter your quote.";
   }
 
   /**
@@ -56,15 +60,15 @@ public class WeekView {
    */
   public void saveFile(File fileName) {
     // Convert WeekView properties to Week record
-    Week weekRecord = new Week(this.maxTask, this.maxEvent, this.eventList, this.taskList);
+    Week weekRecord = new Week(this.maxTask, this.maxEvent, this.eventList, this.taskList, this.notes);
 
     // Convert Week record to JSON
     JsonNode jsonNode = JsonUtil.serializeRecord(weekRecord);
     String jsonString = jsonNode.toString();
 
     // Write JSON string to file
-    FileWriter fileWriter = new FileWriter();
-    fileWriter.writeToFile(fileName, jsonString);
+    FileWriter fileWriter = new FileWriter(fileName);
+    fileWriter.writeToFile(jsonString);
   }
 
   /**
@@ -74,25 +78,22 @@ public class WeekView {
    */
   public void openFile(String fileString) {
     try {
-      // Read JSON string from file
       String jsonString = new String(Files.readAllBytes(Paths.get(fileString)));
 
-      // Parse JSON string to JsonNode
       JsonNode jsonNode = JsonUtil.deserializeJson(jsonString);
 
-      // Deserialize JsonNode to Week record
       Week weekRecord = JsonUtil.deserializeRecord(jsonNode, Week.class);
 
-      // Update WeekView object with Week record properties
       this.maxTask = weekRecord.getMaxTask();
       this.maxEvent = weekRecord.getMaxEvent();
       this.eventList.addAll(weekRecord.getEventList());
       this.taskList.addAll(weekRecord.getTaskList());
+      this.notes.addAll(weekRecord.getNotes());
     } catch (IOException e) {
-      System.err.println("An error occurred while deserializing the WeekView object: " +
-          e.getMessage());
+      System.err.println("An error occurred while deserializing the WeekView object: " + e.getMessage());
     }
   }
+
 
   /**
    * Creates an empty file
@@ -121,6 +122,13 @@ public class WeekView {
   public void updateEvent(Event event) {
     eventList.add(event);
   }
+
+  /**
+   * Adds a note tp the list of notes.
+   *
+   * @param note the note to add
+   */
+  public void addNote(String note) { notes.add(note); }
 
   /**
    * Returns the task list.
@@ -182,5 +190,23 @@ public class WeekView {
   public void clearAll() {
     this.eventList.clear();
     this.taskList.clear();
+  }
+
+  public List<Task> returnCompletedTasks() {
+    List<Task> returnList = new ArrayList<>();
+    for (Task task : taskList) {
+      if (task.isCompleted()) {
+        returnList.add(task);
+      }
+    }
+    return returnList;
+  }
+
+  public void changeQuote(String quote) {
+    this.quote = quote;
+  }
+
+  public String getQuote() {
+    return this.quote;
   }
 }

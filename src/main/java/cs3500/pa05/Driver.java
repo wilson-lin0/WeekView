@@ -2,7 +2,7 @@ package cs3500.pa05;
 
 import cs3500.pa05.controller.MainController;
 import cs3500.pa05.model.WeekView;
-import cs3500.pa05.view.ThemeOneView;
+import cs3500.pa05.view.ViewImpl;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -20,7 +20,7 @@ public class Driver extends Application {
   public void start(Stage stage) {
     WeekView weekView = new WeekView();
     MainController controller = new MainController(weekView, stage);
-    ThemeOneView view = new ThemeOneView(controller);
+    ViewImpl view = new ViewImpl(controller);
 
     try {
       stage.setScene(view.load());

@@ -36,7 +36,6 @@ class AddEventControllerTest {
     Button submitButton = mock(Button.class);
     Button exitButton = mock(Button.class);
 
-    // Set mock objects in the controller
     addEventController.setEventCreationPopup(eventCreationPopup);
     addEventController.setCreateEventName(createEventName);
     addEventController.setCreateEventDescription(createEventDescription);
@@ -46,16 +45,13 @@ class AddEventControllerTest {
     addEventController.setSubmitButton(submitButton);
     addEventController.setExitButton(exitButton);
 
-    // Perform button click
     addEventController.clickSubmitButton();
 
-    // Verify that the event was added to the WeekView
     verify(weekView).updateEvent(any(Event.class));
   }
 
   @Test
   void run_ExitButtonClicked_PopupHidden() {
-    // Create mock objects
     Popup eventCreationPopup = mock(Popup.class);
     TextField createEventName = mock(TextField.class);
     TextField createEventDescription = mock(TextField.class);
@@ -65,7 +61,6 @@ class AddEventControllerTest {
     Button submitButton = mock(Button.class);
     Button exitButton = mock(Button.class);
 
-    // Set mock objects in the controller
     addEventController.setEventCreationPopup(eventCreationPopup);
     addEventController.setCreateEventName(createEventName);
     addEventController.setCreateEventDescription(createEventDescription);
@@ -75,10 +70,8 @@ class AddEventControllerTest {
     addEventController.setSubmitButton(submitButton);
     addEventController.setExitButton(exitButton);
 
-    // Perform button click
     addEventController.clickExitButton();
 
-    // Verify that the popup was hidden
     verify(eventCreationPopup).hide();
   }
 
