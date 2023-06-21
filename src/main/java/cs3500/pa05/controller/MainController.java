@@ -8,7 +8,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -39,6 +38,12 @@ public class MainController extends AbstractController {
   private Button openFileButton0;
   @FXML
   private Button newFileButton;
+  @FXML
+  private Label totalEventsLabel;
+  @FXML
+  private Label totalTasksLabel;
+  @FXML
+  private Label tasksCompletedLabel;
   private final Popup startMenu;
   String file;
 
@@ -60,6 +65,8 @@ public class MainController extends AbstractController {
   public void run() {
     startMenu();
 
+    this.quoteButton.setText(weekView.getQuote());
+
     this.openFileButton.setOnAction(event -> {
       startMenu();
     });
@@ -77,11 +84,28 @@ public class MainController extends AbstractController {
     });
     // this.verticalHorizontalButton.setOnAction(event -> ViewInmpl. change to vertical/horizontal
     // if horizontal change to vertical, if vertical change to horizontal);
-
+    this.quoteButton.setOnAction(event -> quoteText());
     // this.quoteButton.setOnAction(event -> this.quoteLabel.setText);) pop up to choose quote text
-    // progress bar: total event, total task, total tasks completed out of total tasks -> update
     // on click task/event, show popup
     // links
+  }
+
+  public void quoteText() {
+    new QuoteController(this.weekView, this.stage).run();
+    this.quoteButton.setText(this.weekView.getQuote());
+  }
+
+  public void updateTotalEventsLabel() {
+    this.totalEventsLabel.setText("Total Events: " + weekView.returnEventList().size());
+  }
+
+  public void updateTotalTasksLabel() {
+    this.totalTasksLabel.setText("Total Tasks: " + weekView.returnTaskList().size());
+  }
+
+  public void updateTasksCompleted() {
+    this.tasksCompletedLabel.setText("Tasks Completed: " + weekView.returnCompletedTasks()
+        + "/" + weekView.returnTaskList().size());
   }
 
   /**
