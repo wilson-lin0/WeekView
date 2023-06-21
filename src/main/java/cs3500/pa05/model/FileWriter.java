@@ -21,7 +21,7 @@ public class FileWriter {
    */
   public void writeToFile(String contents) {
     // Add fileType extension to the end of the file path
-    Path path = Path.of(file.getPath() + ".bujo");
+    Path path = Path.of(file.getPath());
 
     // Convert String to data for writing ("raw" byte data)
     byte[] data = contents.getBytes();
