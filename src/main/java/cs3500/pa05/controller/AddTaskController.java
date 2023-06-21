@@ -98,6 +98,7 @@ public class AddTaskController extends AbstractController {
 
     if (canContinue) {
       weekView.updateTask(new Task(taskName, description, day, completed));
+      showTask();
     } else {
       warningLabel.setText("You have reached the maximum amount of task: " +
           this.weekView.returnMaxTask());

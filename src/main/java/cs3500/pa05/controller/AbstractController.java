@@ -1,6 +1,7 @@
 package cs3500.pa05.controller;
 
 import cs3500.pa05.model.Event;
+import cs3500.pa05.model.LabelLists;
 import cs3500.pa05.model.WeekView;
 import cs3500.pa05.model.enumerations.Days;
 import java.io.IOException;
@@ -33,22 +34,7 @@ public abstract class AbstractController implements Controller {
   protected VBox fridayBox;
   @FXML
   protected VBox saturdayBox;
-
-  List<Label> sundayEventList;
-  List<Label> mondayEventList;
-  List<Label> tuesdayEventList;
-  List<Label> wednesdayEventList;
-  List<Label> thursdayEventList;
-  List<Label> fridayEventList;
-  List<Label> saturdayEventList;
-
-  List<Label> sundayTaskList;
-  List<Label> mondayTaskList;
-  List<Label> tuesdayTaskList;
-  List<Label> wednesdayTaskList;
-  List<Label> thursdayTaskList;
-  List<Label> fridayTaskList;
-  List<Label> saturdayTaskList;
+  protected LabelLists labellists;
 
   /**
    * Creates a Controller.
@@ -59,6 +45,7 @@ public abstract class AbstractController implements Controller {
   public AbstractController(WeekView weekView, Stage stage) {
     this.weekView = weekView;
     this.stage = stage;
+    this.labellists = new LabelLists();
   }
 
   /**
@@ -67,45 +54,24 @@ public abstract class AbstractController implements Controller {
   @Override
   public abstract void run();
 
-  public void initEvents() {
-    sundayEventList = new ArrayList<>();
-    mondayEventList = new ArrayList<>();
-    tuesdayEventList = new ArrayList<>();
-    wednesdayEventList = new ArrayList<>();
-    thursdayEventList = new ArrayList<>();
-    fridayEventList = new ArrayList<>();
-    saturdayEventList = new ArrayList<>();
-  }
-
-
-  public void initTasks() {
-    sundayTaskList = new ArrayList<>();
-    mondayTaskList = new ArrayList<>();
-    tuesdayTaskList = new ArrayList<>();
-    wednesdayTaskList = new ArrayList<>();
-    thursdayTaskList = new ArrayList<>();
-    fridayTaskList = new ArrayList<>();
-    saturdayTaskList = new ArrayList<>();
-  }
   /**
    * Shows the events in the WeekView.
    */
   public void showEvent() {
-    initEvents();
     updateEventLabelList();
-    sundayBox.getChildren().addAll(sundayEventList);
+    sundayBox.getChildren().addAll(labellists.getSundayEventList());
     sundayBox.setAlignment(Pos.CENTER_LEFT);
-    mondayBox.getChildren().addAll(mondayEventList);
+    mondayBox.getChildren().addAll(labellists.getMondayEventList());
     mondayBox.setAlignment(Pos.CENTER_LEFT);
-    tuesdayBox.getChildren().addAll(tuesdayEventList);
+    tuesdayBox.getChildren().addAll(labellists.getTuesdayEventList());
     tuesdayBox.setAlignment(Pos.CENTER_LEFT);
-    wednesdayBox.getChildren().addAll(wednesdayEventList);
+    wednesdayBox.getChildren().addAll(labellists.getWednesdayEventList());
     wednesdayBox.setAlignment(Pos.CENTER_LEFT);
-    thursdayBox.getChildren().addAll(thursdayEventList);
+    thursdayBox.getChildren().addAll(labellists.getThursdayEventList());
     thursdayBox.setAlignment(Pos.CENTER_LEFT);
-    fridayBox.getChildren().addAll(fridayEventList);
+    fridayBox.getChildren().addAll(labellists.getFridayEventList());
     fridayBox.setAlignment(Pos.CENTER_LEFT);
-    saturdayBox.getChildren().addAll(saturdayEventList);
+    saturdayBox.getChildren().addAll(labellists.getSaturdayEventList());
     saturdayBox.setAlignment(Pos.CENTER_LEFT);
   }
 
@@ -113,25 +79,11 @@ public abstract class AbstractController implements Controller {
     for (Event event : weekView.returnEventList()) {
       Label label = new Label("Event: " + event.getName() + '\n' +
           "Description: " + event.getDescription() + '\n' +
-          "Start Time: " + event.getStartTime()  + '\n' +
+          "Start Time: " + event.getStartTime() + '\n' +
           "Duration: " + event.getDuration()
       );
       label.setFont(new Font(20));
-      if (event.getDayOfWeek().equals(Days.SUNDAY)) {
-        sundayEventList.add(label);
-      } else if (event.getDayOfWeek().equals(Days.MONDAY)) {
-        mondayEventList.add(label);
-      } else if (event.getDayOfWeek().equals(Days.TUESDAY)) {
-        tuesdayEventList.add(label);
-      } else if (event.getDayOfWeek().equals(Days.WEDNESDAY)) {
-        wednesdayEventList.add(label);
-      } else if (event.getDayOfWeek().equals(Days.THURSDAY)) {
-        thursdayEventList.add(label);
-      } else if (event.getDayOfWeek().equals(Days.FRIDAY)) {
-        fridayEventList.add(label);
-      } else {
-        saturdayEventList.add(label);
-      }
+      labellists.addEventToList(label, event.getDayOfWeek());
     }
   }
 
@@ -139,7 +91,32 @@ public abstract class AbstractController implements Controller {
    * Shows the tasks in the WeekView.
    */
   public void showTask() {
-    // for (Task task : weekView.returnTaskList()) {}
-    // creat new ... and when clicked, can edit
+    updateTaskLabelList();
+    sundayBox.getChildren().addAll(labellists.getSundayTaskList());
+    sundayBox.setAlignment(Pos.CENTER_LEFT);
+    mondayBox.getChildren().addAll(labellists.getMondayTaskList());
+    mondayBox.setAlignment(Pos.CENTER_LEFT);
+    tuesdayBox.getChildren().addAll(labellists.getTuesdayTaskList());
+    tuesdayBox.setAlignment(Pos.CENTER_LEFT);
+    wednesdayBox.getChildren().addAll(labellists.getWednesdayTaskList());
+    wednesdayBox.setAlignment(Pos.CENTER_LEFT);
+    thursdayBox.getChildren().addAll(labellists.getThursdayTaskList());
+    thursdayBox.setAlignment(Pos.CENTER_LEFT);
+    fridayBox.getChildren().addAll(labellists.getFridayTaskList());
+    fridayBox.setAlignment(Pos.CENTER_LEFT);
+    saturdayBox.getChildren().addAll(labellists.getSaturdayTaskList());
+    saturdayBox.setAlignment(Pos.CENTER_LEFT);
+  }
+
+  private void updateTaskLabelList() {
+    for (Event event : weekView.returnEventList()) {
+      Label label = new Label("Event: " + event.getName() + '\n' +
+          "Description: " + event.getDescription() + '\n' +
+          "Start Time: " + event.getStartTime() + '\n' +
+          "Duration: " + event.getDuration()
+      );
+      label.setFont(new Font(20));
+      labellists.addTaskToList(label, event.getDayOfWeek());
+    }
   }
 }

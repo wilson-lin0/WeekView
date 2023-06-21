@@ -82,7 +82,6 @@ public class MainController extends AbstractController {
   }
 
   private void startMenu() {
-
     try {
       FXMLLoader loader = new FXMLLoader(
           getClass().getClassLoader().getResource("StartMenu.fxml"));
