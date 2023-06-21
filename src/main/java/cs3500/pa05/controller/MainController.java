@@ -95,6 +95,8 @@ public class MainController extends AbstractController {
     // this.quoteButton.setOnAction(event -> this.quoteLabel.setText);) pop up to choose quote text
     // on click task/event, show popup
     // links
+
+    // for theme changes, in each controller, add a theme method -> maybe just in abstractcontroller
   }
 
   public void quoteText() {
