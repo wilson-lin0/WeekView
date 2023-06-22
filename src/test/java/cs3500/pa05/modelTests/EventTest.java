@@ -2,87 +2,116 @@ package cs3500.pa05.modelTests;
 
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.enumerations.Days;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class EventTest {
 
   @Test
-  public void testEventInitialization() {
-    String name = "Event 1";
-    String description = "Description 1";
-    Days dayOfWeek = Days.MONDAY;
-    String startTime = "10:00 AM";
-    String duration = "1 hour";
-
-    Event event = new Event(name, description, dayOfWeek, startTime, duration);
-
-    assertEquals("Event 1", event.getName());
-    assertEquals("Description 1", event.getDescription());
-    assertEquals(Days.MONDAY, event.getDayOfWeek());
-    assertEquals("10:00 AM", event.getStartTime());
-    assertEquals("1 hour", event.getDuration());
+  public void testEquals_sameObject() {
+    Event event = new Event("Event 1", "Description 1",
+        Days.MONDAY, "10:00", 60);
+    Assertions.assertEquals(event, event);
   }
 
   @Test
-  public void testEventDescriptionNull() {
-    String name = "Event 2";
-    Days dayOfWeek = Days.TUESDAY;
-    String startTime = "2:00 PM";
-    String duration = "2 hours";
+  public void testEquals_equalEvents() {
+    Event event1 = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Event event2 = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Assertions.assertEquals(event1, event2);
+  }
 
-    Event event = new Event(name, null, dayOfWeek, startTime, duration);
-
-    assertEquals("N/A", event.getDescription());
+  @Test
+  public void testEquals_notEqualEvents() {
+    Event event1 = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Event event2 = new Event("Event 2", "Description 2", Days.TUESDAY,
+        "14:00", 120);
+    Assertions.assertNotEquals(event1, event2);
   }
 
   @Test
   public void testGetName() {
-    String name = "Event 3";
-    Event event = new Event(name, null, Days.WEDNESDAY, "12:00 PM", "1 hour");
+    Event event = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Assertions.assertEquals("Event 1", event.getName());
+  }
 
-    assertEquals("Event 3", event.getName());
+  @Test
+  public void testGetDescription_withDescription() {
+    Event event = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Assertions.assertEquals("Description 1", event.getDescription());
+  }
+
+  @Test
+  public void testGetDescription_withoutDescription() {
+    Event event = new Event("Event 1", null, Days.MONDAY,
+        "10:00", 60);
+    Assertions.assertEquals("N/A", event.getDescription());
   }
 
   @Test
   public void testGetDayOfWeek() {
-    Days dayOfWeek = Days.THURSDAY;
-    Event event = new Event("Event 4", null, dayOfWeek, "3:00 PM", "2 hours");
-
-    assertEquals(Days.THURSDAY, event.getDayOfWeek());
+    Event event = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Assertions.assertEquals(Days.MONDAY, event.getDayOfWeek());
   }
 
   @Test
   public void testGetStartTime() {
-    String startTime = "9:00 AM";
-    Event event = new Event("Event 5", null, Days.FRIDAY, startTime, "1 hour");
-
-    assertEquals("9:00 AM", event.getStartTime());
+    Event event = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Assertions.assertEquals("10:00", event.getStartTime());
   }
 
   @Test
   public void testGetDuration() {
-    String duration = "3 hours";
-    Event event = new Event("Event 6", null, Days.SATURDAY, "2:00 PM", duration);
-
-    assertEquals("3 hours", event.getDuration());
+    Event event = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Assertions.assertEquals(60, event.getDuration());
   }
 
   @Test
-  public void testEquals() {
-    Event event1 = new Event("Event 7", "Description 1", Days.SUNDAY, "10:00 AM", "1 hour");
-    Event event2 = new Event("Event 7", "Description 1", Days.SUNDAY, "10:00 AM", "1 hour");
-
-    assertEquals(event1, event2);
+  public void testEquals_differentObjectTypes() {
+    Event event = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    String differentType = "Not an Event object";
+    Assertions.assertNotEquals(event, differentType);
   }
 
   @Test
-  public void testNotEquals() {
-    Event event1 = new Event("Event 8", "Description 1", Days.MONDAY, "2:00 PM", "2 hours");
-    Event event2 = new Event("Event 9", "Description 2", Days.TUESDAY, "3:00 PM", "1 hour");
-
-    assertNotEquals(event1, event2);
+  public void testEquals_nullObject() {
+    Event event = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Assertions.assertNotEquals(event, null);
   }
+
+  @Test
+  public void testGetDescription_nullDescription() {
+    Event event = new Event("Event 1", null, Days.MONDAY,
+        "10:00", 60);
+    Assertions.assertEquals("N/A", event.getDescription());
+  }
+
+  @Test
+  public void testGetDuration_negativeDuration() {
+    Event event = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", -60);
+    Assertions.assertEquals(-60, event.getDuration());
+  }
+
+  @Test
+  public void testEquals_eventsWithNullFields() {
+    Event event1 = new Event("Event 1", null, Days.MONDAY,
+        "10:00", 60);
+    Event event2 = new Event(null, null, Days.MONDAY,
+        "10:00", 60);
+    Assertions.assertNotEquals(event1, event2);
+  }
+
 }
+
 

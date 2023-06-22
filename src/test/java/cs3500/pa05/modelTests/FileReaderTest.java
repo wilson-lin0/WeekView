@@ -67,4 +67,17 @@ public class FileReaderTest {
         fileReader.readFile(unreadableFile);
       });
   }
+
+  @Test
+  public void testReadFileWithSpecialCharacters() throws IOException {
+    File specialFile = File.createTempFile("special", ".txt");
+    String content = "This is a file with special characters: !@#$%^&*()_+";
+    Files.write(specialFile.toPath(), content.getBytes());
+
+    String result = fileReader.readFile(specialFile);
+
+    assertEquals(content, result);
+  }
+
+
 }
