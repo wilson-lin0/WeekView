@@ -8,16 +8,15 @@ import javafx.scene.Scene;
 /**
  * Represents a view with the theme.
  */
-public class HorizontalView implements View {
+public abstract class ViewImpl implements View {
   protected FXMLLoader loader;
 
   /**
    * Creates a ThemeOneView.
    */
-  public HorizontalView(Controller controller) {
+  public ViewImpl(Controller controller) {
     // look up and store the layout
     this.loader = new FXMLLoader();
-    this.loader.setLocation(getClass().getClassLoader().getResource("WeekView.fxml"));
     this.loader.setController(controller);
   }
 
