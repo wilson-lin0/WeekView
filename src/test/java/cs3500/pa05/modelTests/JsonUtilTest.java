@@ -1,104 +1,94 @@
 package cs3500.pa05.modelTests;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import com.fasterxml.jackson.databind.JsonNode;
+import cs3500.pa05.model.enumerations.Days;
+import cs3500.pa05.model.json.EventJson;
 import cs3500.pa05.model.json.JsonUtil;
-import org.junit.jupiter.api.BeforeEach;
+import cs3500.pa05.model.json.TaskJson;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-public class JsonUtilTest {
-  private JsonUtil jsonUtil;
-
-  @BeforeEach
-  public void setUp() {
-    jsonUtil = new JsonUtil();
-  }
+class JsonUtilTest {
 
   @Test
-  public void testDeserializeJson() throws IOException {
-    // Sample JSON string
-    String jsonString = "{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}";
+  void serializeRecord_validRecord_successfullySerializes() {
+    EventJson event = new EventJson("Event Name", "Event Description", Days.MONDAY,
+        "10:00", 60);
 
-    // Deserialize the JSON string using JsonUtil
-    JsonNode jsonNode = jsonUtil.deserializeJson(jsonString);
+    JsonNode jsonNode = JsonUtil.serializeRecord(event);
 
-    // Verify the deserialized JsonNode
     assertNotNull(jsonNode);
-    assertEquals("John", jsonNode.get("name").asText());
-    assertEquals(30, jsonNode.get("age").asInt());
-    assertEquals("New York", jsonNode.get("city").asText());
+    assertEquals("Event Name", jsonNode.get("name").asText());
+    assertEquals("Event Description", jsonNode.get("description").asText());
+    assertEquals("MONDAY", jsonNode.get("dayOfWeek").asText());
+    assertEquals("10:00", jsonNode.get("startTime").asText());
+    assertEquals(60, jsonNode.get("duration").asInt());
   }
 
   @Test
-  public void testDeserializeJson_InvalidJson() {
-    // Invalid JSON string
-    String jsonString = "{\"name\":\"John\",\"age\":30,\"city\":\"New York\"";
+  void deserializeJson_validJson_successfullyDeserializes() {
+    String jsonString = "{\"name\":\"Event Name\",\"description\":\"Event Description\","
+        + "\"dayOfWeek\":\"MONDAY\",\"startTime\":\"10:00\",\"duration\":60}";
 
-    // Deserialize the invalid JSON string using JsonUtil and expect an exception
-    assertThrows(JsonProcessingException.class, () -> {
-      jsonUtil.deserializeJson(jsonString);
+    JsonNode jsonNode = JsonUtil.deserializeJson(jsonString);
+
+    assertNotNull(jsonNode);
+    assertEquals("Event Name", jsonNode.get("name").asText());
+    assertEquals("Event Description", jsonNode.get("description").asText());
+    assertEquals("MONDAY", jsonNode.get("dayOfWeek").asText());
+    assertEquals("10:00", jsonNode.get("startTime").asText());
+    assertEquals(60, jsonNode.get("duration").asInt());
+  }
+
+  @Test
+  void deserializeRecord_validJsonNodeAndRecordClass_successfullyDeserializes() {
+    // Create a sample JSON node
+    JsonNode jsonNode = JsonUtil.deserializeJson("{\"name\":\"Event Name\","
+        + "\"description\":\"Event Description\","
+        + "\"dayOfWeek\":\"MONDAY\",\"startTime\":\"10:00\",\"duration\":60}");
+
+    EventJson event = JsonUtil.deserializeRecord(jsonNode, EventJson.class);
+
+    assertNotNull(event);
+    assertEquals("Event Name", event.getName());
+    assertEquals("Event Description", event.getDescription());
+    assertEquals(Days.MONDAY, event.getDayOfWeek());
+    assertEquals("10:00", event.getStartTime());
+    assertEquals(60, event.getDuration());
+  }
+
+  @Test
+  void serializeRecord_differentRecordClass_successfullySerializes() {
+    TaskJson record = new TaskJson("Record", "123", Days.FRIDAY, false);
+
+    JsonNode jsonNode = JsonUtil.serializeRecord(record);
+
+    assertNotNull(jsonNode);
+    assertEquals("Record", jsonNode.get("name").asText());
+    assertEquals("123", jsonNode.get("description").asText());
+  }
+
+  @Test
+  void deserializeJson_invalidJsonString_throwsException() {
+    String invalidJsonString = "This is not a valid JSON string";
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      JsonUtil.deserializeJson(invalidJsonString);
     });
   }
 
   @Test
-  public void testSerializeRecord() {
-    // Create a sample record object
-    Record record = new Record("John", 30);
+  void deserializeRecord_nullRecordClass_throwsException() {
+    JsonNode jsonNode = JsonUtil.deserializeJson("{\"name\":\"Event Name\"}");
 
-    /*
-    // Serialize the record object using JsonUtil
-    JsonNode jsonNode = jsonUtil.serializeRecord(record);
-
-    // Verify the serialized JsonNode
-    assertNotNull(jsonNode);
-    assertEquals("John", jsonNode.get("name").asText());
-    assertEquals(30, jsonNode.get("age").asInt());
-     */
-  }
-
-  @Test
-  public void testDeserializeRecord() throws IOException {
-    // Sample JSON string
-    String jsonString = "{\"name\":\"John\",\"age\":30}";
-
-    // Deserialize the JSON string to a JsonNode
-    JsonNode jsonNode = jsonUtil.deserializeJson(jsonString);
-
-    Record record = jsonUtil.deserializeRecord(jsonNode, Record.class);
-
-    assertNotNull(record);
-    assertEquals("John", record.getName());
-    assertEquals(30, record.getAge());
-  }
-
-  @Test
-  public void testDeserializeRecord_InvalidJson() {
-    String jsonString = "{\"name\":\"John\",\"age\":30,\"city\":\"New York\"}";
-
-  }
-
-  // Helper class for testing serialization/deserialization
-  static class Record {
-    private String name;
-    private int age;
-
-    public Record(String name, int age) {
-      this.name = name;
-      this.age = age;
-    }
-
-    public String getName() {
-      return name;
-    }
-
-    public int getAge() {
-      return age;
-    }
+    assertThrows(NullPointerException.class, () -> {
+      JsonUtil.deserializeRecord(jsonNode, null);
+    });
   }
 }
+
 
 
