@@ -1,4 +1,4 @@
-package cs3500.pa05.modelTests;
+package cs3500.pa05.modeltests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,6 +17,9 @@ public class WeekJsonTest {
 
   private WeekJson weekJson;
 
+  /**
+   * Sets up the test fixture.
+   */
   @BeforeEach
   public void setUp() {
     List<EventJson> eventList = Arrays.asList(new EventJson("Event 1",

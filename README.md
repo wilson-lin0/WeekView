@@ -30,3 +30,5 @@ does not need the method run() implements the Controller Interface.
 
 D: All our classes depend on interfaces or abstract classes instead of other classes of the same level. For example,
 our ViewImpl depends on our Controller Interface instead of a specific controller.
+
+<img width="1198" alt="Screenshot 2023-06-22 at 11 18 35 AM" src="https://github.com/CS-3500-OOD/pa05-helpv2/assets/122639708/76473635-471f-4036-9686-1683ef45737f">
