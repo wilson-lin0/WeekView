@@ -191,6 +191,7 @@ public class MainController extends AbstractController {
     } catch (IOException e) {
       e.printStackTrace();
     }
+    this.scenePopup.show(this.stage);
 
     this.horizontal1.setOnAction(event -> changeSceneHorizontal1());
     this.horizontal2.setOnAction(event -> changeSceneHorizontal2());
