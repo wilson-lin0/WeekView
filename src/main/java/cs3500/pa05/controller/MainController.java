@@ -143,6 +143,7 @@ public class MainController extends AbstractController {
     this.eventTaskLimitButton.setOnAction(event -> {
       setLimit();
     });
+    /*
     this.sortByDurationButton.setOnAction(event -> {
       labellists.clearAll();
       addToList(weekView.sortTasksAndEventsByDuration());
@@ -151,6 +152,8 @@ public class MainController extends AbstractController {
       labellists.clearAll();
       addToList(weekView.sortTasksAndEventsByName());
     });
+
+     */
   }
 
   /**
@@ -181,6 +184,7 @@ public class MainController extends AbstractController {
     });
   }
 
+  /*
   private void addToList(List<Object> list) {
     for (Object object : list) {
       if (object instanceof Event) {
@@ -211,6 +215,8 @@ public class MainController extends AbstractController {
     }
     showGraphics();
   }
+
+   */
 
   private void addToList() {
     String eventName = null;
