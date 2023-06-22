@@ -143,7 +143,7 @@ public class MainController extends AbstractController {
    * Creates a MainController.
    *
    * @param weekView the WeekView
-   * @param stage the stage
+   * @param stage    the stage
    */
   public MainController(WeekView weekView, Stage stage) {
     super(weekView, stage);
@@ -183,8 +183,8 @@ public class MainController extends AbstractController {
   public void scenePopup() {
     try {
       this.scenePopup = new Popup();
-      FXMLLoader eventLoader = new FXMLLoader(getClass().getClassLoader().getResource(
-          "ScenePopup.fxml"));
+      FXMLLoader eventLoader =
+          new FXMLLoader(getClass().getClassLoader().getResource("ScenePopup.fxml"));
       eventLoader.setController(this);
       Scene createEventScene = eventLoader.load();
       scenePopup.getContent().add(createEventScene.getRoot());
@@ -297,26 +297,20 @@ public class MainController extends AbstractController {
   private void addEvent() {
     try {
       this.eventCreationPopup = new Popup();
-      FXMLLoader eventLoader = new FXMLLoader(getClass().getClassLoader().getResource(
-          "AddEvent.fxml"));
+      FXMLLoader eventLoader =
+          new FXMLLoader(getClass().getClassLoader().getResource("AddEvent.fxml"));
       eventLoader.setController(this);
       Scene createEventScene = eventLoader.load();
       eventCreationPopup.getContent().add(createEventScene.getRoot());
     } catch (IOException e) {
       e.printStackTrace();
     }
-
-
     this.eventCreationPopup.show(this.stage);
-
-
     this.submitEventButton.setOnAction(event -> {
       addEventToList();
       showGraphics();
       this.totalEventsLabel.setText("Total events: " + weekView.returnEventList().size());
     });
-
-
     this.exitEventButton.setOnAction(event -> {
       this.eventCreationPopup.hide();
     });
@@ -329,11 +323,7 @@ public class MainController extends AbstractController {
     Days day = null;
     String startTime = null;
     int duration = -1;
-
-
     boolean canEventContinue = canEventContinue();
-
-
     try {
       eventName = createEventName.getText();
       day = verifyDay(this.createEventDay.getText());
@@ -357,22 +347,17 @@ public class MainController extends AbstractController {
       warningEventLabel.setText("You left a required field empty!");
       canEventContinue = false;
     }
-
-
     try {
       description = createEventDescription.getText();
     } catch (NullPointerException n) {
-    // it is okay to not have a description
+      // it is okay to not have a description
     }
-
-
     if (canEventContinue) {
       weekView.updateEvent(new Event(eventName, description, day, startTime, duration));
       updateEventLabelList();
       this.eventCreationPopup.hide();
     }
   }
-
 
   /**
    * Returns true if you can add an event.
@@ -384,15 +369,14 @@ public class MainController extends AbstractController {
       if (this.weekView.returnEventList().size() - 1 < this.weekView.returnMaxEvent()) {
         return true;
       } else {
-        warningEventLabel.setText("You have reached the maximum amount of events: " +
-            this.weekView.returnMaxEvent());
+        warningEventLabel.setText(
+            "You have reached the maximum amount of events: " + this.weekView.returnMaxEvent());
         return false;
       }
     } else {
       return true;
     }
   }
-
 
   /**
    * Returns true if the format is correct.
@@ -403,8 +387,6 @@ public class MainController extends AbstractController {
   private boolean correctTimeFormat(String timeString) {
     SimpleDateFormat dateFormat = new SimpleDateFormat("k:mm");
     dateFormat.setLenient(false);
-
-
     try {
       Date time = dateFormat.parse(timeString);
       return timeString.equals(dateFormat.format(time));
@@ -412,7 +394,6 @@ public class MainController extends AbstractController {
       return false;
     }
   }
-
 
   /**
    * Returns true if the string is an integer.
@@ -429,7 +410,6 @@ public class MainController extends AbstractController {
     }
   }
 
-
   /**
    * Updates the event label list.
    */
@@ -438,8 +418,8 @@ public class MainController extends AbstractController {
     Label label = null;
     if (events.size() > 0) {
       Event event = events.get(events.size() - 1);
-      if (event.getDescription().contains(".com") || event.getDescription().contains(".org")
-          || event.getDescription().contains(".net")) {
+      if (event.getDescription().contains(".com") || event.getDescription().contains(".org") ||
+          event.getDescription().contains(".net")) {
         Hyperlink hyperlink = new Hyperlink(event.getDescription());
         hyperlink.setOnAction(e -> {
           try {
@@ -450,18 +430,16 @@ public class MainController extends AbstractController {
         });
 
 
-        label = new Label("Event: " + event.getName() + '\n'
-            + "Description: " + event.getDescription() + '\n'
-            + "Start Time: " + event.getStartTime() + '\n'
-            + "Duration: " + event.getDuration());
+        label = new Label(
+            "Event: " + event.getName() + '\n' + "Description: " + event.getDescription() + '\n' +
+                "Start Time: " + event.getStartTime() + '\n' + "Duration: " + event.getDuration());
         label.setGraphic(hyperlink);
         label.setContentDisplay(ContentDisplay.TOP);
         label.setWrapText(true);
       } else {
-        label = new Label("Event: " + event.getName() + '\n'
-            + "Description: " + event.getDescription() + '\n'
-            + "Start Time: " + event.getStartTime() + '\n'
-            + "Duration: " + event.getDuration());
+        label = new Label(
+            "Event: " + event.getName() + '\n' + "Description: " + event.getDescription() + '\n' +
+                "Start Time: " + event.getStartTime() + '\n' + "Duration: " + event.getDuration());
         label.setFont(new Font(10));
       }
       labellists.addEventToList(label, event.getDayOfWeek());
@@ -469,15 +447,21 @@ public class MainController extends AbstractController {
   }
 
 
+  /**
+   * Opens the link.
+   *
+   * @param url the url
+   * @throws URISyntaxException when the url is wrong
+   * @throws IOException when the url is not found
+   */
   private void openLink(String url) throws URISyntaxException, IOException {
     if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
       Desktop.getDesktop().browse(new URI(url));
     } else {
-// Desktop browsing is not supported
+    // Desktop browsing is not supported
       System.err.println("Desktop browsing is not supported.");
     }
   }
-
 
   /**
    * Adds a task.
@@ -485,8 +469,8 @@ public class MainController extends AbstractController {
   private void addTask() {
     this.taskCreationPopup = new Popup();
     try {
-      FXMLLoader taskLoader = new FXMLLoader(getClass().getClassLoader().getResource(
-          "AddTask.fxml"));
+      FXMLLoader taskLoader =
+          new FXMLLoader(getClass().getClassLoader().getResource("AddTask.fxml"));
       taskLoader.setController(this);
       Scene createTaskScene = taskLoader.load();
       taskCreationPopup.getContent().add(createTaskScene.getRoot());
@@ -494,17 +478,14 @@ public class MainController extends AbstractController {
     } catch (IOException e) {
       e.printStackTrace();
     }
-
-
     this.submitTaskButton.setOnAction(event -> {
       addTaskToList();
       showGraphics();
       this.totalTasksLabel.setText("Total tasks: " + weekView.returnTaskList().size());
-      this.tasksCompletedLabel.setText("Tasks completed: " + weekView.returnCompletedTasks().size()
-          + "/" + weekView.returnTaskList().size());
+      this.tasksCompletedLabel.setText(
+          "Tasks completed: " + weekView.returnCompletedTasks().size() + "/" +
+              weekView.returnTaskList().size());
     });
-
-
     this.exitTaskButton.setOnAction(event -> {
       this.taskCreationPopup.hide();
     });
@@ -520,8 +501,6 @@ public class MainController extends AbstractController {
     Days day = null;
     boolean completed = false;
     boolean canContinue = canTaskContinue();
-
-
     try {
       taskName = createTaskName.getText();
       day = verifyDay(this.createTaskDay.getText());
@@ -534,22 +513,17 @@ public class MainController extends AbstractController {
       warningTaskLabel.setText("You left a required field empty!");
       canContinue = false;
     }
-
-
     try {
       description = createTaskDescription.getText();
     } catch (NullPointerException n) {
-// it is okay to not have a description
+    // it is okay to not have a description
     }
-
-
     if (canContinue) {
       weekView.updateTask(new Task(taskName, description, day, completed));
       updateTaskLabelList();
       this.taskCreationPopup.hide();
     }
   }
-
 
   /**
    * Returns true if you can add a task.
@@ -561,15 +535,14 @@ public class MainController extends AbstractController {
       if (this.weekView.returnTaskList().size() - 1 < this.weekView.returnMaxTask()) {
         return true;
       } else {
-        warningTaskLabel.setText("You have reached the maximum amount of tasks: " +
-            this.weekView.returnMaxTask());
+        warningTaskLabel.setText(
+            "You have reached the maximum amount of tasks: " + this.weekView.returnMaxTask());
         return false;
       }
     } else {
       return true;
     }
   }
-
 
   /**
    * Updates the task label list.
@@ -578,15 +551,13 @@ public class MainController extends AbstractController {
     List<Task> tasks = this.weekView.returnTaskList();
     if (tasks.size() > 0) {
       Task task = tasks.get(tasks.size() - 1);
-      Label label = new Label("Task: " + task.getName() + '\n' +
-          "Description: " + task.getDescription() + '\n' +
-          "Completed? " + task.isCompleted()
-      );
+      Label label = new Label(
+          "Task: " + task.getName() + '\n' + "Description: " + task.getDescription() + '\n' +
+              "Completed? " + task.isCompleted());
       label.setFont(new Font(10));
       labellists.addTaskToList(label, task.getDayOfWeek());
     }
   }
-
 
   /**
    * Sets a limit.
@@ -595,19 +566,16 @@ public class MainController extends AbstractController {
     new MaximumEventTaskController(this.weekView, this.stage).run();
   }
 
-
   /**
    * Shows the start menu.
    */
   private void startMenu() {
     try {
-      FXMLLoader loader = new FXMLLoader(
-          getClass().getClassLoader().getResource("StartMenu.fxml"));
+      FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("StartMenu.fxml"));
       loader.setController(this);
       Scene createTaskScene = loader.load();
       startMenu.getContent().add(createTaskScene.getRoot());
       startMenu.show(this.stage);
-
 
       this.openFileButton0.setOnAction(event -> {
         openFile();
@@ -619,7 +587,6 @@ public class MainController extends AbstractController {
       e.printStackTrace();
     }
   }
-
 
   /**
    * Opens the file.
@@ -634,7 +601,6 @@ public class MainController extends AbstractController {
     showGraphics();
   }
 
-
   /**
    * Creates a new file.
    */
@@ -645,14 +611,12 @@ public class MainController extends AbstractController {
     startMenu.hide();
   }
 
-
   /**
    * Saves the file.
    */
   private void saveFile() {
     this.weekView.saveFile(new File(file));
   }
-
 
   /**
    * Shows the events in the WeekView.
@@ -662,31 +626,25 @@ public class MainController extends AbstractController {
     sundayBox.getChildren().addAll(labellists.getSundayList());
     sundayBox.setAlignment(Pos.CENTER_LEFT);
 
-
     mondayBox.getChildren().clear(); // Clear existing children
     mondayBox.getChildren().addAll(labellists.getMondayList());
     mondayBox.setAlignment(Pos.CENTER_LEFT);
-
 
     tuesdayBox.getChildren().clear(); // Clear existing children
     tuesdayBox.getChildren().addAll(labellists.getTuesdayList());
     tuesdayBox.setAlignment(Pos.CENTER_LEFT);
 
-
     wednesdayBox.getChildren().clear(); // Clear existing children
     wednesdayBox.getChildren().addAll(labellists.getWednesdayList());
     wednesdayBox.setAlignment(Pos.CENTER_LEFT);
-
 
     thursdayBox.getChildren().clear(); // Clear existing children
     thursdayBox.getChildren().addAll(labellists.getThursdayList());
     thursdayBox.setAlignment(Pos.CENTER_LEFT);
 
-
     fridayBox.getChildren().clear(); // Clear existing children
     fridayBox.getChildren().addAll(labellists.getFridayList());
     fridayBox.setAlignment(Pos.CENTER_LEFT);
-
 
     saturdayBox.getChildren().clear(); // Clear existing children
     saturdayBox.getChildren().addAll(labellists.getSaturdayList());
@@ -697,23 +655,23 @@ public class MainController extends AbstractController {
     taskQueueVbox.getChildren().addAll(taskViewLabels);
   }
 
-
+  /**
+   * Shows the task queue.
+   *
+   * @return list of tasks
+   */
   public List<Label> showTaskQueue() {
     List<Label> labels = new ArrayList<>();
 
     List<Task> tasks = this.weekView.returnTaskList();
-    for (Task task: tasks) {
+    for (Task task : tasks) {
       String name = task.getName();
       String completed = task.isCompleted().toString();
-      Label label = new Label(
-          "Name: " + name + '\n' +
-              "Completed?: " + completed
-      );
+      Label label = new Label("Name: " + name + '\n' + "Completed?: " + completed);
       labels.add(label);
     }
     return labels;
   }
-
 
   /**
    * Updates the event label list.
@@ -722,11 +680,9 @@ public class MainController extends AbstractController {
     List<Event> events = this.weekView.returnEventList();
     if (events.size() > 0) {
       for (Event event : events) {
-        Label label = new Label("Event: " + event.getName() + '\n' +
-            "Description: " + event.getDescription() + '\n' +
-            "Start Time: " + event.getStartTime() + '\n' +
-            "Duration: " + event.getDuration()
-        );
+        Label label = new Label(
+            "Event: " + event.getName() + '\n' + "Description: " + event.getDescription() + '\n' +
+                "Start Time: " + event.getStartTime() + '\n' + "Duration: " + event.getDuration());
         label.setFont(new Font(10));
         labellists.addEventToList(label, event.getDayOfWeek());
       }
@@ -734,10 +690,9 @@ public class MainController extends AbstractController {
     List<Task> tasks = this.weekView.returnTaskList();
     if (tasks.size() > 0) {
       for (Task task : tasks) {
-        Label label = new Label("Task: " + task.getName() + '\n' +
-            "Description: " + task.getDescription() + '\n' +
-            "Completed? " + task.isCompleted()
-        );
+        Label label = new Label(
+            "Task: " + task.getName() + '\n' + "Description: " + task.getDescription() + '\n' +
+                "Completed? " + task.isCompleted());
         label.setFont(new Font(10));
         labellists.addTaskToList(label, task.getDayOfWeek());
       }
