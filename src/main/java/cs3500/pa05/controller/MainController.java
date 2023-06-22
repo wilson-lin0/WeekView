@@ -450,15 +450,6 @@ public class MainController extends AbstractController {
    * Shows the events in the WeekView.
    */
   public void showGraphics() {
-    taskQueueVbox.getChildren().clear();
-    taskQueueVbox.getChildren().addAll(labellists.getSundayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getMondayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getTuesdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getWednesdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getThursdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getFridayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getSaturdayTaskList());
-
     sundayBox.getChildren().clear(); // Clear existing children
     sundayBox.getChildren().addAll(labellists.getSundayList());
     sundayBox.setAlignment(Pos.CENTER_LEFT);
@@ -485,7 +476,18 @@ public class MainController extends AbstractController {
 
     saturdayBox.getChildren().clear(); // Clear existing children
     saturdayBox.getChildren().addAll(labellists.getSaturdayList());
-    saturdayBox.setAlignment(Pos.CENTER_LEFT);;
+    saturdayBox.setAlignment(Pos.CENTER_LEFT);
+  }
+
+  public void showTaskQueue() {
+    taskQueueVbox.getChildren().clear();
+    taskQueueVbox.getChildren().addAll(labellists.getSundayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getMondayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getTuesdayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getWednesdayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getThursdayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getFridayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getSaturdayTaskList());
   }
 
   /**

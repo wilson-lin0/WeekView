@@ -39,16 +39,13 @@
                                  </Label>
                               </children>
                            </VBox>
-                           <Button fx:id="quoteButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0">
-                              <graphic>
-                                 <Label fx:id="quoteLabel" text="Write your &#10;quote here!" />
-                              </graphic>
-                           </Button>
                            <Label fx:id="titleLabel" alignment="TOP_CENTER" text="Title">
                               <font>
                                  <Font size="30.0" />
                               </font>
                            </Label>
+                           <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Sort by&#10;Name" />
+                           <Button fx:id="sortByDurationButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Sort by &#10;duration" />
                            <Button fx:id="openFileButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Open File">
                               <font>
                                  <Font size="15.0" />
