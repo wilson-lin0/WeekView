@@ -184,7 +184,7 @@ public class MainController extends AbstractController {
   }
 
   /**
-   * Changes scene to Horizontal1.
+   * Changes scene to Horizontal2.
    */
   public void changeSceneHorizontal2() {
     ViewImpl view = new Horizontal2(this);
@@ -199,7 +199,7 @@ public class MainController extends AbstractController {
   }
 
   /**
-   * Changes scene to Horizontal1.
+   * Changes scene to Horizontal3.
    */
   public void changeSceneHorizontal3() {
     ViewImpl view = new Horizontal3(this);
