@@ -25,11 +25,20 @@
                            </Label>
                         </children>
                      </HBox>
-                     <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0">
+                     <HBox alignment="CENTER" prefHeight="50.0" prefWidth="500.0">
                         <children>
                            <Label text="Please enter the maximum amount of events and tasks you would like per day." textAlignment="CENTER" wrapText="true">
                               <font>
                                  <Font size="20.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </HBox>
+                     <HBox alignment="CENTER" prefHeight="50.0" prefWidth="500.0">
+                        <children>
+                           <Label fx:id="warningTaskLabel" textAlignment="CENTER" wrapText="true">
+                              <font>
+                                 <Font size="15.0" />
                               </font>
                            </Label>
                         </children>
@@ -41,12 +50,12 @@
                                  <Font size="30.0" />
                               </font>
                            </Label>
-                           <TextField fx:id="eventTextBox" prefHeight="50.0" prefWidth="100.0">
+                           <TextField fx:id="eventLimitTextBox" prefHeight="50.0" prefWidth="100.0">
                               <font>
                                  <Font size="30.0" />
                               </font>
                            </TextField>
-                           <Button fx:id="eventSubmitButton" mnemonicParsing="false" text="Submit">
+                           <Button fx:id="eventLimitButton" mnemonicParsing="false" text="Submit">
                               <font>
                                  <Font size="25.0" />
                               </font>
@@ -60,12 +69,12 @@
                                  <Font size="30.0" />
                               </font>
                            </Label>
-                           <TextField fx:id="taskTextBox" prefHeight="50.0" prefWidth="100.0">
+                           <TextField fx:id="taskLimitTextBox" prefHeight="50.0" prefWidth="100.0">
                               <font>
                                  <Font size="30.0" />
                               </font>
                            </TextField>
-                           <Button fx:id="taskSubmitButton" mnemonicParsing="false" text="Submit">
+                           <Button fx:id="taskLimitButton" mnemonicParsing="false" text="Submit">
                               <font>
                                  <Font size="25.0" />
                               </font>
@@ -74,7 +83,7 @@
                      </HBox>
                      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0" spacing="50.0">
                         <children>
-                           <Button fx:id="exitButton" mnemonicParsing="false" text="Exit">
+                           <Button fx:id="exitLimitButton" mnemonicParsing="false" text="Exit">
                               <font>
                                  <Font size="25.0" />
                               </font>

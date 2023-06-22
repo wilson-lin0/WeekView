@@ -219,7 +219,7 @@ public class MainController extends AbstractController {
    * @return true if you can add an event
    */
   private boolean canEventContinue() {
-    if (this.weekView.hasMaximumEvents()) {
+    if (this.weekView.returnMaxEvent() != -1) {
       if (this.weekView.returnEventList().size() < this.weekView.returnMaxEvent()) {
         return true;
       } else {
@@ -351,7 +351,7 @@ public class MainController extends AbstractController {
    * @return true if you can add a task
    */
   private boolean canTaskContinue() {
-    if (this.weekView.hasMaximumTasks()) {
+    if (this.weekView.returnMaxTask() != -1) {
       if (this.weekView.returnTaskList().size() < this.weekView.returnMaxTask()) {
         return true;
       } else {
@@ -371,7 +371,7 @@ public class MainController extends AbstractController {
     List<Task> tasks = this.weekView.returnTaskList();
     if (tasks.size() > 0) {
       Task task = tasks.get(tasks.size() - 1);
-      Label label = new Label("Event: " + task.getName() + '\n' +
+      Label label = new Label("Task: " + task.getName() + '\n' +
           "Description: " + task.getDescription() + '\n' +
           "Completed? " + task.isCompleted()
       );
@@ -492,7 +492,7 @@ public class MainController extends AbstractController {
     List<Task> tasks = this.weekView.returnTaskList();
     if (tasks.size() > 0) {
       for (Task task : tasks) {
-        Label label = new Label("Event: " + task.getName() + '\n' +
+        Label label = new Label("Task: " + task.getName() + '\n' +
             "Description: " + task.getDescription() + '\n' +
             "Completed? " + task.isCompleted()
         );

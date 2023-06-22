@@ -36,7 +36,7 @@
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="25.0" prefWidth="500.0" spacing="25.0">
                      <children>
-                        <Label fx:id="warningLabel">
+                        <Label fx:id="warningTaskLabel">
                            <font>
                               <Font size="15.0" />
                            </font>
