@@ -23,6 +23,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -31,6 +32,8 @@ import javafx.stage.Stage;
  * Controls the program.
  */
 public class MainController extends AbstractController {
+  @FXML
+  private VBox taskQueueVbox;
   @FXML
   private Button addEventButton;
   @FXML
@@ -160,6 +163,7 @@ public class MainController extends AbstractController {
     this.submitEventButton.setOnAction(event -> {
       addEventToList();
       showGraphics();
+      this.totalEventsLabel.setText("Total events: " + weekView.returnEventList().size());
     });
 
     this.exitEventButton.setOnAction(event -> {
@@ -219,7 +223,7 @@ public class MainController extends AbstractController {
    * @return true if you can add an event
    */
   private boolean canEventContinue() {
-    if (this.weekView.hasMaximumEvents()) {
+    if (this.weekView.returnMaxEvent() != -1) {
       if (this.weekView.returnEventList().size() < this.weekView.returnMaxEvent()) {
         return true;
       } else {
@@ -301,6 +305,9 @@ public class MainController extends AbstractController {
     this.submitTaskButton.setOnAction(event -> {
       addTaskToList();
       showGraphics();
+      this.totalTasksLabel.setText("Total tasks: " + weekView.returnTaskList().size());
+      this.tasksCompletedLabel.setText("Tasks completed: " + weekView.returnTaskList().size() + "/"
+          + weekView.returnCompletedTasks().size());
     });
 
     this.exitTaskButton.setOnAction(event -> {
@@ -351,7 +358,7 @@ public class MainController extends AbstractController {
    * @return true if you can add a task
    */
   private boolean canTaskContinue() {
-    if (this.weekView.hasMaximumTasks()) {
+    if (this.weekView.returnMaxTask() != -1) {
       if (this.weekView.returnTaskList().size() < this.weekView.returnMaxTask()) {
         return true;
       } else {
@@ -371,7 +378,7 @@ public class MainController extends AbstractController {
     List<Task> tasks = this.weekView.returnTaskList();
     if (tasks.size() > 0) {
       Task task = tasks.get(tasks.size() - 1);
-      Label label = new Label("Event: " + task.getName() + '\n' +
+      Label label = new Label("Task: " + task.getName() + '\n' +
           "Description: " + task.getDescription() + '\n' +
           "Completed? " + task.isCompleted()
       );
@@ -471,6 +478,15 @@ public class MainController extends AbstractController {
     saturdayBox.getChildren().clear(); // Clear existing children
     saturdayBox.getChildren().addAll(labellists.getSaturdayList());
     saturdayBox.setAlignment(Pos.CENTER_LEFT);
+
+    taskQueueVbox.getChildren().clear();
+    taskQueueVbox.getChildren().addAll(labellists.getSundayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getMondayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getTuesdayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getWednesdayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getThursdayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getFridayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getSaturdayTaskList());
   }
 
   /**
@@ -492,7 +508,7 @@ public class MainController extends AbstractController {
     List<Task> tasks = this.weekView.returnTaskList();
     if (tasks.size() > 0) {
       for (Task task : tasks) {
-        Label label = new Label("Event: " + task.getName() + '\n' +
+        Label label = new Label("Task: " + task.getName() + '\n' +
             "Description: " + task.getDescription() + '\n' +
             "Completed? " + task.isCompleted()
         );

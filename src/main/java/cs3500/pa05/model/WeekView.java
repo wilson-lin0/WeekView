@@ -35,8 +35,8 @@ public class WeekView {
     this.eventList = new ArrayList<>();
     this.taskList = new ArrayList<>();
     this.notes = new ArrayList<>();
-    this.maxEvents = false;
-    this.maxTasks = false;
+    this.maxEvent = -1;
+    this.maxTask = -1;
     this.quote = "Enter your quote.";
   }
 
@@ -164,13 +164,6 @@ public class WeekView {
   }
 
   /**
-   * Adds a note tp the list of notes.
-   *
-   * @param note the note to add
-   */
-  public void addNote(String note) { notes.add(note); }
-
-  /**
    * Returns the task list.
    *
    * @return the task list
@@ -204,24 +197,6 @@ public class WeekView {
    */
   public int returnMaxEvent() {
     return this.maxEvent;
-  }
-
-  /**
-   * Returns the maximum number of events.
-   *
-   * @return the maximum number of events
-   */
-  public boolean hasMaximumEvents() {
-    return this.maxEvents;
-  }
-
-  /**
-   * Returns if there is a maximum number of tasks.
-   *
-   * @return whether there is a maximum number of tasks
-   */
-  public boolean hasMaximumTasks() {
-    return this.maxTasks;
   }
 
   /**

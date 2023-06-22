@@ -77,10 +77,10 @@
                            </Button>
                         </children>
                      </HBox>
-                     <GridPane layoutX="10.0" layoutY="100.0" prefHeight="700.0" prefWidth="1180.0" style="-fx-border-color: black;">
+                     <GridPane layoutX="10.0" layoutY="100.0" prefHeight="700.0" prefWidth="1000.0">
                        <columnConstraints>
-                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="595.0" minWidth="10.0" prefWidth="160.0" />
-                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1042.0" minWidth="10.0" prefWidth="1038.0" />
+                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="595.0" minWidth="10.0" prefWidth="153.33333587646484" />
+                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="1042.0" minWidth="10.0" prefWidth="844.6666641235352" />
                        </columnConstraints>
                        <rowConstraints>
                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -164,6 +164,33 @@
                            <HBox fx:id="saturdayBox" prefHeight="100.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         </children>
                      </GridPane>
+                     <VBox alignment="TOP_CENTER" layoutX="1010.0" layoutY="100.0" prefHeight="700.0" prefWidth="180.0" style="-fx-border-color: black;">
+                        <children>
+                           <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">
+                              <children>
+                                 <Label text="Task Queue">
+                                    <font>
+                                       <Font size="20.0" />
+                                    </font>
+                                 </Label>
+                              </children>
+                           </HBox>
+                           <VBox fx:id="taskQueueVbox" alignment="TOP_CENTER" prefHeight="350.0" prefWidth="100.0" spacing="5.0" />
+                           <VBox fx:id="quoteVBox" alignment="TOP_CENTER" prefHeight="350.0" prefWidth="100.0" spacing="5.0">
+                              <children>
+                                 <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">
+                                    <children>
+                                       <Label text="Quotes">
+                                          <font>
+                                             <Font size="20.0" />
+                                          </font>
+                                       </Label>
+                                    </children>
+                                 </HBox>
+                              </children>
+                           </VBox>
+                        </children>
+                     </VBox>
                   </children>
                </AnchorPane>
             </children>

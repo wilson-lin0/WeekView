@@ -18,15 +18,15 @@ import javafx.stage.Stage;
 public class MaximumEventTaskController extends AbstractController {
   protected Popup maximumPopup;
   @FXML
-  private TextField eventTextBox;
+  private TextField eventLimitTextBox;
   @FXML
-  private TextField taskTextBox;
+  private TextField taskLimitTextBox;
   @FXML
-  private Button eventSubmitButton;
+  private Button eventLimitButton;
   @FXML
-  private Button taskSubmitButton;
+  private Button taskLimitButton;
   @FXML
-  private Button exitButton;
+  private Button exitLimitButton;
 
 
   /**
@@ -57,12 +57,12 @@ public class MaximumEventTaskController extends AbstractController {
       e.printStackTrace();
     }
 
-    this.eventSubmitButton.setOnAction(event ->
-        weekView.setMaxEvent(parseInt(this.eventTextBox.getText())));
-    this.taskSubmitButton.setOnAction(event ->
-        weekView.setMaxTask(parseInt(this.taskTextBox.getText())));
+    this.eventLimitButton.setOnAction(event ->
+        weekView.setMaxEvent(parseInt(this.eventLimitTextBox.getText())));
+    this.taskLimitButton.setOnAction(event ->
+        weekView.setMaxTask(parseInt(this.taskLimitTextBox.getText())));
 
-    this.exitButton.setOnAction(event -> {
+    this.exitLimitButton.setOnAction(event -> {
       this.maximumPopup.hide();
     });
   }
