@@ -55,7 +55,7 @@ public class LabelLists {
    * @return event list
    */
   public List<Label> getSundayList() {
-    return sundayList;
+    return this.sundayList;
   }
 
   /**
@@ -64,7 +64,7 @@ public class LabelLists {
    * @return task list
    */
   public List<Label> getSundayTaskList() {
-    return sundayTaskList;
+    return this.sundayTaskList;
   }
 
   /**
@@ -73,7 +73,7 @@ public class LabelLists {
    * @return event list
    */
   public List<Label> getMondayList() {
-    return mondayList;
+    return this.mondayList;
   }
 
   /**
@@ -82,7 +82,7 @@ public class LabelLists {
    * @return task list
    */
   public List<Label> getMondayTaskList() {
-    return mondayTaskList;
+    return this.mondayTaskList;
   }
 
   /**
@@ -91,7 +91,7 @@ public class LabelLists {
    * @return event list
    */
   public List<Label> getTuesdayList() {
-    return tuesdayList;
+    return this.tuesdayList;
   }
 
   /**
@@ -100,7 +100,7 @@ public class LabelLists {
    * @return task list
    */
   public List<Label> getTuesdayTaskList() {
-    return tuesdayTaskList;
+    return this.tuesdayTaskList;
   }
 
   /**
@@ -109,7 +109,7 @@ public class LabelLists {
    * @return event list
    */
   public List<Label> getWednesdayList() {
-    return wednesdayList;
+    return this.wednesdayList;
   }
 
   /**
@@ -118,7 +118,7 @@ public class LabelLists {
    * @return task list
    */
   public List<Label> getWednesdayTaskList() {
-    return wednesdayTaskList;
+    return this.wednesdayTaskList;
   }
 
   /**
@@ -127,7 +127,7 @@ public class LabelLists {
    * @return event list
    */
   public List<Label> getThursdayList() {
-    return thursdayList;
+    return this.thursdayList;
   }
 
   /**
@@ -136,7 +136,7 @@ public class LabelLists {
    * @return task list
    */
   public List<Label> getThursdayTaskList() {
-    return thursdayTaskList;
+    return this.thursdayTaskList;
   }
 
   /**
@@ -145,7 +145,7 @@ public class LabelLists {
    * @return event list
    */
   public List<Label> getFridayList() {
-    return fridayList;
+    return this.fridayList;
   }
 
   /**
@@ -154,7 +154,7 @@ public class LabelLists {
    * @return task list
    */
   public List<Label> getFridayTaskList() {
-    return fridayTaskList;
+    return this.fridayTaskList;
   }
 
   /**
@@ -163,7 +163,7 @@ public class LabelLists {
    * @return event list
    */
   public List<Label> getSaturdayList() {
-    return saturdayList;
+    return this.saturdayList;
   }
 
   /**
@@ -172,7 +172,7 @@ public class LabelLists {
    * @return task list
    */
   public List<Label> getSaturdayTaskList() {
-    return saturdayTaskList;
+    return this.saturdayTaskList;
   }
 
   public List<Label> getEventTaskList() {
