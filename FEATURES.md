@@ -7,7 +7,6 @@
 ## Section 2: Headlining Features
 - Task Queue
 - Theme
-- Categories
 
 ## Section 3: Power Ups
 - Quote & Notes

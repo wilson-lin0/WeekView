@@ -12,7 +12,7 @@ import java.nio.file.Files;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class WeekViewTest {
+public class WeekJsonViewTest {
   private WeekView weekView;
   private File testFile;
 

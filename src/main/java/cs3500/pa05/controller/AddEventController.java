@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -43,20 +44,6 @@ public class AddEventController extends AbstractController {
   private Button submitButton;
   @FXML
   private Button exitButton;
-  @FXML
-  protected HBox sundayBox;
-  @FXML
-  protected HBox mondayBox;
-  @FXML
-  protected HBox tuesdayBox;
-  @FXML
-  protected HBox wednesdayBox;
-  @FXML
-  protected HBox thursdayBox;
-  @FXML
-  protected HBox fridayBox;
-  @FXML
-  protected HBox saturdayBox;
 
   /**
    * Creates an AddEventController.
@@ -64,17 +51,8 @@ public class AddEventController extends AbstractController {
    * @param weekView the WeekView
    * @param stage    the stage
    */
-  public AddEventController(WeekView weekView, Stage stage, HBox sundayBox, HBox mondayBox,
-                            HBox tuesdayBox, HBox wednesdayBox, HBox thursdayBox,
-                            HBox fridayBox, HBox saturdayBox) {
+  public AddEventController(WeekView weekView, Stage stage) {
     super(weekView, stage);
-    this.sundayBox = sundayBox;
-    this.mondayBox = mondayBox;
-    this.tuesdayBox = tuesdayBox;
-    this.wednesdayBox = wednesdayBox;
-    this.thursdayBox = thursdayBox;
-    this.fridayBox = fridayBox;
-    this.saturdayBox = saturdayBox;
   }
 
   /**
@@ -110,7 +88,7 @@ public class AddEventController extends AbstractController {
     String description = null;
     Days day = null;
     String startTime = null;
-    String duration = null;
+    int duration = -1;
 
     boolean canContinue = canContinue();
 
@@ -128,7 +106,7 @@ public class AddEventController extends AbstractController {
         canContinue = false;
       }
       if (isInteger(createEventDuration.getText())) {
-        duration = createEventDuration.getText();
+        duration = Integer.parseInt(createEventDuration.getText());
       } else {
         warningLabel.setText("The duration is not an integer");
         canContinue = false;
@@ -146,7 +124,8 @@ public class AddEventController extends AbstractController {
 
     if (canContinue) {
       weekView.updateEvent(new Event(eventName, description, day, startTime, duration));
-      showEvent();
+      updateEventLabelList();
+      this.eventCreationPopup.hide();
     }
   }
 
@@ -202,53 +181,20 @@ public class AddEventController extends AbstractController {
     }
   }
 
-
-  /**
-   * Shows the events in the WeekView.
-   */
-  public void showEvent() {
-    updateEventLabelList();
-    sundayBox.getChildren().clear(); // Clear existing children
-    sundayBox.getChildren().addAll(labellists.getSundayEventList());
-    sundayBox.setAlignment(Pos.CENTER_LEFT);
-
-    mondayBox.getChildren().clear(); // Clear existing children
-    mondayBox.getChildren().addAll(labellists.getMondayEventList());
-    mondayBox.setAlignment(Pos.CENTER_LEFT);
-
-    tuesdayBox.getChildren().clear(); // Clear existing children
-    tuesdayBox.getChildren().addAll(labellists.getTuesdayEventList());
-    tuesdayBox.setAlignment(Pos.CENTER_LEFT);
-
-    wednesdayBox.getChildren().clear(); // Clear existing children
-    wednesdayBox.getChildren().addAll(labellists.getWednesdayEventList());
-    wednesdayBox.setAlignment(Pos.CENTER_LEFT);
-
-    thursdayBox.getChildren().clear(); // Clear existing children
-    thursdayBox.getChildren().addAll(labellists.getThursdayEventList());
-    thursdayBox.setAlignment(Pos.CENTER_LEFT);
-
-    fridayBox.getChildren().clear(); // Clear existing children
-    fridayBox.getChildren().addAll(labellists.getFridayEventList());
-    fridayBox.setAlignment(Pos.CENTER_LEFT);
-
-    saturdayBox.getChildren().clear(); // Clear existing children
-    saturdayBox.getChildren().addAll(labellists.getSaturdayEventList());
-    saturdayBox.setAlignment(Pos.CENTER_LEFT);
-  }
-
-
   /**
    * Updates the event label list.
    */
   private void updateEventLabelList() {
-    Event event = this.weekView.returnEventList().get(weekView.returnEventList().size() - 1);
-    Label label = new Label("Event: " + event.getName() + '\n' +
-        "Description: " + event.getDescription() + '\n' +
-        "Start Time: " + event.getStartTime() + '\n' +
-        "Duration: " + event.getDuration()
-    );
-    label.setFont(new Font(10));
-    labellists.addEventToList(label, event.getDayOfWeek());
+    List<Event> events = this.weekView.returnEventList();
+    if (events.size() > 0) {
+      Event event = events.get(events.size() - 1);
+      Label label = new Label("Event: " + event.getName() + '\n' +
+          "Description: " + event.getDescription() + '\n' +
+          "Start Time: " + event.getStartTime() + '\n' +
+          "Duration: " + event.getDuration()
+      );
+      label.setFont(new Font(10));
+      labellists.addEventToList(label, event.getDayOfWeek());
+    }
   }
 }

@@ -1,14 +1,20 @@
 package cs3500.pa05.controller;
 
+import cs3500.pa05.model.Event;
+import cs3500.pa05.model.Task;
 import cs3500.pa05.model.WeekView;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Font;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
@@ -44,6 +50,21 @@ public class MainController extends AbstractController {
   private Label totalTasksLabel;
   @FXML
   private Label tasksCompletedLabel;
+
+  @FXML
+  protected HBox sundayBox;
+  @FXML
+  protected HBox mondayBox;
+  @FXML
+  protected HBox tuesdayBox;
+  @FXML
+  protected HBox wednesdayBox;
+  @FXML
+  protected HBox thursdayBox;
+  @FXML
+  protected HBox fridayBox;
+  @FXML
+  protected HBox saturdayBox;
   private final Popup startMenu;
   String file;
 
@@ -78,6 +99,7 @@ public class MainController extends AbstractController {
     });
     this.addTaskButton.setOnAction((event -> {
       addTask();
+      showGraphics();
     }));
     this.eventTaskLimitButton.setOnAction(event -> {
       setLimit();
@@ -112,18 +134,16 @@ public class MainController extends AbstractController {
    * Adds an event.
    */
   private void addEvent() {
-    new AddEventController(this.weekView, this.stage, this.sundayBox, this.mondayBox,
-        this.tuesdayBox, this.wednesdayBox, this.thursdayBox, this.fridayBox,
-        this.saturdayBox).run();
+    new AddEventController(this.weekView, this.stage).run();
+    showGraphics();
   }
 
   /**
    * Adds a task.
    */
   private void addTask() {
-    new AddTaskController(this.weekView, this.stage, this.sundayBox, this.mondayBox,
-        this.tuesdayBox, this.wednesdayBox, this.thursdayBox, this.fridayBox,
-        this.saturdayBox).run();
+    new AddTaskController(this.weekView, this.stage).run();
+    showGraphics();
   }
 
   /**
@@ -164,6 +184,8 @@ public class MainController extends AbstractController {
     file = fileNameTextField.getText() + ".bujo";
     this.weekView.openFile(file);
     startMenu.hide();
+    refreshPage();
+    showGraphics();
   }
 
   /**
@@ -181,5 +203,74 @@ public class MainController extends AbstractController {
    */
   private void saveFile() {
     this.weekView.saveFile(new File(file));
+  }
+
+  /**
+   * Shows the events in the WeekView.
+   */
+  public void showGraphics() {
+    sundayBox.getChildren().clear(); // Clear existing children
+    sundayBox.getChildren().addAll(labellists.getSundayEventList());
+    sundayBox.getChildren().addAll(labellists.getSundayTaskList());
+    sundayBox.setAlignment(Pos.CENTER_LEFT);
+
+    mondayBox.getChildren().clear(); // Clear existing children
+    mondayBox.getChildren().addAll(labellists.getMondayEventList());
+    mondayBox.getChildren().addAll(labellists.getMondayTaskList());
+    mondayBox.setAlignment(Pos.CENTER_LEFT);
+
+    tuesdayBox.getChildren().clear(); // Clear existing children
+    tuesdayBox.getChildren().addAll(labellists.getTuesdayEventList());
+    tuesdayBox.getChildren().addAll(labellists.getTuesdayTaskList());
+    tuesdayBox.setAlignment(Pos.CENTER_LEFT);
+
+    wednesdayBox.getChildren().clear(); // Clear existing children
+    wednesdayBox.getChildren().addAll(labellists.getWednesdayEventList());
+    wednesdayBox.getChildren().addAll(labellists.getWednesdayTaskList());
+    wednesdayBox.setAlignment(Pos.CENTER_LEFT);
+
+    thursdayBox.getChildren().clear(); // Clear existing children
+    thursdayBox.getChildren().addAll(labellists.getThursdayEventList());
+    thursdayBox.getChildren().addAll(labellists.getThursdayTaskList());
+    thursdayBox.setAlignment(Pos.CENTER_LEFT);
+
+    fridayBox.getChildren().clear(); // Clear existing children
+    fridayBox.getChildren().addAll(labellists.getFridayEventList());
+    fridayBox.getChildren().addAll(labellists.getFridayTaskList());
+    fridayBox.setAlignment(Pos.CENTER_LEFT);
+
+    saturdayBox.getChildren().clear(); // Clear existing children
+    saturdayBox.getChildren().addAll(labellists.getSaturdayEventList());
+    saturdayBox.getChildren().addAll(labellists.getSaturdayTaskList());
+    saturdayBox.setAlignment(Pos.CENTER_LEFT);
+  }
+
+  /**
+   * Updates the event label list.
+   */
+  private void refreshPage() {
+    List<Event> events = this.weekView.returnEventList();
+    if (events.size() > 0) {
+      for (Event event : events) {
+        Label label = new Label("Event: " + event.getName() + '\n' +
+            "Description: " + event.getDescription() + '\n' +
+            "Start Time: " + event.getStartTime() + '\n' +
+            "Duration: " + event.getDuration()
+        );
+        label.setFont(new Font(10));
+        labellists.addEventToList(label, event.getDayOfWeek());
+      }
+    }
+    List<Task> tasks = this.weekView.returnTaskList();
+    if (tasks.size() > 0) {
+      for (Task task : tasks) {
+        Label label = new Label("Event: " + task.getName() + '\n' +
+            "Description: " + task.getDescription() + '\n' +
+            "Completed? " + task.isCompleted()
+        );
+        label.setFont(new Font(10));
+        labellists.addTaskToList(label, task.getDayOfWeek());
+      }
+    }
   }
 }

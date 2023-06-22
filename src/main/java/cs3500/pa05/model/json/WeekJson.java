@@ -4,14 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
-import java.util.Collection;
 import java.util.List;
 
-public record Week(
+public record WeekJson(
     @JsonProperty("maxTask") int maxTask,
     @JsonProperty("maxEvent") int maxEvent,
-    @JsonProperty("eventList") List<Event> eventList,
-    @JsonProperty("taskList") List<Task> taskList,
+    @JsonProperty("eventList") List<EventJson> eventList,
+    @JsonProperty("taskList") List<TaskJson> taskList,
     @JsonProperty("notes") List<String> notes) {
 
   /**
@@ -31,14 +30,14 @@ public record Week(
   /**
    * @return the events list
    */
-  public List<Event> getEventList() {
+  public List<EventJson> getEventList() {
     return eventList;
   }
 
   /**
    * @return the task list
    */
-  public List<Task> getTaskList() {
+  public List<TaskJson> getTaskList() {
     return taskList;
   }
 
