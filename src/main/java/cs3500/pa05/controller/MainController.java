@@ -8,6 +8,13 @@ import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.WeekView;
 import cs3500.pa05.model.enumerations.Days;
+import cs3500.pa05.view.Horizontal1;
+import cs3500.pa05.view.Horizontal2;
+import cs3500.pa05.view.Horizontal3;
+import cs3500.pa05.view.Vertical1;
+import cs3500.pa05.view.Vertical2;
+import cs3500.pa05.view.Vertical3;
+import cs3500.pa05.view.ViewImpl;
 import java.io.File;
 import java.io.IOException;
 import java.net.URI;
@@ -151,8 +158,105 @@ public class MainController extends AbstractController {
     this.eventTaskLimitButton.setOnAction(event -> {
       setLimit();
     });
+    // this.layoutButton.setOnAction(event -> popup w/6 buttons)
+    // this.horizontal1.setOnAction(event -> changeSceneHorizontal1)
+    // this.horizontal2.setOnAction(event -> changeSceneHorizontal2)
+    // this.horizontal3.setOnAction(event -> changeSceneHorizontal3)
+
+    // this.vertical1.setOnAction(event -> changeSceneVertical1)
+    // this.vertical2.setOnAction(event -> changeSceneVertical2)
+    // this.vertical3.setOnAction(event -> changeSceneVertical3)
   }
 
+  /**
+   * Changes scene to Horizontal1.
+   */
+  public void changeSceneHorizontal1() {
+    ViewImpl view = new Horizontal1(this);
+
+    try {
+      stage.setScene(view.load());
+      stage.show();
+      this.run();
+    } catch (IllegalStateException exc) {
+      System.err.println("Unable to load GUI.");
+    }
+  }
+
+  /**
+   * Changes scene to Horizontal1.
+   */
+  public void changeSceneHorizontal2() {
+    ViewImpl view = new Horizontal2(this);
+
+    try {
+      stage.setScene(view.load());
+      stage.show();
+      this.run();
+    } catch (IllegalStateException exc) {
+      System.err.println("Unable to load GUI.");
+    }
+  }
+
+  /**
+   * Changes scene to Horizontal1.
+   */
+  public void changeSceneHorizontal3() {
+    ViewImpl view = new Horizontal3(this);
+
+    try {
+      stage.setScene(view.load());
+      stage.show();
+      this.run();
+    } catch (IllegalStateException exc) {
+      System.err.println("Unable to load GUI.");
+    }
+  }
+
+  /**
+   * Changes scene to Vertical1.
+   */
+  public void changeSceneVertical1() {
+    ViewImpl view = new Vertical1(this);
+
+    try {
+      stage.setScene(view.load());
+      stage.show();
+      this.run();
+    } catch (IllegalStateException exc) {
+      System.err.println("Unable to load GUI.");
+    }
+  }
+
+  /**
+   * Changes scene to Vertical2.
+   */
+  public void changeSceneVertical2() {
+    ViewImpl view = new Vertical2(this);
+
+    try {
+      stage.setScene(view.load());
+      stage.show();
+      this.run();
+    } catch (IllegalStateException exc) {
+      System.err.println("Unable to load GUI.");
+    }
+  }
+
+  /**
+   * Changes scene to Vertical3.
+   */
+  public void changeSceneVertical3() {
+    ViewImpl view = new Vertical3(this);
+
+    try {
+      stage.setScene(view.load());
+      stage.show();
+      this.run();
+    } catch (IllegalStateException exc) {
+      System.err.println("Unable to load GUI.");
+    }
+  }
 
   /**
    * Adds an event.
@@ -225,7 +329,7 @@ public class MainController extends AbstractController {
     try {
       description = createEventDescription.getText();
     } catch (NullPointerException n) {
-// it is okay to not have a description
+    // it is okay to not have a description
     }
 
 
