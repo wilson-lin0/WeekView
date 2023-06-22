@@ -14,11 +14,7 @@
 - Weekly Overview
 
 ## Section 4: Quality of Life
-- Week Tabs
+- Link
 - Vertical Layout
 
 ## Section 5: Extra Credit
-- Visual Flourish
-- Splash Screen
-- Privacy Lock
-- Tested GUI

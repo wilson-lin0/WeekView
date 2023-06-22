@@ -7,8 +7,8 @@ A simple but effective way to organize your life, with easy ways to track events
 
 Create a task and view it in the task queue, or create an event and watch them appear on the week view.
 
-Write a quick note to yourself, or have an inspirational note to pick you up. See each event or task up close with the
-mini viewer, and see how your week's progressing with the overview. 
+Write a quick note to yourself, or have an inspirational note to pick you up. Sort tasks and events by name or duration,
+and see how your week's progressing with the overview. 
 
 Change your layout to the vertical layout, or add some links to your bullet journal.
 
