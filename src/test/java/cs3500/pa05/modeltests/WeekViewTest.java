@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Test;
  * Tests the WeekView class.
  */
 public class WeekViewTest {
-
   private WeekView weekView;
 
   @BeforeEach
