@@ -67,9 +67,13 @@ public class MainController extends AbstractController {
   @FXML
   private Button newFileButton;
   @FXML
+  private TextField weekNameTextField;
+  @FXML
   private Label totalEventsLabel;
   @FXML
   private Label totalTasksLabel;
+  @FXML
+  private Label titleLabel;
   @FXML
   private Label tasksCompletedLabel;
   @FXML
@@ -579,9 +583,11 @@ public class MainController extends AbstractController {
       startMenu.show(this.stage);
 
       this.openFileButton0.setOnAction(event -> {
+        titleLabel.setText(weekNameTextField.getText());
         openFile();
       });
       this.newFileButton.setOnAction(event -> {
+        titleLabel.setText(weekNameTextField.getText());
         newFile();
       });
     } catch (IOException e) {
