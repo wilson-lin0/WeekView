@@ -7,6 +7,9 @@ import cs3500.pa05.model.enumerations.Days;
 import cs3500.pa05.model.json.EventJson;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests EventJson class.
+ */
 public class EventJsonTest {
 
   @Test

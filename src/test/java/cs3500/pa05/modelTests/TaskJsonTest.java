@@ -7,6 +7,9 @@ import cs3500.pa05.model.enumerations.Days;
 import cs3500.pa05.model.json.TaskJson;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests TaskJson class.
+ */
 public class TaskJsonTest {
 
   @Test

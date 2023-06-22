@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import cs3500.pa05.model.enumerations.Days;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests Days class.
+ */
 public class DaysTest {
 
   @Test

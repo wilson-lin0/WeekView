@@ -8,6 +8,9 @@ import cs3500.pa05.model.Task;
 import cs3500.pa05.model.enumerations.Days;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the Task class.
+ */
 public class TaskTest {
 
   @Test
@@ -43,7 +46,8 @@ public class TaskTest {
   @Test
   public void testToString() {
     Task task = new Task("Task 1", "Description 1", Days.MONDAY, false);
-    String expected = "Task: Task 1\nDescription: Description 1\nDay of Week: MONDAY\nCompleted: false";
+    String expected = "Task: Task 1\nDescription: Description 1\nDay of Week: MONDAY\n"
+        + "Completed: false";
     assertEquals(expected, task.toString());
   }
 

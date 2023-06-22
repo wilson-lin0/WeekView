@@ -1,16 +1,19 @@
 package cs3500.pa05.modelTests;
 
-import cs3500.pa05.model.FileWriter;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import cs3500.pa05.model.FileWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Tests the FileWriter Class
+ */
 public class FileWriterTest {
   private File tempFile;
   private FileWriter fileWriter;

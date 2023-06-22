@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import cs3500.pa05.model.FileReader;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import java.io.File;
-import java.io.IOException;
 
 public class FileReaderTest {
   private File tempFile;
@@ -60,12 +60,11 @@ public class FileReaderTest {
 
   @Test
   public void testReadFileWithException() {
-      File unreadableFile = new File("unreadable", ".txt");
-      unreadableFile.setReadable(false);
-
-      assertThrows(IOException.class, () -> {
-        fileReader.readFile(unreadableFile);
-      });
+    File unreadableFile = new File("unreadable", ".txt");
+    unreadableFile.setReadable(false);
+    assertThrows(IOException.class, () -> {
+      fileReader.readFile(unreadableFile);
+    });
   }
 
   @Test

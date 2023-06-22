@@ -11,6 +11,9 @@ import cs3500.pa05.model.json.JsonUtil;
 import cs3500.pa05.model.json.TaskJson;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the JsonUtil Class.
+ */
 class JsonUtilTest {
 
   @Test

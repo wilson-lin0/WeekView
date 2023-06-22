@@ -1,20 +1,25 @@
 package cs3500.pa05.modelTests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.WeekView;
 import cs3500.pa05.model.enumerations.Days;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the WeekView class.
+ */
 public class WeekViewTest {
   private WeekView weekView;
 
@@ -61,8 +66,20 @@ public class WeekViewTest {
       List<String> lines = Files.readAllLines(tempFile.toPath());
       assertEquals(1, lines.size()); // Check the number of lines in the file
 
-      assertEquals("{\"maxTask\":5,\"maxEvent\":10,\"eventList\":[{\"name\":\"Event 1\",\"description\":\"Description 1\",\"dayOfWeek\":\"MONDAY\",\"startTime\":\"10:00 AM\",\"duration\":2},{\"name\":\"Event 2\",\"description\":\"Description 2\",\"dayOfWeek\":\"TUESDAY\",\"startTime\":\"2:00 PM\",\"duration\":1}],\"taskList\":[{\"name\":\"Task 1\",\"description\":\"Description 1\",\"dayOfWeek\":\"MONDAY\",\"completed\":false},{\"name\":\"Task 2\",\"description\":\"Description 2\",\"dayOfWeek\":\"TUESDAY\",\"completed\":true}],\"notes\":[]}", lines.get(0));
-      assertEquals("{\"maxTask\":5,\"maxEvent\":10,\"eventList\":[{\"name\":\"Event 1\",\"description\":\"Description 1\",\"dayOfWeek\":\"MONDAY\",\"startTime\":\"10:00 AM\",\"duration\":2},{\"name\":\"Event 2\",\"description\":\"Description 2\",\"dayOfWeek\":\"TUESDAY\",\"startTime\":\"2:00 PM\",\"duration\":1}],\"taskList\":[{\"name\":\"Task 1\",\"description\":\"Description 1\",\"dayOfWeek\":\"MONDAY\",\"completed\":false},{\"name\":\"Task 2\",\"description\":\"Description 2\",\"dayOfWeek\":\"TUESDAY\",\"completed\":true}],\"notes\":[]}", lines.get(0));
+      assertEquals("{\"maxTask\":5,\"maxEvent\":10,\"eventList\":[{\"name\":\"Event 1\","
+          + "\"description\":\"Description 1\",\"dayOfWeek\":\"MONDAY\",\"startTime\":\"10:00 AM\","
+          + "\"duration\":2},{\"name\":\"Event 2\",\"description\":\"Description 2\",\"dayOfWeek\":"
+          + "\"TUESDAY\",\"startTime\":\"2:00 PM\",\"duration\":1}],\"taskList\":[{\"name\":"
+          + "\"Task 1\",\"description\":\"Description 1\",\"dayOfWeek\":\"MONDAY\",\"completed\""
+          + ":false},{\"name\":\"Task 2\",\"description\":\"Description 2\",\"dayOfWeek\":"
+          + "\"TUESDAY\",\"completed\":true}],\"notes\":[]}", lines.get(0));
+      assertEquals("{\"maxTask\":5,\"maxEvent\":10,\"eventList\":[{\"name\":\"Event 1\","
+          + "\"description\":\"Description 1\",\"dayOfWeek\":\"MONDAY\",\"startTime\":\"10:00 AM\","
+          + "\"duration\":2},{\"name\":\"Event 2\",\"description\":\"Description 2\",\"dayOfWeek\":"
+          + "\"TUESDAY\",\"startTime\":\"2:00 PM\",\"duration\":1}],\"taskList\":[{\"name\":"
+          + "\"Task 1\",\"description\":\"Description 1\",\"dayOfWeek\":\"MONDAY\",\"completed\""
+          + ":false},{\"name\":\"Task 2\",\"description\":\"Description 2\",\"dayOfWeek\":\""
+          + "TUESDAY\",\"completed\":true}],\"notes\":[]}", lines.get(0));
 
     } catch (IOException e) {
       e.printStackTrace();
@@ -74,10 +91,11 @@ public class WeekViewTest {
     String fileString = "path/to/sample.json";
 
     // Prepare the content of the JSON file
-    String jsonString = "{\"maxTask\": 10, \"maxEvent\": 5, \"eventList\": [{\"name\": \"Event 1\", " +
-        "\"description\": \"Event description\", \"dayOfWeek\": \"MONDAY\", \"startTime\": \"10:00 AM\", " +
-        "\"duration\": 60}], \"taskList\": [{\"name\": \"Task 1\", \"description\": \"Task description\", " +
-        "\"dayOfWeek\": \"TUESDAY\", \"completed\": false}], \"notes\": []}";
+    String jsonString = "{\"maxTask\": 10, \"maxEvent\": 5, \"eventList\": "
+        + "[{\"name\": \"Event 1\", \"description\": \"Event description\", \"dayOfWeek\": "
+        + "\"MONDAY\", \"startTime\": \"10:00 AM\", \"duration\": 60}], \"taskList\": [{\"name\": "
+        + "\"Task 1\", \"description\": \"Task description\", \"dayOfWeek\": \"TUESDAY\", "
+        + "\"completed\": false}], \"notes\": []}";
 
     try {
       // Create the JSON file

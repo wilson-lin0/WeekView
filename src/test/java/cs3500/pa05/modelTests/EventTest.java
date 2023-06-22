@@ -5,6 +5,9 @@ import cs3500.pa05.model.enumerations.Days;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the Event class.
+ */
 public class EventTest {
 
   @Test
