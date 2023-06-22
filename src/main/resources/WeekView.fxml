@@ -45,7 +45,7 @@
                                  <Font size="30.0" />
                               </font>
                            </Label>
-                           <Button mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Sort by&#10;Name" />
+                           <Button fx:id="sortByNameButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Sort by&#10;Name" />
                            <Button fx:id="sortByDurationButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Sort by &#10;duration" />
                            <Button fx:id="openFileButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Open File">
                               <font>

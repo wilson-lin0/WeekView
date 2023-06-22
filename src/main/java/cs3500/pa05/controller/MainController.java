@@ -3,7 +3,6 @@ package cs3500.pa05.controller;
 import static cs3500.pa05.model.enumerations.Days.verifyDay;
 
 import cs3500.pa05.model.Event;
-import cs3500.pa05.model.LabelLists;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.WeekView;
 import cs3500.pa05.model.enumerations.Days;
@@ -11,7 +10,6 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javafx.fxml.FXML;
@@ -106,7 +104,11 @@ public class MainController extends AbstractController {
   private Button submitTaskButton;
   @FXML
   private Button exitTaskButton;
-  String file;
+  @FXML
+  private Button sortByNameButton;
+  @FXML
+  private Button sortByDurationButton;
+  private String file;
 
   /**
    * Creates a MainController.
@@ -141,6 +143,14 @@ public class MainController extends AbstractController {
     this.eventTaskLimitButton.setOnAction(event -> {
       setLimit();
     });
+    this.sortByDurationButton.setOnAction(event -> {
+      labellists.clearAll();
+      addToList(weekView.sortTasksAndEventsByDuration());
+    });
+    this.sortByNameButton.setOnAction(event -> {
+      labellists.clearAll();
+      addToList(weekView.sortTasksAndEventsByName());
+    });
   }
 
   /**
@@ -161,7 +171,7 @@ public class MainController extends AbstractController {
     this.eventCreationPopup.show(this.stage);
 
     this.submitEventButton.setOnAction(event -> {
-      addEventToList();
+      addToList();
       showGraphics();
       this.totalEventsLabel.setText("Total events: " + weekView.returnEventList().size());
     });
@@ -171,7 +181,38 @@ public class MainController extends AbstractController {
     });
   }
 
-  private void addEventToList() {
+  private void addToList(List<Object> list) {
+    for (Object object : list) {
+      if (object instanceof Event) {
+        String eventName = ((Event) object).getName();
+        String description = ((Event) object).getDescription();
+        ;
+        Days day = ((Event) object).getDayOfWeek();
+        String startTime = ((Event) object).getStartTime();
+        int duration = ((Event) object).getDuration();
+        boolean canEventContinue = canEventContinue();
+
+        if (canEventContinue) {
+          weekView.updateEvent(new Event(eventName, description, day, startTime, duration));
+          updateEventLabelList();
+        }
+      } else if (object instanceof Task) {
+        String taskName = ((Task) object).getName();
+        String description = ((Task) object).getDescription();
+        Days day = ((Task) object).getDayOfWeek();
+        boolean completed = false;
+        boolean canContinue = canTaskContinue();
+
+        if (canContinue) {
+          weekView.updateTask(new Task(taskName, description, day, completed));
+          updateTaskLabelList();
+        }
+      }
+    }
+    showGraphics();
+  }
+
+  private void addToList() {
     String eventName = null;
     String description = null;
     Days day = null;
@@ -272,7 +313,7 @@ public class MainController extends AbstractController {
   /**
    * Updates the event label list.
    */
-  private void updateEventLabelList() {
+  public void updateEventLabelList() {
     List<Event> events = this.weekView.returnEventList();
     if (events.size() > 0) {
       Event event = events.get(events.size() - 1);
@@ -373,7 +414,7 @@ public class MainController extends AbstractController {
   /**
    * Updates the task label list.
    */
-  private void updateTaskLabelList() {
+  public void updateTaskLabelList() {
     List<Task> tasks = this.weekView.returnTaskList();
     if (tasks.size() > 0) {
       Task task = tasks.get(tasks.size() - 1);

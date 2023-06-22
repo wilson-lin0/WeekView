@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -216,12 +218,40 @@ public class WeekView {
     }
     return returnList;
   }
-
-  public void changeQuote(String quote) {
-    this.quote = quote;
+  public List<Object> sortTasksAndEventsByDuration() {
+    List<Object> tasksAndEvents = new ArrayList<>();
+    tasksAndEvents.addAll(this.taskList);
+    Collections.sort(this.eventList, new Comparator<Event>() {
+      @Override
+      public int compare(Event event1, Event event2) {
+        int duration1 = event1.getDuration();
+        int duration2 = event2.getDuration();
+        return Integer.compare(duration1, duration2);
+      }
+    });
+    tasksAndEvents.addAll(eventList);
+    return tasksAndEvents;
   }
 
-  public String getQuote() {
-    return this.quote;
+  public List<Object> sortTasksAndEventsByName() {
+    List<Object> tasksAndEvents = new ArrayList<>();
+    tasksAndEvents.addAll(eventList);
+    tasksAndEvents.addAll(taskList);
+    Collections.sort(tasksAndEvents, (obj1, obj2) -> {
+      String name1 = null;
+      String name2 = null;
+      if (obj1 instanceof Event) {
+        name1 = ((Event) obj1).getName();
+      } else if (obj1 instanceof Task) {
+        name1 = ((Task) obj1).getName();
+      }
+      if (obj2 instanceof Event) {
+        name2 = ((Event) obj2).getName();
+      } else if (obj2 instanceof Task) {
+        name2 = ((Task) obj2).getName();
+      }
+      return name1.compareTo(name2);
+    });
+    return tasksAndEvents;
   }
 }
