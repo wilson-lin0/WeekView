@@ -160,6 +160,7 @@ public class MainController extends AbstractController {
     this.submitEventButton.setOnAction(event -> {
       addEventToList();
       showGraphics();
+      this.totalEventsLabel.setText("Total events: " + weekView.returnEventList().size());
     });
 
     this.exitEventButton.setOnAction(event -> {
@@ -301,6 +302,9 @@ public class MainController extends AbstractController {
     this.submitTaskButton.setOnAction(event -> {
       addTaskToList();
       showGraphics();
+      this.totalTasksLabel.setText("Total tasks: " + weekView.returnTaskList().size());
+      this.tasksCompletedLabel.setText("Tasks completed: " + weekView.returnTaskList().size() + "/"
+          + weekView.returnCompletedTasks().size());
     });
 
     this.exitTaskButton.setOnAction(event -> {
