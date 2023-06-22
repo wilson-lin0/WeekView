@@ -3,7 +3,6 @@ package cs3500.pa05;
 import cs3500.pa05.controller.MainController;
 import cs3500.pa05.model.WeekView;
 import cs3500.pa05.view.HorizontalView;
-import cs3500.pa05.view.HorizontalView1;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -21,7 +20,7 @@ public class Driver extends Application {
   public void start(Stage stage) {
     WeekView weekView = new WeekView();
     MainController controller = new MainController(weekView, stage);
-    HorizontalView view = new HorizontalView1(controller);
+    HorizontalView view = new HorizontalView(controller);
 
     try {
       stage.setScene(view.load());

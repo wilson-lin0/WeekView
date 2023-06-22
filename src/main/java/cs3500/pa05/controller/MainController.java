@@ -3,6 +3,7 @@ package cs3500.pa05.controller;
 import static cs3500.pa05.model.enumerations.Days.verifyDay;
 
 import cs3500.pa05.model.Event;
+import cs3500.pa05.model.LabelLists;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.WeekView;
 import cs3500.pa05.model.enumerations.Days;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javafx.fxml.FXML;
@@ -41,10 +43,6 @@ public class MainController extends AbstractController {
   private Button eventTaskLimitButton;
   @FXML
   private Button verticalHorizontalButton;
-  @FXML
-  private Button quoteButton;
-  @FXML
-  private Label quoteLabel;
   @FXML
   private TextField fileNameTextField;
   @FXML
@@ -125,8 +123,6 @@ public class MainController extends AbstractController {
   public void run() {
     startMenu();
 
-    this.quoteButton.setText(weekView.getQuote());
-
     this.openFileButton.setOnAction(event -> {
       startMenu();
     });
@@ -142,43 +138,6 @@ public class MainController extends AbstractController {
     this.eventTaskLimitButton.setOnAction(event -> {
       setLimit();
     });
-    // this.verticalHorizontalButton.setOnAction(event -> ViewInmpl. change to vertical/horizontal
-    // if horizontal change to vertical, if vertical change to horizontal);
-    // this.quoteButton.setOnAction(event -> quoteText());
-    // have a quote TextArea, have button above it
-    // on click, popup to set quote
-    // Enter quote label
-    // TextField
-    // Submit button that exits
-    // on submit get text from textfield and save in weekview
-    // change text in textarea to quote from weekview
-    // this.quoteButton.setOnAction(event -> this.quoteLabel.setText);) pop up to choose quote text
-    // on click task/event, show popup
-    // links
-
-    // for theme changes, in each controller, add a theme method -> maybe just in abstractcontroller
-    // add change layout (theme/ horizontal/vertical) choose from 6 option depending on the option,
-    // display different scenes
-
-    // only need two copies of controllers -> for horizontal and vertical
-  }
-
-  public void quoteText() {
-    new QuoteController(this.weekView, this.stage).run();
-    this.quoteButton.setText(this.weekView.getQuote());
-  }
-
-  public void updateTotalEventsLabel() {
-    this.totalEventsLabel.setText("Total Events: " + weekView.returnEventList().size());
-  }
-
-  public void updateTotalTasksLabel() {
-    this.totalTasksLabel.setText("Total Tasks: " + weekView.returnTaskList().size());
-  }
-
-  public void updateTasksCompleted() {
-    this.tasksCompletedLabel.setText("Tasks Completed: " + weekView.returnCompletedTasks()
-        + "/" + weekView.returnTaskList().size());
   }
 
   /**
@@ -486,38 +445,31 @@ public class MainController extends AbstractController {
    */
   public void showGraphics() {
     sundayBox.getChildren().clear(); // Clear existing children
-    sundayBox.getChildren().addAll(labellists.getSundayEventList());
-    sundayBox.getChildren().addAll(labellists.getSundayTaskList());
+    sundayBox.getChildren().addAll(labellists.getSundayList());
     sundayBox.setAlignment(Pos.CENTER_LEFT);
 
     mondayBox.getChildren().clear(); // Clear existing children
-    mondayBox.getChildren().addAll(labellists.getMondayEventList());
-    mondayBox.getChildren().addAll(labellists.getMondayTaskList());
+    mondayBox.getChildren().addAll(labellists.getMondayList());
     mondayBox.setAlignment(Pos.CENTER_LEFT);
 
     tuesdayBox.getChildren().clear(); // Clear existing children
-    tuesdayBox.getChildren().addAll(labellists.getTuesdayEventList());
-    tuesdayBox.getChildren().addAll(labellists.getTuesdayTaskList());
+    tuesdayBox.getChildren().addAll(labellists.getTuesdayList());
     tuesdayBox.setAlignment(Pos.CENTER_LEFT);
 
     wednesdayBox.getChildren().clear(); // Clear existing children
-    wednesdayBox.getChildren().addAll(labellists.getWednesdayEventList());
-    wednesdayBox.getChildren().addAll(labellists.getWednesdayTaskList());
+    wednesdayBox.getChildren().addAll(labellists.getWednesdayList());
     wednesdayBox.setAlignment(Pos.CENTER_LEFT);
 
     thursdayBox.getChildren().clear(); // Clear existing children
-    thursdayBox.getChildren().addAll(labellists.getThursdayEventList());
-    thursdayBox.getChildren().addAll(labellists.getThursdayTaskList());
+    thursdayBox.getChildren().addAll(labellists.getThursdayList());
     thursdayBox.setAlignment(Pos.CENTER_LEFT);
 
     fridayBox.getChildren().clear(); // Clear existing children
-    fridayBox.getChildren().addAll(labellists.getFridayEventList());
-    fridayBox.getChildren().addAll(labellists.getFridayTaskList());
+    fridayBox.getChildren().addAll(labellists.getFridayList());
     fridayBox.setAlignment(Pos.CENTER_LEFT);
 
     saturdayBox.getChildren().clear(); // Clear existing children
-    saturdayBox.getChildren().addAll(labellists.getSaturdayEventList());
-    saturdayBox.getChildren().addAll(labellists.getSaturdayTaskList());
+    saturdayBox.getChildren().addAll(labellists.getSaturdayList());
     saturdayBox.setAlignment(Pos.CENTER_LEFT);
   }
 

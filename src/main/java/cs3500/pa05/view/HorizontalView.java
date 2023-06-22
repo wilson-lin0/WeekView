@@ -8,7 +8,7 @@ import javafx.scene.Scene;
 /**
  * Represents a view with the theme.
  */
-public abstract class HorizontalView extends AbstractView {
+public class HorizontalView implements View {
   protected FXMLLoader loader;
 
   /**
