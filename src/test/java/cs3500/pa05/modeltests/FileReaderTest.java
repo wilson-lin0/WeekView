@@ -1,4 +1,4 @@
-package cs3500.pa05.modelTests;
+package cs3500.pa05.modeltests;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -10,11 +10,17 @@ import java.nio.file.Files;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests the FileReader class.
+ */
 public class FileReaderTest {
   private File tempFile;
   private String content;
   private FileReader fileReader;
 
+  /**
+   * Sets up the test fixture.
+   */
   @BeforeEach
   public void setUp() throws IOException {
     tempFile = File.createTempFile("test", ".txt");
@@ -77,6 +83,4 @@ public class FileReaderTest {
 
     assertEquals(content, result);
   }
-
-
 }

@@ -1,4 +1,4 @@
-package cs3500.pa05.modelTests;
+package cs3500.pa05.modeltests;
 
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.enumerations.Days;
