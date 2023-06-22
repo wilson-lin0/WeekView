@@ -224,7 +224,7 @@ public class MainController extends AbstractController {
    */
   private boolean canEventContinue() {
     if (this.weekView.returnMaxEvent() != -1) {
-      if (this.weekView.returnEventList().size() < this.weekView.returnMaxEvent()) {
+      if (this.weekView.returnEventList().size() - 1 < this.weekView.returnMaxEvent()) {
         return true;
       } else {
         warningEventLabel.setText("You have reached the maximum amount of events: " +
@@ -306,14 +306,13 @@ public class MainController extends AbstractController {
       addTaskToList();
       showGraphics();
       this.totalTasksLabel.setText("Total tasks: " + weekView.returnTaskList().size());
-      this.tasksCompletedLabel.setText("Tasks completed: " + weekView.returnTaskList().size() + "/"
-          + weekView.returnCompletedTasks().size());
+      this.tasksCompletedLabel.setText("Tasks completed: " + weekView.returnCompletedTasks().size()
+          + "/" + weekView.returnTaskList().size());
     });
 
     this.exitTaskButton.setOnAction(event -> {
       this.taskCreationPopup.hide();
     });
-    showGraphics();
   }
 
   /**
@@ -359,7 +358,7 @@ public class MainController extends AbstractController {
    */
   private boolean canTaskContinue() {
     if (this.weekView.returnMaxTask() != -1) {
-      if (this.weekView.returnTaskList().size() < this.weekView.returnMaxTask()) {
+      if (this.weekView.returnTaskList().size() - 1 < this.weekView.returnMaxTask()) {
         return true;
       } else {
         warningTaskLabel.setText("You have reached the maximum amount of tasks: " +
@@ -451,6 +450,15 @@ public class MainController extends AbstractController {
    * Shows the events in the WeekView.
    */
   public void showGraphics() {
+    taskQueueVbox.getChildren().clear();
+    taskQueueVbox.getChildren().addAll(labellists.getSundayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getMondayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getTuesdayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getWednesdayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getThursdayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getFridayTaskList());
+    taskQueueVbox.getChildren().addAll(labellists.getSaturdayTaskList());
+
     sundayBox.getChildren().clear(); // Clear existing children
     sundayBox.getChildren().addAll(labellists.getSundayList());
     sundayBox.setAlignment(Pos.CENTER_LEFT);
@@ -477,16 +485,7 @@ public class MainController extends AbstractController {
 
     saturdayBox.getChildren().clear(); // Clear existing children
     saturdayBox.getChildren().addAll(labellists.getSaturdayList());
-    saturdayBox.setAlignment(Pos.CENTER_LEFT);
-
-    taskQueueVbox.getChildren().clear();
-    taskQueueVbox.getChildren().addAll(labellists.getSundayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getMondayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getTuesdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getWednesdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getThursdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getFridayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getSaturdayTaskList());
+    saturdayBox.setAlignment(Pos.CENTER_LEFT);;
   }
 
   /**

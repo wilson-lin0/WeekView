@@ -61,7 +61,6 @@ public class MaximumEventTaskController extends AbstractController {
         weekView.setMaxEvent(parseInt(this.eventLimitTextBox.getText())));
     this.taskLimitButton.setOnAction(event ->
         weekView.setMaxTask(parseInt(this.taskLimitTextBox.getText())));
-
     this.exitLimitButton.setOnAction(event -> {
       this.maximumPopup.hide();
     });
