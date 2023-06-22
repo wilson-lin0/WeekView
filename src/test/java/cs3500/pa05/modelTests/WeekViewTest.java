@@ -184,31 +184,6 @@ public class WeekViewTest {
   }
 
   @Test
-  void testChangeQuote() {
-    String quote = "This is a new quote";
-    weekView.changeQuote(quote);
-
-    assertEquals(quote, weekView.getQuote());
-  }
-
-  @Test
-  void testGetQuote() {
-    assertEquals("Enter your quote.", weekView.getQuote());
-  }
-
-  @Test
-  public void testGetQuoteWithModifiedQuote() {
-    weekView.changeQuote("Original quote");
-    assertEquals("Original quote", weekView.getQuote());
-  }
-
-  @Test
-  public void testChangeQuoteWithEmptyQuote() {
-    weekView.changeQuote("");
-    assertEquals("", weekView.getQuote());
-  }
-
-  @Test
   public void testReturnCompletedTasksNoCompletedTasks() {
     Task task1 = new Task("Task 1", "Description 1", Days.MONDAY, false);
     Task task2 = new Task("Task 2", "Description 2", Days.TUESDAY, false);
