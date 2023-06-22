@@ -23,6 +23,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -31,6 +32,8 @@ import javafx.stage.Stage;
  * Controls the program.
  */
 public class MainController extends AbstractController {
+  @FXML
+  private VBox taskQueueVbox;
   @FXML
   private Button addEventButton;
   @FXML
