@@ -57,7 +57,8 @@ public class JsonUtil {
       ObjectMapper mapper = new ObjectMapper();
       return mapper.treeToValue(jsonNode, recordClass);
     } catch (JsonProcessingException e) {
-      throw new IllegalArgumentException("Given JsonNode cannot be deserialized to the record object");
+      throw new IllegalArgumentException("Given JsonNode cannot be deserialized to the "
+          + "record object");
     }
   }
 }

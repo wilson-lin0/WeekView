@@ -248,6 +248,9 @@ public class LabelLists {
     }
   }
 
+  /**
+   * Clears all the lists.
+   */
   public void clearAll() {
     sundayList.clear();
     sundayTaskList.clear();

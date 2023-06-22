@@ -68,7 +68,7 @@ public class WeekView {
   public void saveFile(File fileName) {
     // Convert WeekView properties to Week record
     List<EventJson> eventJsons = new ArrayList<>();
-    for (Event event: eventList) {
+    for (Event event : eventList) {
       String name = event.getName();
       String description = event.getDescription();
       Days day = event.getDayOfWeek();
@@ -78,7 +78,7 @@ public class WeekView {
       eventJsons.add(eventJson);
     }
     List<TaskJson> taskJsons = new ArrayList<>();
-    for (Task task: taskList) {
+    for (Task task : taskList) {
       String name = task.getName();
       String description = task.getDescription();
       Days day = task.getDayOfWeek();
@@ -112,7 +112,7 @@ public class WeekView {
       this.maxTask = weekRecord.getMaxTask();
       this.maxEvent = weekRecord.getMaxEvent();
       List<EventJson> eventJsons = weekRecord.getEventList();
-      for (EventJson eventJson: eventJsons) {
+      for (EventJson eventJson : eventJsons) {
         String name = eventJson.getName();
         String description = eventJson.getDescription();
         Days day = eventJson.getDayOfWeek();
@@ -122,7 +122,7 @@ public class WeekView {
         eventList.add(event);
       }
       List<TaskJson> taskJsons = weekRecord.getTaskList();
-      for (TaskJson taskJson: taskJsons) {
+      for (TaskJson taskJson : taskJsons) {
         String name = taskJson.getName();
         String description = taskJson.getDescription();
         Days day = taskJson.getDayOfWeek();
@@ -132,7 +132,8 @@ public class WeekView {
       }
       this.notes.addAll(weekRecord.getNotes());
     } catch (IOException e) {
-      System.err.println("An error occurred while deserializing the WeekView object: " + e.getMessage());
+      System.err.println("An error occurred while deserializing the WeekView object: "
+          + e.getMessage());
     }
   }
 
@@ -209,6 +210,11 @@ public class WeekView {
     this.taskList.clear();
   }
 
+  /**
+   * Returns the list of completed tasks.
+   *
+   * @return the completed tasks
+   */
   public List<Task> returnCompletedTasks() {
     List<Task> returnList = new ArrayList<>();
     for (Task task : taskList) {
@@ -218,6 +224,12 @@ public class WeekView {
     }
     return returnList;
   }
+
+  /**
+   * Sorts the tasks and events by duration.
+   *
+   * @return the list of events and tasks
+   */
   public List<Object> sortTasksAndEventsByDuration() {
     List<Object> tasksAndEvents = new ArrayList<>();
     tasksAndEvents.addAll(this.taskList);
@@ -233,6 +245,11 @@ public class WeekView {
     return tasksAndEvents;
   }
 
+  /**
+   * Sorts the tasks and events by name.
+   *
+   * @return the list of events and tasks
+   */
   public List<Object> sortTasksAndEventsByName() {
     List<Object> tasksAndEvents = new ArrayList<>();
     tasksAndEvents.addAll(eventList);

@@ -1,9 +1,9 @@
 package cs3500.pa05.model;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.io.IOException;
 
 /**
  * Write the file.
@@ -14,6 +14,7 @@ public class FileWriter {
   public FileWriter(File file) {
     this.file = file;
   }
+
   /**
    * Writes the given String to the given filepath.
    *

@@ -3,6 +3,15 @@ package cs3500.pa05.model.json;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import cs3500.pa05.model.enumerations.Days;
 
+/**
+ * Represents an event.
+ *
+ * @param name name of the event
+ * @param description description
+ * @param dayOfWeek what day of week
+ * @param startTime start time
+ * @param duration how long
+ */
 public record EventJson(
     @JsonProperty("name") String name,
     @JsonProperty("description") String description,

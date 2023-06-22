@@ -40,11 +40,11 @@ public class Event {
       return false;
     }
     Event other = (Event) obj;
-    return Objects.equals(name, other.name) &&
-        Objects.equals(description, other.description) &&
-        dayOfWeek == other.dayOfWeek &&
-        Objects.equals(startTime, other.startTime) &&
-        Objects.equals(duration, other.duration);
+    return Objects.equals(name, other.name)
+        && Objects.equals(description, other.description)
+        && dayOfWeek == other.dayOfWeek
+        && Objects.equals(startTime, other.startTime)
+        && Objects.equals(duration, other.duration);
   }
 
   /**

@@ -35,10 +35,10 @@ public class Task {
       return false;
     }
     Task other = (Task) obj;
-    return completed == other.completed &&
-        Objects.equals(name, other.name) &&
-        Objects.equals(description, other.description) &&
-        dayOfWeek == other.dayOfWeek;
+    return completed == other.completed
+        && Objects.equals(name, other.name)
+        && Objects.equals(description, other.description)
+        && dayOfWeek == other.dayOfWeek;
   }
 
   /**
@@ -46,7 +46,9 @@ public class Task {
    *
    * @return the name
    */
-  public String getName() { return this.name; }
+  public String getName() {
+    return this.name;
+  }
 
   /**
    * returns the String description, if there is one, else return the String "N/A"
@@ -62,19 +64,23 @@ public class Task {
    *
    * @return the day of the week
    */
-  public Days getDayOfWeek() { return this.dayOfWeek; }
+  public Days getDayOfWeek() {
+    return this.dayOfWeek;
+  }
 
   /**
    * Returns whether the task is completed.
    *
    * @return whether the task is completed
    */
-  public Boolean isCompleted() { return this.completed; }
+  public Boolean isCompleted() {
+    return this.completed;
+  }
 
   @Override
   public String toString() {
-    return "Task: " + name + "\nDescription: " + getDescription() +
-        "\nDay of Week: " + dayOfWeek +
-        "\nCompleted: " + completed;
+    return "Task: " + name + "\nDescription: " + getDescription()
+        + "\nDay of Week: " + dayOfWeek
+        + "\nCompleted: " + completed;
   }
 }
