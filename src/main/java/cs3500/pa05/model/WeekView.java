@@ -1,8 +1,12 @@
 package cs3500.pa05.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import cs3500.pa05.model.enumerations.Days;
+import cs3500.pa05.model.json.EventJson;
 import cs3500.pa05.model.json.JsonUtil;
-import cs3500.pa05.model.json.Week;
+import cs3500.pa05.model.json.TaskJson;
+import cs3500.pa05.model.json.WeekJson;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,6 +26,7 @@ public class WeekView {
   private List<Task> taskList;
   private List<String> notes;
   private String quote;
+  private final ObjectMapper mapper = new ObjectMapper();
 
   /**
    * Creates a WeekView.
@@ -60,7 +65,27 @@ public class WeekView {
    */
   public void saveFile(File fileName) {
     // Convert WeekView properties to Week record
-    Week weekRecord = new Week(this.maxTask, this.maxEvent, this.eventList, this.taskList, this.notes);
+    List<EventJson> eventJsons = new ArrayList<>();
+    for (Event event: eventList) {
+      String name = event.getName();
+      String description = event.getDescription();
+      Days day = event.getDayOfWeek();
+      String startTime = event.getStartTime();
+      int duration = event.getDuration();
+      EventJson eventJson = new EventJson(name, description, day, startTime, duration);
+      eventJsons.add(eventJson);
+    }
+    List<TaskJson> taskJsons = new ArrayList<>();
+    for (Task task: taskList) {
+      String name = task.getName();
+      String description = task.getDescription();
+      Days day = task.getDayOfWeek();
+      boolean completed = task.isCompleted();
+      TaskJson taskJson = new TaskJson(name, description, day, completed);
+      taskJsons.add(taskJson);
+    }
+    WeekJson
+        weekRecord = new WeekJson(this.maxTask, this.maxEvent, eventJsons, taskJsons, this.notes);
 
     // Convert Week record to JSON
     JsonNode jsonNode = JsonUtil.serializeRecord(weekRecord);
@@ -79,15 +104,30 @@ public class WeekView {
   public void openFile(String fileString) {
     try {
       String jsonString = new String(Files.readAllBytes(Paths.get(fileString)));
-
-      JsonNode jsonNode = JsonUtil.deserializeJson(jsonString);
-
-      Week weekRecord = JsonUtil.deserializeRecord(jsonNode, Week.class);
-
+      JsonNode jsonNode;
+      jsonNode = JsonUtil.deserializeJson(jsonString);
+      WeekJson weekRecord = mapper.convertValue(jsonNode, WeekJson.class);
       this.maxTask = weekRecord.getMaxTask();
       this.maxEvent = weekRecord.getMaxEvent();
-      this.eventList.addAll(weekRecord.getEventList());
-      this.taskList.addAll(weekRecord.getTaskList());
+      List<EventJson> eventJsons = weekRecord.getEventList();
+      for (EventJson eventJson: eventJsons) {
+        String name = eventJson.getName();
+        String description = eventJson.getDescription();
+        Days day = eventJson.getDayOfWeek();
+        String startTime = eventJson.getStartTime();
+        int duration = eventJson.getDuration();
+        Event event = new Event(name, description, day, startTime, duration);
+        eventList.add(event);
+      }
+      List<TaskJson> taskJsons = weekRecord.getTaskList();
+      for (TaskJson taskJson: taskJsons) {
+        String name = taskJson.getName();
+        String description = taskJson.getDescription();
+        Days day = taskJson.getDayOfWeek();
+        boolean completed = taskJson.getCompleted();
+        Task task = new Task(name, description, day, completed);
+        taskList.add(task);
+      }
       this.notes.addAll(weekRecord.getNotes());
     } catch (IOException e) {
       System.err.println("An error occurred while deserializing the WeekView object: " + e.getMessage());

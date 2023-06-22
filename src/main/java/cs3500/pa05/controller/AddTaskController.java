@@ -7,6 +7,7 @@ import cs3500.pa05.model.Task;
 import cs3500.pa05.model.WeekView;
 import cs3500.pa05.model.enumerations.Days;
 import java.io.IOException;
+import java.util.List;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -32,27 +33,13 @@ public class AddTaskController extends AbstractController {
   @FXML
   private TextField createTaskDay;
   @FXML
-  private CheckBox taskCompletedCheck;
+  private CheckBox taskCompleteCheck;
   @FXML
   private Label warningLabel;
   @FXML
   private Button submitButton;
   @FXML
   private Button exitButton;
-  @FXML
-  protected HBox sundayBox;
-  @FXML
-  protected HBox mondayBox;
-  @FXML
-  protected HBox tuesdayBox;
-  @FXML
-  protected HBox wednesdayBox;
-  @FXML
-  protected HBox thursdayBox;
-  @FXML
-  protected HBox fridayBox;
-  @FXML
-  protected HBox saturdayBox;
 
   /**
    * Creates an AddTaskController.
@@ -60,17 +47,8 @@ public class AddTaskController extends AbstractController {
    * @param weekView the WeekView
    * @param stage    the stage
    */
-  public AddTaskController(WeekView weekView, Stage stage, HBox sundayBox, HBox mondayBox,
-                           HBox tuesdayBox, HBox wednesdayBox, HBox thursdayBox,
-                           HBox fridayBox, HBox saturdayBox) {
+  public AddTaskController(WeekView weekView, Stage stage) {
     super(weekView, stage);
-    this.sundayBox = sundayBox;
-    this.mondayBox = mondayBox;
-    this.tuesdayBox = tuesdayBox;
-    this.wednesdayBox = wednesdayBox;
-    this.thursdayBox = thursdayBox;
-    this.fridayBox = fridayBox;
-    this.saturdayBox = saturdayBox;
   }
 
   /**
@@ -108,7 +86,6 @@ public class AddTaskController extends AbstractController {
     String description = null;
     Days day = null;
     boolean completed = false;
-
     boolean canContinue = canContinue();
 
     try {
@@ -118,7 +95,7 @@ public class AddTaskController extends AbstractController {
         warningLabel.setText("You entered an invalid day");
         canContinue = false;
       }
-      completed = taskCompletedCheck.isSelected();
+      completed = taskCompleteCheck.isSelected();
     } catch (NullPointerException n) {
       warningLabel.setText("You left a required field empty!");
       canContinue = false;
@@ -132,7 +109,8 @@ public class AddTaskController extends AbstractController {
 
     if (canContinue) {
       weekView.updateTask(new Task(taskName, description, day, completed));
-      showTask();
+      updateTaskLabelList();
+      this.taskCreationPopup.hide();
     }
   }
 
@@ -156,49 +134,18 @@ public class AddTaskController extends AbstractController {
   }
 
   /**
-   * Shows the tasks in the WeekView.
-   */
-  public void showTask() {
-    updateTaskLabelList();
-    sundayBox.getChildren().clear(); // Clear existing children
-    sundayBox.getChildren().addAll(labellists.getSundayTaskList());
-    sundayBox.setAlignment(Pos.CENTER_LEFT);
-
-    mondayBox.getChildren().clear(); // Clear existing children
-    mondayBox.getChildren().addAll(labellists.getMondayTaskList());
-    mondayBox.setAlignment(Pos.CENTER_LEFT);
-
-    tuesdayBox.getChildren().clear(); // Clear existing children
-    tuesdayBox.getChildren().addAll(labellists.getTuesdayTaskList());
-    tuesdayBox.setAlignment(Pos.CENTER_LEFT);
-
-    wednesdayBox.getChildren().clear(); // Clear existing children
-    wednesdayBox.getChildren().addAll(labellists.getWednesdayTaskList());
-    wednesdayBox.setAlignment(Pos.CENTER_LEFT);
-
-    thursdayBox.getChildren().clear(); // Clear existing children
-    thursdayBox.getChildren().addAll(labellists.getThursdayTaskList());
-    thursdayBox.setAlignment(Pos.CENTER_LEFT);
-
-    fridayBox.getChildren().clear(); // Clear existing children
-    fridayBox.getChildren().addAll(labellists.getFridayTaskList());
-    fridayBox.setAlignment(Pos.CENTER_LEFT);
-
-    saturdayBox.getChildren().clear(); // Clear existing children
-    saturdayBox.getChildren().addAll(labellists.getSaturdayTaskList());
-    saturdayBox.setAlignment(Pos.CENTER_LEFT);
-  }
-
-  /**
    * Updates the task label list.
    */
   private void updateTaskLabelList() {
-    Task task = this.weekView.returnTaskList().get(weekView.returnTaskList().size() - 1);
-    Label label = new Label("Event: " + task.getName() + '\n' +
-        "Description: " + task.getDescription() + '\n' +
-        "Completed? " + task.isCompleted()
-    );
-    label.setFont(new Font(10));
-    labellists.addTaskToList(label, task.getDayOfWeek());
+    List<Task> tasks = this.weekView.returnTaskList();
+    if (tasks.size() > 0) {
+      Task task = tasks.get(tasks.size() - 1);
+      Label label = new Label("Event: " + task.getName() + '\n' +
+          "Description: " + task.getDescription() + '\n' +
+          "Completed? " + task.isCompleted()
+      );
+      label.setFont(new Font(10));
+      labellists.addTaskToList(label, task.getDayOfWeek());
+    }
   }
 }

@@ -1,6 +1,6 @@
 package cs3500.pa05.modelTests;
 
-import cs3500.pa05.model.json.Week;
+import cs3500.pa05.model.json.WeekJson;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.Task;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,8 +12,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class WeekTest {
-  private Week week;
+public class WeekJsonTest {
+  private WeekJson week;
 
   @BeforeEach
   public void setUp() {
@@ -24,7 +24,7 @@ public class WeekTest {
     List<Task> tasks = Arrays.asList(new Task("Task 1", "Description 1",
             null),
         new Task("Task 2", "Description 2", null));
-    week = new Week(5, 10, events, tasks);
+    week = new WeekJson(5, 10, events, tasks);
   }
 
   @Test
