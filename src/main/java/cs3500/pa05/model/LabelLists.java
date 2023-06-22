@@ -19,7 +19,7 @@ public class LabelLists {
 
   private List<Label> sundayTaskList;
   private List<Label> mondayTaskList;
-  private  List<Label> tuesdayTaskList;
+  private List<Label> tuesdayTaskList;
   private List<Label> wednesdayTaskList;
   private List<Label> thursdayTaskList;
   private List<Label> fridayTaskList;
@@ -183,7 +183,7 @@ public class LabelLists {
    * Adds the event to the list.
    *
    * @param label the label
-   * @param day the day
+   * @param day   the day
    */
   public void addEventToList(Label label, Days day) {
     if (day.equals(Days.SUNDAY)) {
@@ -214,7 +214,7 @@ public class LabelLists {
    * Adds the task to the list.
    *
    * @param label the label
-   * @param day the day
+   * @param day   the day
    */
   public void addTaskToList(Label label, Days day) {
     if (day.equals(Days.SUNDAY)) {
