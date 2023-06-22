@@ -143,7 +143,6 @@ public class MainController extends AbstractController {
     this.eventTaskLimitButton.setOnAction(event -> {
       setLimit();
     });
-    /*
     this.sortByDurationButton.setOnAction(event -> {
       labellists.clearAll();
       addToList(weekView.sortTasksAndEventsByDuration());
@@ -152,8 +151,6 @@ public class MainController extends AbstractController {
       labellists.clearAll();
       addToList(weekView.sortTasksAndEventsByName());
     });
-
-     */
   }
 
   /**
@@ -184,39 +181,37 @@ public class MainController extends AbstractController {
     });
   }
 
-  /*
   private void addToList(List<Object> list) {
     for (Object object : list) {
       if (object instanceof Event) {
         String eventName = ((Event) object).getName();
         String description = ((Event) object).getDescription();
-        ;
         Days day = ((Event) object).getDayOfWeek();
         String startTime = ((Event) object).getStartTime();
         int duration = ((Event) object).getDuration();
-        boolean canEventContinue = canEventContinue();
 
-        if (canEventContinue) {
-          weekView.updateEvent(new Event(eventName, description, day, startTime, duration));
-          updateEventLabelList();
-        }
+        Label label = new Label("Event: " + eventName + '\n' +
+            "Description: " + description + '\n' +
+            "Start Time: " + startTime + '\n' +
+            "Duration: " + duration);
+        label.setFont(new Font(10));
+        labellists.addEventToList(label, day);
+
       } else if (object instanceof Task) {
         String taskName = ((Task) object).getName();
         String description = ((Task) object).getDescription();
         Days day = ((Task) object).getDayOfWeek();
         boolean completed = false;
-        boolean canContinue = canTaskContinue();
 
-        if (canContinue) {
-          weekView.updateTask(new Task(taskName, description, day, completed));
-          updateTaskLabelList();
-        }
+        Label label = new Label("Task: " + taskName + '\n' +
+              "Description: " + description + '\n' +
+              "Completed? " + completed);
+        label.setFont(new Font(10));
+        labellists.addTaskToList(label, day);
       }
     }
     showGraphics();
   }
-
-   */
 
   private void addToList() {
     String eventName = null;
