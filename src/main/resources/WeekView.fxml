@@ -70,7 +70,7 @@
                                  <Font size="15.0" />
                               </font>
                            </Button>
-                           <Button fx:id="verticalHorizontalButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Vertical&#10;/Horizontal">
+                           <Button fx:id="verticalHorizontalButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" text="Vertical&#10;Horizontal">
                               <font>
                                  <Font size="15.0" />
                               </font>
@@ -166,7 +166,7 @@
                      </GridPane>
                      <VBox alignment="TOP_CENTER" layoutX="1010.0" layoutY="100.0" prefHeight="700.0" prefWidth="180.0" style="-fx-border-color: black;">
                         <children>
-                           <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">
+                           <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="180.0">
                               <children>
                                  <Label text="Task Queue">
                                     <font>
@@ -175,7 +175,11 @@
                                  </Label>
                               </children>
                            </HBox>
-                           <VBox fx:id="taskQueueVbox" alignment="TOP_CENTER" prefHeight="350.0" prefWidth="100.0" spacing="5.0" />
+                           <AnchorPane>
+                              <children>
+                                 <VBox fx:id="taskQueueVbox" alignment="TOP_CENTER" prefHeight="350.0" prefWidth="180.0" spacing="5.0" />
+                              </children>
+                           </AnchorPane>
                            <VBox fx:id="quoteVBox" alignment="TOP_CENTER" prefHeight="350.0" prefWidth="100.0" spacing="5.0">
                               <children>
                                  <HBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="200.0">

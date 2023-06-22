@@ -450,16 +450,8 @@ public class MainController extends AbstractController {
    * Shows the events in the WeekView.
    */
   public void showGraphics() {
-    taskQueueVbox.getChildren().clear();
-    taskQueueVbox.getChildren().addAll(labellists.getSundayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getMondayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getTuesdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getWednesdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getThursdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getFridayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getSaturdayTaskList());
 
-    sundayBox.getChildren().clear(); // Clear existing children
+    sundayBox.getChildren().clear();
     sundayBox.getChildren().addAll(labellists.getSundayList());
     sundayBox.setAlignment(Pos.CENTER_LEFT);
 
@@ -485,7 +477,22 @@ public class MainController extends AbstractController {
 
     saturdayBox.getChildren().clear(); // Clear existing children
     saturdayBox.getChildren().addAll(labellists.getSaturdayList());
-    saturdayBox.setAlignment(Pos.CENTER_LEFT);;
+    saturdayBox.setAlignment(Pos.CENTER_LEFT);
+
+    List<Label> labels = taskQueueHelper();
+    taskQueueVbox.getChildren().clear();
+    taskQueueVbox.getChildren().addAll(labels);
+  }
+
+  private List<Label> taskQueueHelper() {
+    List<Label> labels = new ArrayList<>();
+    for (Task task: this.weekView.returnTaskList()) {
+      String name = task.getName();
+      String completed = task.isCompleted().toString();
+      Label label = new Label("Name: " + name + '\n' + "Completed?: "+ completed);
+      labels.add(label);
+    }
+    return labels;
   }
 
   /**
