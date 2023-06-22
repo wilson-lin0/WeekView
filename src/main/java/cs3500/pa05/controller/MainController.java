@@ -110,6 +110,18 @@ public class MainController extends AbstractController {
   private Popup taskCreationPopup;
   private Popup scenePopup;
   @FXML
+  private Button vertical1;
+  @FXML
+  private Button vertical2;
+  @FXML
+  private Button vertical3;
+  @FXML
+  private Button horizontal1;
+  @FXML
+  private Button horizontal2;
+  @FXML
+  private Button horizontal3;
+  @FXML
   private Label warningEventLabel;
   @FXML
   private Label warningTaskLabel;
@@ -160,13 +172,13 @@ public class MainController extends AbstractController {
       setLimit();
     });
     // this.layoutButton.setOnAction(event -> scenePopup());
-    // this.horizontal1.setOnAction(event -> changeSceneHorizontal1());
-    // this.horizontal2.setOnAction(event -> changeSceneHorizontal2());
-    // this.horizontal3.setOnAction(event -> changeSceneHorizontal3());
+    this.horizontal1.setOnAction(event -> changeSceneHorizontal1());
+    this.horizontal2.setOnAction(event -> changeSceneHorizontal2());
+    this.horizontal3.setOnAction(event -> changeSceneHorizontal3());
 
-    // this.vertical1.setOnAction(event -> changeSceneVertical1())
-    // this.vertical2.setOnAction(event -> changeSceneVertical2())
-    // this.vertical3.setOnAction(event -> changeSceneVertical3())
+    this.vertical1.setOnAction(event -> changeSceneVertical1());
+    this.vertical2.setOnAction(event -> changeSceneVertical2());
+    this.vertical3.setOnAction(event -> changeSceneVertical3());
   }
 
   /**
