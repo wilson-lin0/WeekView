@@ -10,6 +10,6 @@ public class Vertical2 extends ViewImpl {
    */
   public Vertical2(Controller controller) {
     super(controller);
-    this.loader.setLocation(getClass().getClassLoader().getResource("VerticalGreen.fxml"));
+    this.loader.setLocation(getClass().getClassLoader().getResource("HorizontalGreen.fxml"));
   }
 }

@@ -67,7 +67,7 @@
                                  <Font size="15.0" />
                               </font>
                            </Button>
-                           <Button fx:id="verticalHorizontalButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" style="-fx-background-color: LAVENDERBLUSH; -fx-border-color: darkblue;" text="Vertical&#10;/Horizontal">
+                           <Button fx:id="layoutButton" mnemonicParsing="false" prefHeight="60.0" prefWidth="90.0" style="-fx-background-color: LAVENDERBLUSH; -fx-border-color: darkblue;" text="Layout">
                               <font>
                                  <Font size="15.0" />
                               </font>

@@ -21,6 +21,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javafx.fxml.FXML;
@@ -122,6 +123,8 @@ public class MainController extends AbstractController {
   @FXML
   private Button horizontal3;
   @FXML
+  private Button layoutButton;
+  @FXML
   private Label warningEventLabel;
   @FXML
   private Label warningTaskLabel;
@@ -171,14 +174,7 @@ public class MainController extends AbstractController {
     this.eventTaskLimitButton.setOnAction(event -> {
       setLimit();
     });
-    // this.layoutButton.setOnAction(event -> scenePopup());
-    this.horizontal1.setOnAction(event -> changeSceneHorizontal1());
-    this.horizontal2.setOnAction(event -> changeSceneHorizontal2());
-    this.horizontal3.setOnAction(event -> changeSceneHorizontal3());
-
-    this.vertical1.setOnAction(event -> changeSceneVertical1());
-    this.vertical2.setOnAction(event -> changeSceneVertical2());
-    this.vertical3.setOnAction(event -> changeSceneVertical3());
+    this.layoutButton.setOnAction(event -> scenePopup());
   }
 
   /**
@@ -195,6 +191,14 @@ public class MainController extends AbstractController {
     } catch (IOException e) {
       e.printStackTrace();
     }
+
+    this.horizontal1.setOnAction(event -> changeSceneHorizontal1());
+    this.horizontal2.setOnAction(event -> changeSceneHorizontal2());
+    this.horizontal3.setOnAction(event -> changeSceneHorizontal3());
+
+    this.vertical1.setOnAction(event -> changeSceneVertical1());
+    this.vertical2.setOnAction(event -> changeSceneVertical2());
+    this.vertical3.setOnAction(event -> changeSceneVertical3());
   }
 
   /**
@@ -687,18 +691,27 @@ public class MainController extends AbstractController {
     saturdayBox.getChildren().clear(); // Clear existing children
     saturdayBox.getChildren().addAll(labellists.getSaturdayList());
     saturdayBox.setAlignment(Pos.CENTER_LEFT);
+
+    List<Label> taskViewLabels = showTaskQueue();
+    taskQueueVbox.getChildren().clear();
+    taskQueueVbox.getChildren().addAll(taskViewLabels);
   }
 
 
-  public void showTaskQueue() {
-    taskQueueVbox.getChildren().clear();
-    taskQueueVbox.getChildren().addAll(labellists.getSundayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getMondayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getTuesdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getWednesdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getThursdayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getFridayTaskList());
-    taskQueueVbox.getChildren().addAll(labellists.getSaturdayTaskList());
+  public List<Label> showTaskQueue() {
+    List<Label> labels = new ArrayList<>();
+
+    List<Task> tasks = this.weekView.returnTaskList();
+    for (Task task: tasks) {
+      String name = task.getName();
+      String completed = task.isCompleted().toString();
+      Label label = new Label(
+          "Name: " + name + '\n' +
+              "Completed?: " + completed
+      );
+      labels.add(label);
+    }
+    return labels;
   }
 
 
