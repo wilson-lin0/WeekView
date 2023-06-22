@@ -180,7 +180,7 @@ public class MainController extends AbstractController {
   /**
    * Shows a popup to change layout.
    */
-  public void scenePopup() {
+  private void scenePopup() {
     try {
       this.scenePopup = new Popup();
       FXMLLoader eventLoader =
@@ -220,7 +220,7 @@ public class MainController extends AbstractController {
   /**
    * Changes scene to Horizontal2.
    */
-  public void changeSceneHorizontal2() {
+  private void changeSceneHorizontal2() {
     ViewImpl view = new Horizontal2(this);
 
     try {
@@ -235,7 +235,7 @@ public class MainController extends AbstractController {
   /**
    * Changes scene to Horizontal3.
    */
-  public void changeSceneHorizontal3() {
+  private void changeSceneHorizontal3() {
     ViewImpl view = new Horizontal3(this);
 
     try {
@@ -250,7 +250,7 @@ public class MainController extends AbstractController {
   /**
    * Changes scene to Vertical1.
    */
-  public void changeSceneVertical1() {
+  private void changeSceneVertical1() {
     ViewImpl view = new Vertical1(this);
 
     try {
@@ -265,7 +265,7 @@ public class MainController extends AbstractController {
   /**
    * Changes scene to Vertical2.
    */
-  public void changeSceneVertical2() {
+  private void changeSceneVertical2() {
     ViewImpl view = new Vertical2(this);
 
     try {
@@ -280,7 +280,7 @@ public class MainController extends AbstractController {
   /**
    * Changes scene to Vertical3.
    */
-  public void changeSceneVertical3() {
+  private void changeSceneVertical3() {
     ViewImpl view = new Vertical3(this);
 
     try {
