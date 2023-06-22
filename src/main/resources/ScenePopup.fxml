@@ -6,13 +6,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
 <Scene xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <AnchorPane prefHeight="200" prefWidth="200">
       <children>
-         <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
             <children>
-               <GridPane layoutY="55.0">
+               <GridPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                  <columnConstraints>
                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -23,15 +24,15 @@
                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                  </rowConstraints>
                   <children>
-                     <Button fx:id="vertical1" mnemonicParsing="false" text="Vertical1" />
-                     <Button fx:id="vertical2" mnemonicParsing="false" text="Vertical2" GridPane.rowIndex="1" />
-                     <Button fx:id="vertical3" mnemonicParsing="false" text="Vertical3" GridPane.rowIndex="2" />
-                     <Button fx:id="horizontal1" mnemonicParsing="false" text="Horizontal1" GridPane.columnIndex="1" />
-                     <Button fx:id="horizontal2" mnemonicParsing="false" text="Horizontal2" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     <Button fx:id="horizontal3" mnemonicParsing="false" text="Horizontal3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <Button fx:id="vertical1" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Horizontal Blue" textAlignment="CENTER" wrapText="true" />
+                     <Button fx:id="vertical2" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Horizontal Green" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="1" />
+                     <Button fx:id="vertical3" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Horizontal Pink" textAlignment="CENTER" wrapText="true" GridPane.rowIndex="2" />
+                     <Button fx:id="horizontal1" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Vertical Blue" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" />
+                     <Button fx:id="horizontal2" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Vertical Green" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                     <Button fx:id="horizontal3" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="100.0" text="Vertical Pink" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   </children>
                </GridPane>
             </children>
-         </AnchorPane>
+         </VBox>
       </children></AnchorPane>
 </Scene>
