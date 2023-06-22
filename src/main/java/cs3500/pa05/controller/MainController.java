@@ -66,7 +66,6 @@ public class MainController extends AbstractController {
   private TextField createEventStartTime;
   @FXML
   private TextField createEventDuration;
-
   @FXML
   private TextField createTaskName;
   @FXML
@@ -181,6 +180,11 @@ public class MainController extends AbstractController {
     });
   }
 
+  /**
+   * Adds the sorted events and lists to a list of labels.
+   *
+   * @param list list of events and tasks
+   */
   private void addToList(List<Object> list) {
     for (Object object : list) {
       if (object instanceof Event) {
@@ -213,6 +217,9 @@ public class MainController extends AbstractController {
     showGraphics();
   }
 
+  /**
+   * Adds the event to a list of labels.
+   */
   private void addToList() {
     String eventName = null;
     String description = null;
