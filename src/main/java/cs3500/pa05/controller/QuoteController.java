@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -13,6 +14,8 @@ import javafx.stage.Stage;
 public class QuoteController extends AbstractController {
   @FXML
   private TextField enterQuote;
+  @FXML
+  private TextArea quote;
   @FXML
   private Button exitButton;
   protected Popup eventCreationPopup;
@@ -40,6 +43,8 @@ public class QuoteController extends AbstractController {
     }
 
     this.eventCreationPopup.show(this.stage);
+
+    this.quote.setVisible(false);
 
     this.exitButton.setOnAction(event -> {
       this.weekView.changeQuote(enterQuote.getText());
