@@ -1,6 +1,5 @@
 package cs3500.pa05.controllerTests;
 
-import cs3500.pa05.controller.AddEventController;
 import cs3500.pa05.model.Event;
 import cs3500.pa05.model.WeekView;
 import javafx.scene.control.Button;

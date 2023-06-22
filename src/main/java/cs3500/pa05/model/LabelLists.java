@@ -219,4 +219,8 @@ public class LabelLists {
       saturdayTaskList.add(label);
     }
   }
+
+  public void clearAll() {
+
+  }
 }
