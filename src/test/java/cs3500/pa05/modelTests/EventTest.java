@@ -112,6 +112,41 @@ public class EventTest {
     Assertions.assertNotEquals(event1, event2);
   }
 
+  @Test
+  public void testEquals_notEqualDayOfWeek() {
+    Event event1 = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Event event2 = new Event("Event 1", "Description 1", Days.TUESDAY,
+        "10:00", 60);
+    Assertions.assertNotEquals(event1, event2);
+  }
+
+  @Test
+  public void testEquals_notEqualStartTime() {
+    Event event1 = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Event event2 = new Event("Event 1", "Description 1", Days.MONDAY,
+        "12:00", 60);
+    Assertions.assertNotEquals(event1, event2);
+  }
+
+  @Test
+  public void testEquals_nullDayOfWeek() {
+    Event event1 = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Event event2 = new Event("Event 1", "Description 1", null,
+        "10:00", 60);
+    Assertions.assertNotEquals(event1, event2);
+  }
+
+  @Test
+  public void testEquals_notEqualDuration() {
+    Event event1 = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 60);
+    Event event2 = new Event("Event 1", "Description 1", Days.MONDAY,
+        "10:00", 120);
+    Assertions.assertNotEquals(event1, event2);
+  }
 }
 
 

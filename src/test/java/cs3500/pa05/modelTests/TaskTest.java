@@ -56,4 +56,52 @@ public class TaskTest {
     assertEquals(task1, task2);
     assertNotEquals(task1, task3);
   }
+
+  @Test
+  public void testEquals_notEqualCompleted() {
+    Task task1 = new Task("Task 1", "Description 1", Days.MONDAY, false);
+    Task task2 = new Task("Task 1", "Description 1", Days.MONDAY, true);
+    assertNotEquals(task1, task2);
+  }
+
+  @Test
+  public void testEquals_nullDayOfWeek() {
+    Task task1 = new Task("Task 1", "Description 1", Days.MONDAY, false);
+    Task task2 = new Task("Task 1", "Description 1", null, false);
+    assertNotEquals(task1, task2);
+  }
+
+  @Test
+  public void testEquals_nullDescription() {
+    Task task1 = new Task("Task 1", "Description 1", Days.MONDAY, false);
+    Task task2 = new Task("Task 1", null, Days.MONDAY, false);
+    assertNotEquals(task1, task2);
+  }
+
+  @Test
+  public void testEquals_nullName() {
+    Task task1 = new Task("Task 1", "Description 1", Days.MONDAY, false);
+    Task task2 = new Task(null, "Description 1", Days.MONDAY, false);
+    assertNotEquals(task1, task2);
+  }
+
+  @Test
+  public void testEquals_differentObjectTypes() {
+    Task task = new Task("Task 1", "Description 1", Days.MONDAY, false);
+    String differentType = "Not a Task object";
+    assertNotEquals(task, differentType);
+  }
+
+  @Test
+  public void testEquals_nullObject() {
+    Task task = new Task("Task 1", "Description 1", Days.MONDAY, false);
+    assertNotEquals(task, null);
+  }
+
+  @Test
+  public void testEquals_notEqualName() {
+    Task task1 = new Task("Task 1", "Description 1", Days.MONDAY, false);
+    Task task2 = new Task("Task 2", "Description 1", Days.MONDAY, false);
+    assertNotEquals(task1, task2);
+  }
 }
