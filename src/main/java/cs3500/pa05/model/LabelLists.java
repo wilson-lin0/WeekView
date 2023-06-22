@@ -9,13 +9,13 @@ import javafx.scene.control.Label;
  * Represents a list of labels.
  */
 public class LabelLists {
-  private List<Label> sundayEventList;
-  private List<Label> mondayEventList;
-  private List<Label> tuesdayEventList;
-  private List<Label> wednesdayEventList;
-  private List<Label> thursdayEventList;
-  private List<Label> fridayEventList;
-  private List<Label> saturdayEventList;
+  private List<Label> sundayList;
+  private List<Label> mondayList;
+  private List<Label> tuesdayList;
+  private List<Label> wednesdayList;
+  private List<Label> thursdayList;
+  private List<Label> fridayList;
+  private List<Label> saturdayList;
 
   private List<Label> sundayTaskList;
   private List<Label> mondayTaskList;
@@ -24,18 +24,19 @@ public class LabelLists {
   private List<Label> thursdayTaskList;
   private List<Label> fridayTaskList;
   private List<Label> saturdayTaskList;
+  private List<Label> eventTaskList;
 
   /**
    * Creates a LabelList.
    */
   public LabelLists() {
-    sundayEventList = new ArrayList<>();
-    mondayEventList = new ArrayList<>();
-    tuesdayEventList = new ArrayList<>();
-    wednesdayEventList = new ArrayList<>();
-    thursdayEventList = new ArrayList<>();
-    fridayEventList = new ArrayList<>();
-    saturdayEventList = new ArrayList<>();
+    sundayList = new ArrayList<>();
+    mondayList = new ArrayList<>();
+    tuesdayList = new ArrayList<>();
+    wednesdayList = new ArrayList<>();
+    thursdayList = new ArrayList<>();
+    fridayList = new ArrayList<>();
+    saturdayList = new ArrayList<>();
 
     sundayTaskList = new ArrayList<>();
     mondayTaskList = new ArrayList<>();
@@ -44,6 +45,8 @@ public class LabelLists {
     thursdayTaskList = new ArrayList<>();
     fridayTaskList = new ArrayList<>();
     saturdayTaskList = new ArrayList<>();
+
+    eventTaskList = new ArrayList<>();
   }
 
   /**
@@ -51,8 +54,8 @@ public class LabelLists {
    *
    * @return event list
    */
-  public List<Label> getSundayEventList() {
-    return sundayEventList;
+  public List<Label> getSundayList() {
+    return sundayList;
   }
 
   /**
@@ -69,8 +72,8 @@ public class LabelLists {
    *
    * @return event list
    */
-  public List<Label> getMondayEventList() {
-    return mondayEventList;
+  public List<Label> getMondayList() {
+    return mondayList;
   }
 
   /**
@@ -87,8 +90,8 @@ public class LabelLists {
    *
    * @return event list
    */
-  public List<Label> getTuesdayEventList() {
-    return tuesdayEventList;
+  public List<Label> getTuesdayList() {
+    return tuesdayList;
   }
 
   /**
@@ -105,8 +108,8 @@ public class LabelLists {
    *
    * @return event list
    */
-  public List<Label> getWednesdayEventList() {
-    return wednesdayEventList;
+  public List<Label> getWednesdayList() {
+    return wednesdayList;
   }
 
   /**
@@ -123,8 +126,8 @@ public class LabelLists {
    *
    * @return event list
    */
-  public List<Label> getThursdayEventList() {
-    return thursdayEventList;
+  public List<Label> getThursdayList() {
+    return thursdayList;
   }
 
   /**
@@ -141,8 +144,8 @@ public class LabelLists {
    *
    * @return event list
    */
-  public List<Label> getFridayEventList() {
-    return fridayEventList;
+  public List<Label> getFridayList() {
+    return fridayList;
   }
 
   /**
@@ -159,8 +162,8 @@ public class LabelLists {
    *
    * @return event list
    */
-  public List<Label> getSaturdayEventList() {
-    return saturdayEventList;
+  public List<Label> getSaturdayList() {
+    return saturdayList;
   }
 
   /**
@@ -172,6 +175,10 @@ public class LabelLists {
     return saturdayTaskList;
   }
 
+  public List<Label> getEventTaskList() {
+    return this.eventTaskList;
+  }
+
   /**
    * Adds the event to the list.
    *
@@ -180,19 +187,26 @@ public class LabelLists {
    */
   public void addEventToList(Label label, Days day) {
     if (day.equals(Days.SUNDAY)) {
-      sundayEventList.add(label);
+      sundayList.add(label);
+      eventTaskList.add(label);
     } else if (day.equals(Days.MONDAY)) {
-      mondayEventList.add(label);
+      mondayList.add(label);
+      eventTaskList.add(label);
     } else if (day.equals(Days.TUESDAY)) {
-      tuesdayEventList.add(label);
+      tuesdayList.add(label);
+      eventTaskList.add(label);
     } else if (day.equals(Days.WEDNESDAY)) {
-      wednesdayEventList.add(label);
+      wednesdayList.add(label);
+      eventTaskList.add(label);
     } else if (day.equals(Days.THURSDAY)) {
-      thursdayEventList.add(label);
+      thursdayList.add(label);
+      eventTaskList.add(label);
     } else if (day.equals(Days.FRIDAY)) {
-      fridayEventList.add(label);
+      fridayList.add(label);
+      eventTaskList.add(label);
     } else {
-      saturdayEventList.add(label);
+      saturdayList.add(label);
+      eventTaskList.add(label);
     }
   }
 
@@ -205,22 +219,50 @@ public class LabelLists {
   public void addTaskToList(Label label, Days day) {
     if (day.equals(Days.SUNDAY)) {
       sundayTaskList.add(label);
+      sundayList.add(label);
+      eventTaskList.add(label);
     } else if (day.equals(Days.MONDAY)) {
       mondayTaskList.add(label);
+      mondayList.add(label);
+      eventTaskList.add(label);
     } else if (day.equals(Days.TUESDAY)) {
       tuesdayTaskList.add(label);
+      tuesdayList.add(label);
+      eventTaskList.add(label);
     } else if (day.equals(Days.WEDNESDAY)) {
       wednesdayTaskList.add(label);
+      tuesdayList.add(label);
+      eventTaskList.add(label);
     } else if (day.equals(Days.THURSDAY)) {
       thursdayTaskList.add(label);
+      thursdayList.add(label);
+      eventTaskList.add(label);
     } else if (day.equals(Days.FRIDAY)) {
       fridayTaskList.add(label);
+      fridayList.add(label);
+      eventTaskList.add(label);
     } else {
       saturdayTaskList.add(label);
+      saturdayList.add(label);
+      eventTaskList.add(label);
     }
   }
 
   public void clearAll() {
-
+    sundayList.clear();
+    sundayTaskList.clear();
+    mondayList.clear();
+    mondayTaskList.clear();
+    tuesdayList.clear();
+    tuesdayTaskList.clear();
+    wednesdayList.clear();
+    wednesdayTaskList.clear();
+    thursdayList.clear();
+    thursdayTaskList.clear();
+    fridayList.clear();
+    fridayTaskList.clear();
+    saturdayList.clear();
+    saturdayTaskList.clear();
+    eventTaskList.clear();
   }
 }
