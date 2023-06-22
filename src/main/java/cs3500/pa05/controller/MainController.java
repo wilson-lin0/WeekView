@@ -3,6 +3,7 @@ package cs3500.pa05.controller;
 import static cs3500.pa05.model.enumerations.Days.verifyDay;
 
 import cs3500.pa05.model.Event;
+import cs3500.pa05.model.LabelLists;
 import cs3500.pa05.model.Task;
 import cs3500.pa05.model.WeekView;
 import cs3500.pa05.model.enumerations.Days;
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javafx.fxml.FXML;
@@ -486,33 +488,27 @@ public class MainController extends AbstractController {
    */
   public void showGraphics() {
     sundayBox.getChildren().clear(); // Clear existing children
-    sundayBox.getChildren().addAll(labellists.getSundayEventList());
-    sundayBox.getChildren().addAll(labellists.getSundayTaskList());
+    sundayBox.getChildren().addAll(labellists.getSundayList());
     sundayBox.setAlignment(Pos.CENTER_LEFT);
 
     mondayBox.getChildren().clear(); // Clear existing children
-    mondayBox.getChildren().addAll(labellists.getMondayEventList());
-    mondayBox.getChildren().addAll(labellists.getMondayTaskList());
+    mondayBox.getChildren().addAll(labellists.getMondayList());
     mondayBox.setAlignment(Pos.CENTER_LEFT);
 
     tuesdayBox.getChildren().clear(); // Clear existing children
-    tuesdayBox.getChildren().addAll(labellists.getTuesdayEventList());
-    tuesdayBox.getChildren().addAll(labellists.getTuesdayTaskList());
+    tuesdayBox.getChildren().addAll(labellists.getTuesdayList());
     tuesdayBox.setAlignment(Pos.CENTER_LEFT);
 
     wednesdayBox.getChildren().clear(); // Clear existing children
-    wednesdayBox.getChildren().addAll(labellists.getWednesdayEventList());
-    wednesdayBox.getChildren().addAll(labellists.getWednesdayTaskList());
+    wednesdayBox.getChildren().addAll(labellists.getWednesdayList());
     wednesdayBox.setAlignment(Pos.CENTER_LEFT);
 
     thursdayBox.getChildren().clear(); // Clear existing children
-    thursdayBox.getChildren().addAll(labellists.getThursdayEventList());
-    thursdayBox.getChildren().addAll(labellists.getThursdayTaskList());
+    thursdayBox.getChildren().addAll(labellists.getThursdayList());
     thursdayBox.setAlignment(Pos.CENTER_LEFT);
 
     fridayBox.getChildren().clear(); // Clear existing children
-    fridayBox.getChildren().addAll(labellists.getFridayEventList());
-    fridayBox.getChildren().addAll(labellists.getFridayTaskList());
+    fridayBox.getChildren().addAll(labellists.getFridayList());
     fridayBox.setAlignment(Pos.CENTER_LEFT);
 
     saturdayBox.getChildren().clear(); // Clear existing children
