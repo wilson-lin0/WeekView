@@ -108,6 +108,7 @@ public class MainController extends AbstractController {
   private final Popup startMenu;
   private Popup eventCreationPopup;
   private Popup taskCreationPopup;
+  private Popup scenePopup;
   @FXML
   private Label warningEventLabel;
   @FXML
@@ -158,14 +159,30 @@ public class MainController extends AbstractController {
     this.eventTaskLimitButton.setOnAction(event -> {
       setLimit();
     });
-    // this.layoutButton.setOnAction(event -> popup w/6 buttons)
-    // this.horizontal1.setOnAction(event -> changeSceneHorizontal1)
-    // this.horizontal2.setOnAction(event -> changeSceneHorizontal2)
-    // this.horizontal3.setOnAction(event -> changeSceneHorizontal3)
+    // this.layoutButton.setOnAction(event -> scenePopup());
+    // this.horizontal1.setOnAction(event -> changeSceneHorizontal1());
+    // this.horizontal2.setOnAction(event -> changeSceneHorizontal2());
+    // this.horizontal3.setOnAction(event -> changeSceneHorizontal3());
 
-    // this.vertical1.setOnAction(event -> changeSceneVertical1)
-    // this.vertical2.setOnAction(event -> changeSceneVertical2)
-    // this.vertical3.setOnAction(event -> changeSceneVertical3)
+    // this.vertical1.setOnAction(event -> changeSceneVertical1())
+    // this.vertical2.setOnAction(event -> changeSceneVertical2())
+    // this.vertical3.setOnAction(event -> changeSceneVertical3())
+  }
+
+  /**
+   * Shows a popup to change layout.
+   */
+  public void scenePopup() {
+    try {
+      this.scenePopup = new Popup();
+      FXMLLoader eventLoader = new FXMLLoader(getClass().getClassLoader().getResource(
+          "ScenePopup.fxml"));
+      eventLoader.setController(this);
+      Scene createEventScene = eventLoader.load();
+      scenePopup.getContent().add(createEventScene.getRoot());
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
